@@ -1,0 +1,16 @@
+DESIGN-ENTSCHEIDUNGEN
+
+Damit das Design auf der Seite einheitlich ist und jeder einen Überblick auf
+darüber hat, sind hier die wichtigen "Design-Entscheidungen"
+oder andere wichtigen Zahlen und Fakten von jeden einzutragen:
+
+
+Standart-Bildschirm-Breite: 1920px
+Breite der Website: 960px
+
+
+Farben:
+	Dunkel-Blau: #0a445a
+	Hellgrau: #e3e3e3
+
+

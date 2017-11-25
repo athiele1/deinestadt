@@ -1,0 +1,19 @@
+/**
+style.css
+
+Eine externe und zentrale CSS Datei,
+hierüber kann das Design aller Seiten angepasst werden.
+
+**/
+
+
+body {
+    background-color: lightgrey;
+}
+
+div {
+	background-color: white;	
+	width: 960px;
+	margin: 0 auto;
+	
+}

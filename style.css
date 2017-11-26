@@ -11,9 +11,13 @@ body {
     background-color: lightgrey;
 }
 
-div {
-	background-color: white;	
+#divHead {
 	width: 960px;
-	margin: 0 auto;
-	
+	margin: 0 auto;	
+}
+
+#divContent {
+	width: 960px;
+	margin: 0 auto;	
+	background-color: white;
 }

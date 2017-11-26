@@ -10,13 +10,13 @@ im Head hinzugefügt wurde.
 
 
 
-function addHeadMenu() {
+function addHeadMenu(container) {
 	
 	//<div align="center" id="mitte"></div>
     var header = new Image();
 	header.src = "pics/header.png";
 	
-	var container = document.createElement("div");
+	//var container = document.createElement("div");
 	//container.align = "center";
 	
 	
@@ -44,5 +44,5 @@ function addHeadMenu() {
 	container.appendChild(b3);
 	container.appendChild(spacer.cloneNode(true));
 	
-	document.body.appendChild(container);	
+	//document.body.appendChild(container);	
 }

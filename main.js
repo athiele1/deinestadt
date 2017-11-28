@@ -12,7 +12,7 @@ im Head hinzugefügt wurde.
 
 function addHeadMenu(container) {
 	
-	//<div align="center" id="mitte"></div>
+	
     var header = new Image();
 	header.src = "pics/header.png";
 	
@@ -20,17 +20,43 @@ function addHeadMenu(container) {
 	//container.align = "center";
 	
 	
-	var b1 = new Image();
-	var b2 = new Image();
-	var b3 = new Image();
+	var b1 = document.createElement("input");
+	var b2 = document.createElement("input");
+	var b3 = document.createElement("input");
 	var spacer = new Image();
 	
-	b1.src = "pics/b_initiative.jpg";
-	b2.src = "pics/b_finder.jpg";
-	b3.src = "pics/b_partner.jpg";
+	b1.type = "image";
+	b2.type = "image";
+	b3.type = "image";
+	
+	b1.src = "pics/b_initiative.jpg"
+	b2.src = "pics/b_finder.jpg"
+	b3.src = "pics/b_partner.jpg"
+	
 	spacer.src = "pics/b_spacer.jpg";
 	
 	
+	//Macht die "Buttons" anklickbar
+	
+	b1.addEventListener("click", function(){
+		window.location="index.html";
+		
+	});
+	
+	b2.addEventListener("click", function(){
+		window.location="finder.html";
+		
+	});
+	
+	b3.addEventListener("click", function(){
+		window.location="partner.html";
+		
+	});
+	
+	
+	
+	
+	//Fügt die Elemente in der richtigen Reihenfolge mit "Spacern" dazwischen ein.
 	
 	container.appendChild(header);
 	
@@ -45,4 +71,14 @@ function addHeadMenu(container) {
 	container.appendChild(spacer.cloneNode(true));
 	
 	//document.body.appendChild(container);	
+}
+
+
+function addButtomMenu(container2) {
+	
+	var horizontalLine = document.createElement("hr");
+
+	container2.appendChild(horizontalLine);
+	
+	
 }

@@ -42,6 +42,11 @@ iframe{
 	background-color: white;
 }
 
+#divBottomMenu{
+	width: 200px;
+	margin: 0 auto;	
+}
+
 
 /*Festlegung Schriftarten für die Schriftgrößen*/
 
@@ -56,9 +61,19 @@ h1 {
 
 h3 {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 14px;
+	font-size: 16px;
 	font-style: normal;
 	font-variant: normal;
 	font-weight: 500;
-	line-height: 15.4px;
+	line-height: 20px;
+}
+
+h4 {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	color:#333;
+	margin: 0 auto;	
 }

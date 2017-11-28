@@ -16,6 +16,15 @@ hr{
 	background-color: black;
 }
 
+/*Youtube-Videos*/
+iframe{
+	margin: 0 auto;	
+	display: block; /*Sonst lässt sich die position nicht setzen*/
+	width: 600px;
+	height: 338px;
+	
+}
+
 #divHead {
 	width: 960px;
 	margin: 0 auto;	
@@ -27,7 +36,29 @@ hr{
 }
 
 #divContent {
-	width: 960px;
+	padding: 15px;
+	width: 930px;
 	margin: 0 auto;	
 	background-color: white;
+}
+
+
+/*Festlegung Schriftarten für die Schriftgrößen*/
+
+h1 {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 32px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 700;
+	line-height: 26.4px;
+}
+
+h3 {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 15.4px;
 }

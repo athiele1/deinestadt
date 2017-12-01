@@ -87,7 +87,7 @@ function addButtomMenu(container2) {
 	 
 	var h4 = document.createElement("h4")   
 	var textMenu = document.createTextNode("Impressum \xa0\xa0\xa0\xa0 Kontakt \xa0\xa0\xa0\xa0 Weiteres");
-	
+
 	divMenu.appendChild(h4);
 	h4.appendChild(textMenu);
 	container2.appendChild(divMenu);

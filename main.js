@@ -88,11 +88,16 @@ function addButtomMenu(container2) {
 	divMenu.id = "divBottomMenu";
 	
 	 
-	var h4 = document.createElement("h4")   
-	var textMenu = document.createTextNode("Impressum \xa0\xa0\xa0\xa0 Kontakt \xa0\xa0\xa0\xa0 Weiteres");
+	var h4 = document.createElement("h4");
+	
+	//var textMenu = document.createTextNode("Impressum");	
+
+	var impressum = document.createElement("p");
+	impressum.innerHTML = '<a href="impressum.html" title="Impressum">Impressum</a>';
+
 
 	divMenu.appendChild(h4);
-	h4.appendChild(textMenu);
+	h4.appendChild(impressum);
 	container2.appendChild(divMenu);
 	
 	
@@ -120,6 +125,7 @@ function markButton(i){
 		default: break;
 	}
 }
+
 
 
 

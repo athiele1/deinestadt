@@ -8,6 +8,12 @@ im Head hinzugefügt wurde.
 
 **/
 
+var b1S = ["pics/b_initiative.png","pics/b_initiative2.png"];
+var b2S = ["pics/b_finder.png","pics/b_finder2.png"];
+var b3S = ["pics/b_partner.png","pics/b_partner2.png"];
+var b1 = document.createElement("input");
+var b2 = document.createElement("input");
+var b3 = document.createElement("input");
 
 
 function addHeadMenu(container) {
@@ -20,18 +26,15 @@ function addHeadMenu(container) {
 	//container.align = "center";
 	
 	
-	var b1 = document.createElement("input");
-	var b2 = document.createElement("input");
-	var b3 = document.createElement("input");
+	
 	var spacer = new Image();
 	
 	b1.type = "image";
 	b2.type = "image";
 	b3.type = "image";
 	
-	b1.src = "pics/b_initiative.jpg"
-	b2.src = "pics/b_finder.jpg"
-	b3.src = "pics/b_partner.jpg"
+	resetButtons(); //Setzt das default image
+
 	
 	spacer.src = "pics/b_spacer.jpg";
 	
@@ -95,3 +98,28 @@ function addButtomMenu(container2) {
 	
 	
 }
+
+function resetButtons(){
+	b1.src = b1S[0];
+	b2.src = b2S[0];
+	b3.src = b3S[0];	
+}
+
+function markButton(i){
+	resetButtons();
+	switch(i){
+		case 0: 
+			b1.src = b1S[1];
+			break;
+		case 1: 
+			b2.src = b2S[1];
+			break;
+		case 2:	
+			b3.src = b3S[1];
+			break;
+		default: break;
+	}
+}
+
+
+

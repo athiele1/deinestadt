@@ -44,8 +44,19 @@ iframe{
 
 #divBottomMenu{
 	width: 200px;
-	heught: 30px;
+	height: 30px;
 	margin: 0 auto;	
+}
+
+#div768{
+	margin: 0 auto;	
+	width: 768px;
+}
+
+#div320{
+	margin: 0 auto;	
+	width: 320px;
+	
 }
 
 
@@ -62,11 +73,11 @@ h1 {
 
 h3 {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 16px;
+	font-size: 18px;
 	font-style: normal;
 	font-variant: normal;
 	font-weight: 500;
-	line-height: 20px;
+	line-height: 23px;
 }
 
 h4 {

@@ -20,9 +20,9 @@ function addHeadMenu(container) {
 	
 	
     var header = new Image();
-	header.src = "pics/logo_300.png";
+	header.src = "pics/logo_200.png";
 	var headerDiv = document.createElement("div");
-	headerDiv.id = "div300";
+	headerDiv.id = "div200";
 	headerDiv.appendChild(header);
 	
 	

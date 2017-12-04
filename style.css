@@ -2,7 +2,7 @@
 style.css
 
 Eine externe und zentrale CSS Datei,
-hierüber kann das Design aller Seiten angepasst werden.
+hierÃ¼ber kann das Design aller Seiten angepasst werden.
 
 **/
 
@@ -19,7 +19,7 @@ hr{
 /*Youtube-Videos*/
 iframe{
 	margin: 0 auto;	
-	display: block; /*Sonst lässt sich die position nicht setzen*/
+	display: block; /*Sonst lÃ¤sst sich die position nicht setzen*/
 	width: 600px;
 	height: 338px;
 	
@@ -65,7 +65,7 @@ iframe{
 }
 
 
-/*Festlegung Schriftarten für die Schriftgrößen*/
+/*Festlegung Schriftarten fÃ¼r die SchriftgrÃ¶ÃŸen*/
 
 h1 {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -100,5 +100,5 @@ h4 {
 }
 
 #impressum {
-
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }

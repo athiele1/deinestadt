@@ -20,7 +20,13 @@ function addHeadMenu(container) {
 	
 	
     var header = new Image();
-	header.src = "pics/header.png";
+	header.src = "pics/logo_300.png";
+	var headerDiv = document.createElement("div");
+	headerDiv.id = "div300";
+	headerDiv.appendChild(header);
+	
+	
+	
 	
 	//var container = document.createElement("div");
 	//container.align = "center";
@@ -61,7 +67,7 @@ function addHeadMenu(container) {
 	
 	//Fügt die Elemente in der richtigen Reihenfolge mit "Spacern" dazwischen ein.
 	
-	container.appendChild(header);
+	container.appendChild(headerDiv);
 	
 	container.appendChild(spacer);
 	container.appendChild(b1);

@@ -8,7 +8,7 @@ hierüber kann das Design aller Seiten angepasst werden.
 
 
 body {
-    background-color: lightgrey;
+	background-image: url("pics/background.jpg");
 }
 
 hr{

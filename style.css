@@ -8,7 +8,8 @@ hierüber kann das Design aller Seiten angepasst werden.
 
 
 body {
-	background-image: url("pics/background.jpg");
+	background-color: lightgrey;
+	/*background-image: url("pics/background.jpg");*/
 }
 
 hr{
@@ -26,18 +27,21 @@ iframe{
 }
 
 #divHead {
-	width: 960px;
+	width: 1242px;
 	margin: 0 auto;	
 }
 
 #divButtom {
-	width: 960px;
+	width: 1242px;
 	margin: 0 auto;	
 }
 
 #divContent {
-	padding: 15px;
-	width: 930px;
+	padding-left: 100px;
+	padding-right: 100px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	width: 1042px; /*1242 - 2*padding*/
 	margin: 0 auto;	
 	background-color: white;
 }
@@ -53,9 +57,9 @@ iframe{
 	width: 768px;
 }
 
-#div320{
+#div350{
 	margin: 0 auto;	
-	width: 320px;
+	width: 350px;
 	
 }
 
@@ -74,6 +78,7 @@ h1 {
 	font-variant: normal;
 	font-weight: 700;
 	line-height: 26.4px;
+	border-top: 50px solid white;
 }
 
 h3 {

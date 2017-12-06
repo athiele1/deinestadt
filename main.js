@@ -70,6 +70,9 @@ function addHeadMenu(container) {
 	container.appendChild(headerDiv);
 	
 	container.appendChild(spacer);
+	container.appendChild(spacer.cloneNode(true));
+	container.appendChild(spacer.cloneNode(true));
+	container.appendChild(spacer.cloneNode(true));
 	container.appendChild(b1);
 	container.appendChild(spacer.cloneNode(true));
 	container.appendChild(spacer.cloneNode(true));
@@ -77,6 +80,9 @@ function addHeadMenu(container) {
 	container.appendChild(spacer.cloneNode(true));
 	container.appendChild(spacer.cloneNode(true));
 	container.appendChild(b3);
+	container.appendChild(spacer.cloneNode(true));
+	container.appendChild(spacer.cloneNode(true));
+	container.appendChild(spacer.cloneNode(true));
 	container.appendChild(spacer.cloneNode(true));
 	
 	//document.body.appendChild(container);	

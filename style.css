@@ -102,8 +102,50 @@ h4 {
 
 #ASB {
 	margin: 0 auto;
+	border:solid;
+	border-width:medium;
+	border-radius: 1em;
+	border-color:#FC0;
 }
 
 #impressum {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+#Samariter {
+   float:left;
+   margin-left: 50px;
+   
+}
+#upperPart {
+	height: 150;
+
+}
+
+#lowerPart {
+	margin-left:50px;
+	margin-right:50px;
+	
+}#divContent #ASB #lowerPart p {
+	font-family: Calibri;
+}
+
+#divContent #ASB #upperPart p {
+	font-family: Calibri;
+	margin-left:350px;
+}
+
+#AWO {
+    margin-top:25px;
+	border:solid;
+	border-width:medium;
+	border-radius: 1em;
+	border-color:#F00;
+}
+#divContent #AWO #lowerPart p {
+	font-family: Calibri;
+}
+
+#divContent #AWO #upperPart p {
+	font-family: Calibri;
+	margin-left:350px;
 }

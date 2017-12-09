@@ -22,30 +22,72 @@
 <div id="divButtom"></div>
 </body>
 <script>
-    
+    var infowindow,service,map;
+	
+	
     addHeadMenu(document.getElementById("divHead"));
     addButtomMenu(document.getElementById("divButtom"));
     markButton(1);
     
+	
+	
+	
+	//Anleitungen/hilfstools:
+	
+	//https://developers.google.com/places/place-id#find-id
+	//https://developers.google.com/maps/documentation/javascript/examples/place-details?hl=de
+	
+	function addPlace(place_id){
+		service.getDetails({
+          placeId: place_id
+        }, function(place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            var marker = new google.maps.Marker({
+              map: map,
+              position: place.geometry.location
+            });
+            google.maps.event.addListener(marker, 'click', function() {
+              infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+                'Place ID: ' + place.place_id + '<br>' +
+                place.formatted_address + '</div>');
+              infowindow.open(map, this);
+         	 });
+       	 }
+        }
+		);
+
+		
+	}
+	
     
     function initMap() {
       var bremen = {lat: 53.076320, lng: 8.808581};
 	 
+		
+
 	  
-      var map = new google.maps.Map(document.getElementById('map'), {
+      map = new google.maps.Map(document.getElementById('map'), {
       		zoom: 12,
 			minZoom: 10,
             center: bremen
        });
 	   
-       var marker = new google.maps.Marker({
+	   infowindow = new google.maps.InfoWindow();
+	   service = new google.maps.places.PlacesService(map);
+	   
+     /*  var marker = new google.maps.Marker({
            position: bremen,
-           map: map,
-		   label: "test"
-       });
+           map: map
+       });*/
+	   
+	   addPlace("ChIJxXW6Rq0psUcRN9scHRdPJ9Y");
      }
+	 
+	 
+	 
+	 
          </script>
 <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiCHKIxpj5H2bfsFK5VRYI5al3r9ira2E&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiCHKIxpj5H2bfsFK5VRYI5al3r9ira2E&callback=initMap&libraries=places">
         </script>
 </html>

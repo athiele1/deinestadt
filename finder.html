@@ -5,35 +5,47 @@
 <meta charset="utf-8"/>
 <link rel="stylesheet" type="text/css" href="style.css">
 <script src="main.js"></script>
-
 </head>
 <body>
-
 <div id="divHead"></div>
-
-<div id="divContent">
-
-<h1>Der "Spenden-Finder" ist noch in Arbeit.</h1>
-
-<div id="div350">
-<img src="pics/tea.png" width="350" height="260">
-Bis dahin heißt es abwarten und Spenden raussuchen.
+<div id="divContent"> 
+  
+  <!--<h1>Der "Spenden-Finder" ist noch in Arbeit.</h1>
+    
+    <div id="div350">
+    <img src="pics/tea.png" width="350" height="260">
+    Bis dahin heißt es abwarten und Spenden raussuchen.
+    </div>-->
+  
+  <div id="map"></div>
 </div>
-
-
-
-</div>
-
 <div id="divButtom"></div>
-
 </body>
-
 <script>
-
-addHeadMenu(document.getElementById("divHead"));
-addButtomMenu(document.getElementById("divButtom"));
-markButton(1);
-
-</script>
-
+    
+    addHeadMenu(document.getElementById("divHead"));
+    addButtomMenu(document.getElementById("divButtom"));
+    markButton(1);
+    
+    
+    function initMap() {
+      var bremen = {lat: 53.076320, lng: 8.808581};
+	 
+	  
+      var map = new google.maps.Map(document.getElementById('map'), {
+      		zoom: 12,
+			minZoom: 10,
+            center: bremen
+       });
+	   
+       var marker = new google.maps.Marker({
+           position: bremen,
+           map: map,
+		   label: "test"
+       });
+     }
+         </script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiCHKIxpj5H2bfsFK5VRYI5al3r9ira2E&callback=initMap">
+        </script>
 </html>

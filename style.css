@@ -156,3 +156,23 @@ h4 {
 	font-family: Calibri;
 	margin-left:350px;
 }
+
+#mySWOOOP {
+	margin-top:25px;
+	border:solid;
+	border-width:medium;
+	border-radius: 1em;
+    border-bottom-color:#0C0;
+	border-top-color:#C00;
+	border-left-color:#09F;
+	border-right-color:#FF3;
+}
+
+#divContent #mySWOOOP #lowerPart p {
+	font-family: Calibri;
+}
+
+#divContent #mySWOOOP #upperPart p {
+	font-family: Calibri;
+	margin-left:350px;
+}

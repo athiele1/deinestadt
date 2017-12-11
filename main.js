@@ -15,6 +15,8 @@ var b1 = document.createElement("input");
 var b2 = document.createElement("input");
 var b3 = document.createElement("input");
 
+var buttonText = ["INITIATIVE","SPENDEN-FINDER","PARTNER"];
+
 
 function addHeadMenu(container) {
 	
@@ -25,11 +27,45 @@ function addHeadMenu(container) {
 	headerDiv.id = "div200";
 	headerDiv.appendChild(header);
 	
-	
+	container.appendChild(headerDiv);
 	
 	
 	//var container = document.createElement("div");
 	//container.align = "center";
+	
+	
+	var divUpMenu = document.createElement("div");
+	divUpMenu.style.width = "1242px";
+	divUpMenu.style.height = "60px";
+	divUpMenu.style.border = "thick solid #000000";
+	for(var i = 0; i < 3; i++){
+		
+		var span1 = document.createElement("span");
+		span1.style.width = "200px";
+		span1.style.height = "50px";
+		span1.style.display = "inline-block";
+		
+		var span2 = document.createElement("span");
+		span2.style.height = "40px";
+		span2.style.display = "table";
+		span2.style.margin = "0 auto";
+		
+		var bi = document.createTextNode(buttonText[i]);
+		//bi.textAlign = "center";
+		
+		span1.style.border = "thick solid #0000FF";
+		span2.style.border = "thick solid #FF0000";
+		//divi2.style.border = "thick solid #000000";
+		
+		span2.appendChild(bi);
+		span1.appendChild(span2);
+		//divi2.appendChild(bi);
+		
+		divUpMenu.appendChild(span1);
+	}
+	
+	container.append(divUpMenu);
+	
 	
 	
 	
@@ -67,7 +103,7 @@ function addHeadMenu(container) {
 	
 	//Fügt die Elemente in der richtigen Reihenfolge mit "Spacern" dazwischen ein.
 	
-	container.appendChild(headerDiv);
+	
 	
 	container.appendChild(spacer);
 	container.appendChild(spacer.cloneNode(true));

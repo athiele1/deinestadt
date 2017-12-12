@@ -131,12 +131,13 @@ h4 {
 #lowerPart {
 	margin-left:50px;
 	margin-right:50px;
-	
-}#divContent #ASB #lowerPart p {
+}
+
+#lowerPart p {
 	font-family: Calibri;
 }
 
-#divContent #ASB #upperPart p {
+#upperPart p {
 	font-family: Calibri;
 	margin-left:350px;
 }
@@ -148,31 +149,35 @@ h4 {
 	border-radius: 1em;
 	border-color:#F00;
 }
-#divContent #AWO #lowerPart p {
-	font-family: Calibri;
-}
-
-#divContent #AWO #upperPart p {
-	font-family: Calibri;
-	margin-left:350px;
-}
 
 #mySWOOOP {
 	margin-top:25px;
 	border:solid;
 	border-width:medium;
 	border-radius: 1em;
-    border-bottom-color:#0C0;
-	border-top-color:#C00;
-	border-left-color:#09F;
-	border-right-color:#FF3;
+    border-color:#939;
 }
 
-#divContent #mySWOOOP #lowerPart p {
-	font-family: Calibri;
+#IM {
+	margin-top:25px;
+	border:solid;
+	border-width:medium;
+	border-radius: 1em;
+	border-color:#06F;
 }
 
-#divContent #mySWOOOP #upperPart p {
-	font-family: Calibri;
-	margin-left:350px;
+#DRK {
+	margin-top:25px;
+	border:solid;
+	border-width:medium;
+	border-radius: 1em;
+	border-color:#F00;
+}
+
+#Suppenengel {
+	margin-top:25px;
+	border:solid;
+	border-width:medium;
+	border-radius: 1em;
+	border-color:#666;
 }

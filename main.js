@@ -17,6 +17,7 @@ var b3 = document.createElement("input");
 
 var buttonText = ["INITIATIVE","SPENDEN-FINDER","PARTNER"];
 
+//var buttons2 = [];
 
 function addHeadMenu(container) {
 	
@@ -35,29 +36,65 @@ function addHeadMenu(container) {
 	
 	
 	var divUpMenu = document.createElement("div");
-	divUpMenu.style.width = "1242px";
-	divUpMenu.style.height = "60px";
-	divUpMenu.style.border = "thick solid #000000";
+	//divUpMenu.style.width = "1242px";
+	divUpMenu.style.height = "50px";
+	divUpMenu.style.borderTop = "1px solid grey";
+	divUpMenu.style.borderBottom = "1px solid grey";
+	divUpMenu.style.backgroundColor = "white";
+	divUpMenu.style.boxShadow =  "0px 10px 10px grey";
+	
 	for(var i = 0; i < 3; i++){
 		
 		var span1 = document.createElement("span");
 		span1.style.width = "200px";
-		span1.style.height = "50px";
+		span1.style.height = "20px";
 		span1.style.display = "inline-block";
+		span1.style.position = "relative";
+		span1.style.marginTop = "10px"
 		
 		var span2 = document.createElement("span");
-		span2.style.height = "40px";
+		span2.style.height = "30px";
 		span2.style.display = "table";
 		span2.style.margin = "0 auto";
 		
-		var bi = document.createTextNode(buttonText[i]);
+		
+		span2.innerHTML = buttonText[i];
+		span2.style.border = "5px solid white";
+		//span2.style.userSelect = "none";
+		
+		//span2.style.position = "relative";
+		
+		//var bi = document.createTextNode(buttonText[i]);
 		//bi.textAlign = "center";
 		
-		span1.style.border = "thick solid #0000FF";
-		span2.style.border = "thick solid #FF0000";
+		//span1.style.border = "thick solid #0000FF";
+		
+		if(i != 2){
+			span1.style.borderRight = "1px solid grey";
+			
+		}
+		
+		span2.id = "" + i;
+		span2.addEventListener("mouseover", function(){
+			//this.style.borderBottom = "5px solid red";
+			selectButton(this, this.id);
+		})
+		
+		span2.addEventListener("mouseout", function(){
+			deselectButton(this, this.id);
+			
+		})
+		
+		
+		//span2.style.border = "thick solid #FF0000";
 		//divi2.style.border = "thick solid #000000";
 		
-		span2.appendChild(bi);
+		
+		//bi.childNodes[0].style.color = "red";
+		//alert(bi.data);
+		
+		//buttons2.push(bi);
+		//span2.appendChild(bi);
 		span1.appendChild(span2);
 		//divi2.appendChild(bi);
 		
@@ -66,6 +103,7 @@ function addHeadMenu(container) {
 	
 	container.append(divUpMenu);
 	
+	container.append(document.createElement("br"));
 	
 	
 	
@@ -174,6 +212,21 @@ function markButton(i){
 	}
 }
 
+function selectButton(spani, i){
+	spani.style.borderBottom = "5px solid red";
+	//alert(buttons2[i].data);
+	spani.innerHTML = buttonText[i].fontcolor("red");
+	//alert(spani.innerHTML);
+	//buttons2[i].innerHTML.style.color = "red";
+}
+
+function deselectButton(spani, i){
+	spani.style.borderBottom = "0px";
+	//alert(buttons2[i].data);
+	spani.innerHTML = buttonText[i].fontcolor("black");
+	//alert(spani.innerHTML);
+	//buttons2[i].innerHTML.style.color = "red";
+}
 
 
 

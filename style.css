@@ -7,21 +7,19 @@ hierüber kann das Design aller Seiten angepasst werden.
 **/
 
 #divHead {
-	width: 1242px;
+	
 	margin: 0 auto;	
 }
 
 #divButtom {
-	width: 1242px;
 	margin: 0 auto;	
 }
 
 #divContent {
-	padding-left: 100px;
-	padding-right: 100px;
+	padding-left: 20%;
+	padding-right: 20%;
 	padding-top: 30px;
 	padding-bottom: 30px;
-	width: 1042px; /*1242 - 2*padding*/
 	margin: 0 auto;	
 	background-color: white;
 }

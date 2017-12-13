@@ -6,6 +6,25 @@ hierüber kann das Design aller Seiten angepasst werden.
 
 **/
 
+#divHead {
+	width: 1242px;
+	margin: 0 auto;	
+}
+
+#divButtom {
+	width: 1242px;
+	margin: 0 auto;	
+}
+
+#divContent {
+	padding-left: 100px;
+	padding-right: 100px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	width: 1042px; /*1242 - 2*padding*/
+	margin: 0 auto;	
+	background-color: white;
+}
 
 body {
 	background-color: lightgrey;
@@ -33,25 +52,7 @@ iframe{
 
 
 
-#divHead {
-	width: 1242px;
-	margin: 0 auto;	
-}
 
-#divButtom {
-	width: 1242px;
-	margin: 0 auto;	
-}
-
-#divContent {
-	padding-left: 100px;
-	padding-right: 100px;
-	padding-top: 30px;
-	padding-bottom: 30px;
-	width: 1042px; /*1242 - 2*padding*/
-	margin: 0 auto;	
-	background-color: white;
-}
 
 #divBottomMenu{
 	width: 60px;
@@ -106,6 +107,39 @@ h4 {
 	color:#333;
 	margin: 0 auto;	
 }
+
+
+.topButton {
+	background-color: white;
+    border: 5px;
+    color: black;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+	transition-duration: 0.4s;
+	
+}
+
+.topButton:hover {
+	border-bottom: 5px solid green;
+	color: green;
+}
+
+
+.noselect {
+/*source: https://stackoverflow.com/questions/826782/how-to-disable-text-selection-highlighting-using-css*/
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
 
 #ASB {
 	margin: 0 auto;

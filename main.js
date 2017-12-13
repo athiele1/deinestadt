@@ -16,6 +16,7 @@ var b2 = document.createElement("input");
 var b3 = document.createElement("input");
 
 var buttonText = ["INITIATIVE","SPENDEN-FINDER","PARTNER"];
+var buttonLink = ["index.html","finder.html","partner.html"];
 
 //var buttons2 = [];
 
@@ -41,10 +42,33 @@ function addHeadMenu(container) {
 	divUpMenu.style.borderTop = "1px solid grey";
 	divUpMenu.style.borderBottom = "1px solid grey";
 	divUpMenu.style.backgroundColor = "white";
-	divUpMenu.style.boxShadow =  "0px 10px 10px grey";
+	//divUpMenu.style.boxShadow =  "0px 10px 10px grey";
+	
+	var divHolder = document.createElement("div");
+	//divHolder.style.border = "1px solid red";
+	
+	divHolder.style.width = "500px";
+	divHolder.style.margin = "0 auto";
+	divHolder.style.marginTop = "4px";
+	divHolder.style.display = "block";
 	
 	for(var i = 0; i < 3; i++){
 		
+		var btni = document.createElement("input");
+		btni.type = "button";
+		btni.value = buttonText[i];
+		btni.classList.add("topButton");
+		btni.id = "" + i;
+		
+		btni.addEventListener("click", function(){
+			window.location = buttonLink[this.id];
+		
+		});
+		
+		
+		
+		
+		/*
 		var span1 = document.createElement("span");
 		span1.style.width = "200px";
 		span1.style.height = "20px";
@@ -59,7 +83,12 @@ function addHeadMenu(container) {
 		
 		
 		span2.innerHTML = buttonText[i];
+		
+		span2.classList.add("noselect");
+		
+		
 		span2.style.border = "5px solid white";
+		//span2.style.background = "white";
 		//span2.style.userSelect = "none";
 		
 		//span2.style.position = "relative";
@@ -69,21 +98,27 @@ function addHeadMenu(container) {
 		
 		//span1.style.border = "thick solid #0000FF";
 		
+		
+		
+		
 		if(i != 2){
 			span1.style.borderRight = "1px solid grey";
 			
-		}
+		}		
 		
 		span2.id = "" + i;
 		span2.addEventListener("mouseover", function(){
+			alert("§l")
 			//this.style.borderBottom = "5px solid red";
-			selectButton(this, this.id);
+			selectButton(this);
 		})
 		
-		span2.addEventListener("mouseout", function(){
-			deselectButton(this, this.id);
+		span2.addEventListener("mouseleave", function(){
+			
+			deselectButton(this);
 			
 		})
+		
 		
 		
 		//span2.style.border = "thick solid #FF0000";
@@ -99,11 +134,26 @@ function addHeadMenu(container) {
 		//divi2.appendChild(bi);
 		
 		divUpMenu.appendChild(span1);
+		*/
+		
+		divHolder.appendChild(btni);
+		
+		if(i < 2){
+		 var lineI = document.createElement("span");
+		 lineI.style.width = "2px";
+		 lineI.innerHTML = "&nbsp";
+		 lineI.style.background = "grey";
+		  divHolder.appendChild(lineI);
+		}
+		
+		
 	}
+	
+	divUpMenu.appendChild(divHolder);
 	
 	container.append(divUpMenu);
 	
-	container.append(document.createElement("br"));
+	/*container.append(document.createElement("br"));
 	
 	
 	
@@ -158,7 +208,7 @@ function addHeadMenu(container) {
 	container.appendChild(spacer.cloneNode(true));
 	container.appendChild(spacer.cloneNode(true));
 	container.appendChild(spacer.cloneNode(true));
-	
+	*/
 	//document.body.appendChild(container);	
 }
 
@@ -212,18 +262,22 @@ function markButton(i){
 	}
 }
 
-function selectButton(spani, i){
+function selectButton(spani){
 	spani.style.borderBottom = "5px solid red";
 	//alert(buttons2[i].data);
-	spani.innerHTML = buttonText[i].fontcolor("red");
+	spani.innerHTML = buttonText[spani.id].fontcolor("red");
 	//alert(spani.innerHTML);
 	//buttons2[i].innerHTML.style.color = "red";
 }
 
-function deselectButton(spani, i){
+function deselectButton(spani){
+	if(spani.id == "none"){
+		spani = spani.parentNode;	
+	}
+	
 	spani.style.borderBottom = "0px";
 	//alert(buttons2[i].data);
-	spani.innerHTML = buttonText[i].fontcolor("black");
+	spani.innerHTML = buttonText[spani.id].fontcolor("black");
 	//alert(spani.innerHTML);
 	//buttons2[i].innerHTML.style.color = "red";
 }

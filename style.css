@@ -168,28 +168,22 @@ h4 {
 }
 
 
-#ASB {
-	margin: 0 auto;
-	border:solid;
-	border-width:medium;
-	border-radius: 1em;
-	border-color:#FC0;
-}
-
 #impressum {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-#Samariter {
-   float:left;
-   margin-left: 50px;
-   
 
-}
+/* Partnerseite fängt hier an */
 #Logo {
 	height: 150px;
     width: 30%;
 	float:left;
 	
+}
+
+#pic {
+   float:left;
+   margin-left: 50px;
+   
 }
 
 #upperText {
@@ -211,6 +205,13 @@ h4 {
 	
 }
 
+
+#ASB {
+	border:solid;
+	border-width:medium;
+	border-radius: 1em;
+	border-color:#FC0;
+}
 
 #AWO {
     margin-top:25px;

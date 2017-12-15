@@ -8,17 +8,18 @@ im Head hinzugefügt wurde.
 
 **/
 
-var b1S = ["pics/b_initiative.png","pics/b_initiative2.png"];
+/*var b1S = ["pics/b_initiative.png","pics/b_initiative2.png"];
 var b2S = ["pics/b_finder.png","pics/b_finder2.png"];
 var b3S = ["pics/b_partner.png","pics/b_partner2.png"];
 var b1 = document.createElement("input");
 var b2 = document.createElement("input");
-var b3 = document.createElement("input");
+var b3 = document.createElement("input");*/
 
 var buttonText = ["INITIATIVE","SPENDEN-FINDER","PARTNER"];
 var buttonLink = ["index.html","finder.html","partner.html"];
 
 //var buttons2 = [];
+var btns = [];
 
 function addHeadMenu(container) {
 	
@@ -136,13 +137,15 @@ function addHeadMenu(container) {
 		divUpMenu.appendChild(span1);
 		*/
 		
+		btns.push(btni);
 		divHolder.appendChild(btni);
 		
 		if(i < 2){
 		 var lineI = document.createElement("span");
-		 lineI.style.width = "2px";
-		 lineI.innerHTML = "&nbsp";
-		 lineI.style.background = "grey";
+		 //lineI.style.width = "2px";
+		 //lineI.innerHTML = "&nbsp";
+		 //lineI.style.background = "grey";
+		 lineI.style.borderLeft = "2px solid grey";
 		  divHolder.appendChild(lineI);
 		}
 		
@@ -241,25 +244,16 @@ function addButtomMenu(container2) {
 }
 
 function resetButtons(){
-	b1.src = b1S[0];
-	b2.src = b2S[0];
-	b3.src = b3S[0];	
+	for(var btni in btns){
+		btni.className = "topButton";		
+	}	
 }
 
 function markButton(i){
 	resetButtons();
-	switch(i){
-		case 0: 
-			b1.src = b1S[1];
-			break;
-		case 1: 
-			b2.src = b2S[1];
-			break;
-		case 2:	
-			b3.src = b3S[1];
-			break;
-		default: break;
-	}
+	btns[i].className = "topButtonClicked";
+	//btns[i].classList.add("topButtonClicked");
+	
 }
 
 function selectButton(spani){

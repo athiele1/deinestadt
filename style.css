@@ -183,11 +183,14 @@ h4 {
 #pic {
    float:left;
    margin-left: 50px;
+   width: 100%;
+   height: 100%;
    
 }
 
 #upperText {
 	width:70%;
+	min-width:350px;
 	height:150px;
 	float:right;
 	font-family: Calibri;
@@ -201,6 +204,7 @@ h4 {
 #lowerPart {
 	margin-left:50px;
 	margin-right:50px;
+	min-width:350px;
 	font-family: Calibri;
 	
 }
@@ -209,6 +213,7 @@ h4 {
 #ASB {
 	border:solid;
 	border-width:medium;
+	min-width:550px;
 	border-radius: 1em;
 	border-color:#FC0;
 }
@@ -224,6 +229,7 @@ h4 {
 #mySWOOOP {
 	margin-top:25px;
 	border:solid;
+	
 	border-width:medium;
 	border-radius: 1em;
     border-color:#939;
@@ -251,4 +257,10 @@ h4 {
 	border-width:medium;
 	border-radius: 1em;
 	border-color:#666;
+}
+
+.rightAlign {
+	text-align: right;
+	float: right;
+	margin-right: 10px;
 }

@@ -183,28 +183,34 @@ h4 {
    float:left;
    margin-left: 50px;
    
-}
-#upperPart {
-	height: 150;
 
+}
+#Logo {
+	height: 150px;
+    width: 30%;
+	float:left;
+	
+}
+
+#upperText {
+	width:70%;
+	height:150px;
+	float:right;
+	font-family: Calibri;
+	
+}
+#upperText p {
+	margin-left:100px;
+	
 }
 
 #lowerPart {
 	margin-left:50px;
 	margin-right:50px;
-}
-
-#lowerPart p {
 	font-family: Calibri;
-}
-
-#upperPart p {
-	font-family: Calibri;
-	margin-left:350px;
-
-	
 	
 }
+
 
 #AWO {
     margin-top:25px;

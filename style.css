@@ -222,6 +222,7 @@ h4 {
     margin-top:25px;
 	border:solid;
 	border-width:medium;
+	min-width:550px;
 	border-radius: 1em;
 	border-color:#F00;
 }
@@ -240,6 +241,7 @@ h4 {
 	border:solid;
 	border-width:medium;
 	border-radius: 1em;
+	min-width:550px;
 	border-color:#06F;
 }
 

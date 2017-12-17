@@ -150,15 +150,15 @@
 	
 	function clickKategorie(nr){
 		var img = document.getElementById("img_" + nr);
-		var pfad = img.src.split(".");
+		var pfad = img.src.substring(0,img.src.length-4);
 		kategorien[nr] = !kategorien[nr];
 		
 		
 		if(kategorien[nr]){
-			img.src = pfad[0] + "_2." + pfad[1];
+			img.src = pfad + "_2.png";
 			
 		}else{
-			img.src = pfad[0].substring(0,pfad[0].length-2) + "." + pfad[1];
+			img.src = pfad.substring(0,pfad.length-2) + ".png";
 			
 		}
 	}

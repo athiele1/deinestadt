@@ -11,14 +11,12 @@
 <div id="divHead"></div>
 <div id="divContent">
   <h1>Was möchtest du spenden?</h1>
-  
   <div id="divKat"></div>
-  
   <h1>Deine Postleitzahl:</h1>
-  <input type="number"  class="noFocus" oninput="maxLengthCheck(this)" max = "99999" maxLength="5" onKeyPress="return isNumeric(event)">
-  
-  
-  <input type="button" value="Los!">
+  <input type="number"  id="plzInput" class="noFocus" oninput="plzCheck(this)" max = "99999" maxLength="5" onKeyPress="return isNumeric(event)">
+  <span id="plzFound" style="color:green"></span>
+  <br><br>
+  <input type="button" value="Los!" onClick="los()">
   <br>
   <br>
   <!--<h1>Der "Spenden-Finder" ist noch in Arbeit.</h1>
@@ -41,8 +39,8 @@
     markButton(1);
     
 	
-	var katLabels = ["Bücher","Elektronik","Spielzeug","Haushaltsgeräte","Kleidung"];
-	var katPaths = ["buch","elektronik","spielzeug","haushalt","kleidung"];
+	var katLabels = ["Bücher","Elektronik","Möbel","Spielzeug","Haushaltswaren","Kleidung"];
+	var katPaths = ["buch","elektronik","moebel","spielzeug","haushalt","kleidung"];
 	
 	for(var i = 0; i < katPaths.length; i++){
 		katPaths[i] = 	pathLabelToPath(katPaths[i]);		
@@ -52,6 +50,53 @@
 		addKategorie(katLabels[i],katPaths[i]);
 			
 	}
+		
+	var stadtteile = [];
+	addAllPLZ();
+	
+	
+	//"Klasse" für Stadteil
+ 	function Stadtteil(pplz, plgrad, pbgrad){
+		this.plz = pplz;
+		this.lgrad = plgrad;
+		this.bgrad = pbgrad;
+	}
+	
+	function addStadtTeil(plz, lgrad, bgrad){
+		
+		var si = new Stadtteil(plz, lgrad, bgrad);
+
+		stadtteile.push(si);
+	}
+	
+	
+	function los(){
+		var plzInput = document.getElementById("plzInput");
+		var si = plzToStadtteil(plzInput.value);
+		
+		if(si != null){
+			map.setZoom(13);
+			map.setCenter(new google.maps.LatLng(si.lgrad, si.bgrad));	
+			
+			
+		}
+		
+	}
+	
+	function plzToStadtteil(plz){
+		var s = plz.toString();
+	
+		for(i in stadtteile){
+			if(s == stadtteile[i].plz.toString()){
+				return 	stadtteile[i];
+			}
+		}
+		
+		return null;
+	}
+	
+	
+	
 	
 	function pathLabelToPath(katPath){
 		return 	"pics/finder/c_" + katPath + ".png";
@@ -129,7 +174,7 @@
 	//https://developers.google.com/maps/documentation/javascript/examples/place-details?hl=de
 	
 	function addPlace2(name, spendenAnnahmen, bGrad, lGrad, adresse){
-	
+		
 		var pos = {lat: bGrad, lng: lGrad};
 	
 		var marker = new google.maps.Marker({
@@ -158,13 +203,41 @@
            infowindow.setContent(content);
               infowindow.open(map, this);
         });
+	}
+	
+	function addPlace3(name, place_id, spendenAnnahmen){
+			
+		service.getDetails({
+          placeId: place_id
+        }, function(place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+			
+			var lng = place.geometry.location.lng();
+			var lat = place.geometry.location.lat();
+			var nam = place.name;
+			
+			if(name != null){
+				nam = name;	
+			}
+			
+			addPlace2(nam, spendenAnnahmen, lat, lng,place.formatted_address);
+			
+			
+			  
+		  }
+		});	  
 		
 	}
 	
 	
+	function addPlace(place_id, spendenAnnahmen){
+			
+		addPlace3(null,place_id, spendenAnnahmen);
+		
+	}
 	
-	function addPlace(place_id){
-		/*service.getDetails({
+	/*function addPlace(place_id){
+		service.getDetails({
           placeId: place_id
         }, function(place, status) {
           if (status === google.maps.places.PlacesServiceStatus.OK) {
@@ -183,10 +256,10 @@
          	 });
        	 }
         }
-		);*/
+		);
 
 		
-	}
+	}*/
 	
     
     function initMap() {
@@ -201,6 +274,7 @@
             center: bremen
        });
 	   
+	   
 	   infowindow = new google.maps.InfoWindow();
 	   service = new google.maps.places.PlacesService(map);
 	   
@@ -209,30 +283,87 @@
            map: map
        });*/
 	  
-	   addPlace("ChIJxXW6Rq0psUcRN9scHRdPJ9Y");
-	   //addPlace(name, spendenAnnahme, bGrad, lGrad, adresse)
-		addPlace2("Verein für Innere Mission in Bremen",["Kleidung"],53.076420, 8.808581,"Blumenthalstraße 10");
-		addPlace2("Hexe",["Kleidung"],53.076420, 8.805581,"Werder 2");
+	   addPlace3("Verein für Innere Mission in Bremen","ChIJhW9rIQ0osUcRrE3kNWcxOJ0",["Kleidung"]);
+	   addPlace3("ProShop Bremen","ChIJ89bxYH4nsUcREksgXBw3boo",["Bücher","Spielzeug","Haushaltswaren"]);
+	   addPlace3("ProJob Bremen","ChIJ164EEyoosUcRy6I04KPS6ho",["Möbel","Haushaltswaren"]);
+	  // addPlace("ChIJ-3so-BEosUcRPCYq-g-sjY0",[]);
+	   addPlace3("Deutsches Rotes Kreuz Kreisverband Bremen e.V.","ChIJMzOAQ4QnsUcR1QxfNKM8QQU",["Kleidung"]);
+	   addPlace3("Deutsches Rotes Kreuz Kreisverband Bremen e.V.","ChIJySe4uUnTtkcRAX3DZkNRfs8",["Kleidung"]);
+	   
 		
      }
 	 
 	 
 	 //src: https://stackoverflow.com/questions/8354975/how-can-i-limit-possible-inputs-in-a-html5-number-element
-	function maxLengthCheck(object) {
-    if (object.value.length > object.maxLength)
-      object.value = object.value.slice(0, object.maxLength)
+	function plzCheck(object) {
+    if (object.value.length > object.maxLength){
+		object.value = object.value.slice(0, object.maxLength);
+	}
+	var plzFound = document.getElementById("plzFound");
+	
+	if(plzToStadtteil(object.value) != null){
+		plzFound.innerHTML = "gefunden!";
+	}else{
+		plzFound.innerHTML = "";
+	}
+	
+	
   }
     
   function isNumeric (evt) {
     var theEvent = evt || window.event;
     var key = theEvent.keyCode || theEvent.which;
+	
+	//Lösch,entfern, und pfeiltasten 
+	if(key == 8 || key == 46 || key == 39 || key == 37){
+		return;	
+	}
+	
     key = String.fromCharCode (key);
+	
     var regex = /[0-9]|\./;
     if ( !regex.test(key) ) {
       theEvent.returnValue = false;
       if(theEvent.preventDefault) theEvent.preventDefault();
     }
   }
+  
+  
+ function addAllPLZ(){
+	addStadtTeil(28717,53.170694,8.686246);
+	addStadtTeil(28719,53.154667,8.701797);
+	addStadtTeil(28237,53.122292,8.730002);
+	addStadtTeil(28239,53.135102,8.739511);
+	addStadtTeil(28357,53.127528,8.864201);
+	addStadtTeil(28197,53.096194,8.713175);
+	addStadtTeil(28219,53.111571,8.791184);
+	addStadtTeil(28359,53.103984,8.861513);
+	addStadtTeil(28355,53.097650,8.932582);
+	addStadtTeil(28217,53.094305,8.773924);
+	addStadtTeil(28215,53.097407,8.809555);
+	addStadtTeil(28213,53.096262,8.844588);
+	addStadtTeil(28195,53.080842,8.804617);
+	addStadtTeil(28209,53.087569,8.828092);
+	addStadtTeil(28203,53.074142,8.824178);
+	addStadtTeil(28211,53.083145,8.852693);
+	addStadtTeil(28205,53.069402,8.844003);
+	addStadtTeil(28207,53.065793,8.866263);
+	addStadtTeil(28329,53.078580,8.882541);
+	addStadtTeil(28327,53.074643,8.921057);
+	addStadtTeil(28325,53.068635,8.948931);
+	addStadtTeil(28201,53.059496,8.814182);
+	addStadtTeil(28259,53.055231,8.736066);
+	addStadtTeil(28199,53.060853,8.784807);
+	addStadtTeil(28277,53.038870,8.818319);
+	addStadtTeil(28279,53.039011,8.849759);
+	addStadtTeil(28309,53.044937,8.889094);
+	addStadtTeil(28307,53.037959,8.928469);
+	addStadtTeil(28777,53.206085,8.525941);
+	addStadtTeil(28779,53.193830,8.573819);
+	addStadtTeil(28755,53.184524,8.611530);
+	addStadtTeil(28757,53.177439,8.632339);
+	addStadtTeil(28759,53.167725,8.650905);
+}
 	 
 	 
 	 

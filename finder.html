@@ -40,11 +40,24 @@
     addButtomMenu(document.getElementById("divButtom"));
     markButton(1);
     
-	addKategorie("Bücher","pics/finder/c_buch.png");	
-	addKategorie("Elektronik","pics/finder/c_elektronik.png");
-	addKategorie("Spielzeug","pics/finder/c_spielzeug.png");
-	addKategorie("Haushaltsgeräte","pics/finder/c_haushalt.png");
-	addKategorie("Kleidung","pics/finder/c_kleidung.png");
+	
+	var katLabels = ["Bücher","Elektronik","Spielzeug","Haushaltsgeräte","Kleidung"];
+	var katPaths = ["buch","elektronik","spielzeug","haushalt","kleidung"];
+	
+	for(var i = 0; i < katPaths.length; i++){
+		katPaths[i] = 	pathLabelToPath(katPaths[i]);		
+	}
+	
+	for(var i = 0; i < katLabels.length; i++){
+		addKategorie(katLabels[i],katPaths[i]);
+			
+	}
+	
+	function pathLabelToPath(katPath){
+		return 	"pics/finder/c_" + katPath + ".png";
+		
+	}
+	
 	
 	
 	function addKategorie(name, pfad){
@@ -71,9 +84,11 @@
 		var div = document.createElement("div");
 		//div.className = "noFocus";
 		
-		div.style.width = "90px";
+		div.style.width = "120px";
 		div.style.height = "90px";
-		div.style.margin = "20px";
+		div.style.margin = "5px";
+		div.style.marginBottom = "20px";
+		div.style.textAlign = "center";
 		
 		//div.style.background = "red";
 		div.style.display = "inline-block"
@@ -113,15 +128,53 @@
 	//https://developers.google.com/places/place-id#find-id
 	//https://developers.google.com/maps/documentation/javascript/examples/place-details?hl=de
 	
+	function addPlace2(name, spendenAnnahmen, bGrad, lGrad, adresse){
+	
+		var pos = {lat: bGrad, lng: lGrad};
+	
+		var marker = new google.maps.Marker({
+             map: map,
+             position: pos
+        });
+			
+      	google.maps.event.addListener(marker, 'click', function() {
+			
+			var content = '<div><strong>' + name + '</strong><br>';
+			
+			for(h in spendenAnnahmen){
+				for(var i = 0; i < katLabels.length; i++){
+					
+					if(spendenAnnahmen[h] === katLabels[i]){
+						content += '<img src="' + katPaths[i] + '" width = "20px" name="'+ katLabels[i] +'">'	
+						
+					}
+					
+				}
+				
+			}
+			content += '<br>' + adresse + '</div>';
+			
+			
+           infowindow.setContent(content);
+              infowindow.open(map, this);
+        });
+		
+	}
+	
+	
+	
 	function addPlace(place_id){
-		service.getDetails({
+		/*service.getDetails({
           placeId: place_id
         }, function(place, status) {
           if (status === google.maps.places.PlacesServiceStatus.OK) {
-            var marker = new google.maps.Marker({
+            
+			var marker = new google.maps.Marker({
               map: map,
               position: place.geometry.location
             });
+			
+			
             google.maps.event.addListener(marker, 'click', function() {
               infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
                 'Place ID: ' + place.place_id + '<br>' +
@@ -130,7 +183,7 @@
          	 });
        	 }
         }
-		);
+		);*/
 
 		
 	}
@@ -155,8 +208,12 @@
            position: bremen,
            map: map
        });*/
-	   
+	  
 	   addPlace("ChIJxXW6Rq0psUcRN9scHRdPJ9Y");
+	   //addPlace(name, spendenAnnahme, bGrad, lGrad, adresse)
+		addPlace2("Verein für Innere Mission in Bremen",["Kleidung"],53.076420, 8.808581,"Blumenthalstraße 10");
+		addPlace2("Hexe",["Kleidung"],53.076420, 8.805581,"Werder 2");
+		
      }
 	 
 	 

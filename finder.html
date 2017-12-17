@@ -11,11 +11,16 @@
 <div id="divHead"></div>
 <div id="divContent">
   <h1>Was möchtest du spenden?</h1>
-  <h1>Postleitzahl:</h1>
-  <input type="number"  oninput="maxLengthCheck(this)" max = "99999" maxLength="5" onkeypress="return isNumeric(event)">
+  
+  <div id="divKat"></div>
+  
+  <h1>Deine Postleitzahl:</h1>
+  <input type="number"  class="noFocus" oninput="maxLengthCheck(this)" max = "99999" maxLength="5" onKeyPress="return isNumeric(event)">
+  
   
   <input type="button" value="Los!">
-  
+  <br>
+  <br>
   <!--<h1>Der "Spenden-Finder" ist noch in Arbeit.</h1>
     
     <div id="div350">
@@ -35,11 +40,11 @@
     addButtomMenu(document.getElementById("divButtom"));
     markButton(1);
     
-	addKategorie("Buch","pics/finder/c_buch.png");
-	
-	addKategorie("Zeitung","pics/finder/c_buch.png");
-	
-	
+	addKategorie("Bücher","pics/finder/c_buch.png");	
+	addKategorie("Elektronik","pics/finder/c_elektronik.png");
+	addKategorie("Spielzeug","pics/finder/c_spielzeug.png");
+	addKategorie("Haushaltsgeräte","pics/finder/c_haushalt.png");
+	addKategorie("Kleidung","pics/finder/c_kleidung.png");
 	
 	
 	function addKategorie(name, pfad){
@@ -53,6 +58,8 @@
 		var btn = document.createElement("a");
 		btn.name = name;
 		btn.href = "JavaScript:clickKategorie(" + nr + ");";
+		btn.className = "noFocus";
+		
 		img.id = "img_" + nr;
 		kategorien.push(false);
 		
@@ -62,11 +69,13 @@
 		
 		
 		var div = document.createElement("div");
-		div.className = "kategCont";
+		//div.className = "noFocus";
 		
 		div.style.width = "90px";
 		div.style.height = "90px";
-		div.style.background = "red";
+		div.style.margin = "20px";
+		
+		//div.style.background = "red";
 		div.style.display = "inline-block"
 		
 		var txt = document.createTextNode(name);
@@ -76,7 +85,7 @@
 		
 		div.appendChild(btn);
 		div.appendChild(txt);
-		document.getElementById("divContent").appendChild(div);	
+		document.getElementById("divKat").appendChild(div);	
 	}
 	
 	function clickKategorie(nr){

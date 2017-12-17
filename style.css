@@ -152,6 +152,17 @@ h4 {
 	color: var(--logoBlue);
 }
 
+.noFocus {
+	outline: 0 !important;
+	border 0;
+}
+
+.noFocus:focus {
+	outline: 0 !important;
+	border 0;
+}
+	
+
 
 
 

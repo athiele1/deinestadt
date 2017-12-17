@@ -4,19 +4,19 @@
 <title>Bremen spendet</title>
 <meta charset="utf-8"/>
 <link rel="stylesheet" type="text/css" href="style.css">
-<link href="https://fonts.googleapis.com/css?family=Oswald:400" rel="stylesheet"> 
+<link href="https://fonts.googleapis.com/css?family=Oswald:400" rel="stylesheet">
 <script src="main.js"></script>
 </head>
 <body>
 <div id="divHead"></div>
-<div id="divContent"> 
-
-<h1>Was möchtest du spenden?</h1>
-
-<img src="pics/finder/c_buch.png" width="90" height="90">
-<img src="pics/finder/c_elektronik.png" width="90" height="90">
-
-<!--<h1>Der "Spenden-Finder" ist noch in Arbeit.</h1>
+<div id="divContent">
+  <h1>Was möchtest du spenden?</h1>
+  <h1>Postleitzahl:</h1>
+  <input type="number"  oninput="maxLengthCheck(this)" max = "99999" maxLength="5" onkeypress="return isNumeric(event)">
+  
+  <input type="button" value="Los!">
+  
+  <!--<h1>Der "Spenden-Finder" ist noch in Arbeit.</h1>
     
     <div id="div350">
     <img src="pics/tea.png" width="350" height="260">
@@ -29,7 +29,7 @@
 </body>
 <script>
     var infowindow,service,map;
-	
+	var kategorien = [];
 	
     addHeadMenu(document.getElementById("divHead"));
     addButtomMenu(document.getElementById("divButtom"));
@@ -37,21 +37,61 @@
     
 	addKategorie("Buch","pics/finder/c_buch.png");
 	
+	addKategorie("Zeitung","pics/finder/c_buch.png");
+	
+	
+	
+	
 	function addKategorie(name, pfad){
 	
+		var nr = kategorien.length;
+		
+		
 		var img = new Image();
 		img.src = pfad;
+		
+		var btn = document.createElement("a");
+		btn.name = name;
+		btn.href = "JavaScript:clickKategorie(" + nr + ");";
+		img.id = "img_" + nr;
+		kategorien.push(false);
+		
+		
+		btn.appendChild(img);
+		
+		
+		
 		var div = document.createElement("div");
 		div.className = "kategCont";
 		
-		div.style.width = "200px";
-		div.style.height = "200px";
+		div.style.width = "90px";
+		div.style.height = "90px";
 		div.style.background = "red";
+		div.style.display = "inline-block"
 		
-		div.appendChild(img);
-		document.getElementById("divContent").appendChild(div);
+		var txt = document.createTextNode(name);
+		//txt.style.textAlign = "center";		
 		
+		
+		
+		div.appendChild(btn);
+		div.appendChild(txt);
+		document.getElementById("divContent").appendChild(div);	
+	}
 	
+	function clickKategorie(nr){
+		var img = document.getElementById("img_" + nr);
+		var pfad = img.src.split(".");
+		kategorien[nr] = !kategorien[nr];
+		
+		
+		if(kategorien[nr]){
+			img.src = pfad[0] + "_2." + pfad[1];
+			
+		}else{
+			img.src = pfad[0].substring(0,pfad[0].length-2) + "." + pfad[1];
+			
+		}
 	}
 	
 	
@@ -110,6 +150,23 @@
 	   addPlace("ChIJxXW6Rq0psUcRN9scHRdPJ9Y");
      }
 	 
+	 
+	 //src: https://stackoverflow.com/questions/8354975/how-can-i-limit-possible-inputs-in-a-html5-number-element
+	function maxLengthCheck(object) {
+    if (object.value.length > object.maxLength)
+      object.value = object.value.slice(0, object.maxLength)
+  }
+    
+  function isNumeric (evt) {
+    var theEvent = evt || window.event;
+    var key = theEvent.keyCode || theEvent.which;
+    key = String.fromCharCode (key);
+    var regex = /[0-9]|\./;
+    if ( !regex.test(key) ) {
+      theEvent.returnValue = false;
+      if(theEvent.preventDefault) theEvent.preventDefault();
+    }
+  }
 	 
 	 
 	 

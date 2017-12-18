@@ -173,7 +173,7 @@
 	//https://developers.google.com/places/place-id#find-id
 	//https://developers.google.com/maps/documentation/javascript/examples/place-details?hl=de
 	
-	function addPlace2(name, spendenAnnahmen, bGrad, lGrad, adresse){
+	function addPlace2(name, bGrad, lGrad, adresse, spendenAnnahmen){
 		
 		var pos = {lat: bGrad, lng: lGrad};
 	
@@ -209,7 +209,7 @@
         });
 	}
 	
-	function addPlace3(name, place_id, spendenAnnahmen){
+	function addPlace(name, place_id, spendenAnnahmen){
 			
 		service.getDetails({
           placeId: place_id
@@ -224,7 +224,7 @@
 				nam = name;	
 			}
 			
-			addPlace2(nam, spendenAnnahmen, lat, lng,place.formatted_address.split(",")[0]);
+			addPlace2(nam, lat, lng,place.formatted_address.split(",")[0],spendenAnnahmen);
 			
 			
 			  
@@ -234,11 +234,11 @@
 	}
 	
 	
-	function addPlace(place_id, spendenAnnahmen){
+	/*function addPlace(place_id, spendenAnnahmen){
 			
 		addPlace3(null,place_id, spendenAnnahmen);
 		
-	}
+	}*/
 	
 	function updateMarkers(){
 		
@@ -330,14 +330,15 @@
            map: map
        });*/
 	  
-	   addPlace3("Verein für Innere Mission in Bremen","ChIJhW9rIQ0osUcRrE3kNWcxOJ0",["Kleidung"]);
-	   addPlace3("ProShop Bremen","ChIJ89bxYH4nsUcREksgXBw3boo",["Bücher","Spielzeug","Haushaltswaren"]);
-	   addPlace3("ProJob Bremen","ChIJ164EEyoosUcRy6I04KPS6ho",["Möbel","Haushaltswaren"]);
-	  // addPlace("ChIJ-3so-BEosUcRPCYq-g-sjY0",[]);
-	   addPlace3("Deutsches Rotes Kreuz Kreisverband Bremen e.V.","ChIJMzOAQ4QnsUcR1QxfNKM8QQU",["Kleidung"]);
-	   addPlace3("Deutsches Rotes Kreuz Kreisverband Bremen e.V.","ChIJySe4uUnTtkcRAX3DZkNRfs8",["Kleidung"]);
 	   
-		
+		addPlace('Verein für Innere Mission in Bremen','ChIJhW9rIQ0osUcRrE3kNWcxOJ0',['Kleidung'])
+		addPlace('ProShop Bremen','ChIJ89bxYH4nsUcREksgXBw3boo',['Haushaltswaren','Spielzeug','Bücher'])
+		addPlace('ProJob Bremen','ChIJ164EEyoosUcRy6I04KPS6ho',['Möbel','Haushaltswaren'])
+		addPlace('Deutsches Rotes Kreuz Kreisverband Bremen e.V.','ChIJMzOAQ4QnsUcR1QxfNKM8QQU',['Kleidung'])
+		addPlace('Deutsches Rotes Kreuz Kreisverband Bremen e.V.','ChIJySe4uUnTtkcRAX3DZkNRfs8',['Kleidung'])
+
+
+
      }
 	 
 	 

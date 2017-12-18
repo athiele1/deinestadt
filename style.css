@@ -179,6 +179,20 @@ h4 {
 }
 
 
+.katDiv{
+	width: 120px;
+	height: 90px;
+	margin: 5px;
+	margin-bottom: 20px;
+	text-align:  center;
+  	display: inline-block;
+	font-weight: bold;
+}
+
+
+
+
+
 #impressum {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }

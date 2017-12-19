@@ -97,7 +97,7 @@ h1 {
 	font-size: 34px;
 	font-style: normal;
 	font-variant: normal;
-	font-weight: 400;
+	font-weight: 500;
 	line-height: 26.4px;
 	border-top: 50px solid white;
 }
@@ -180,13 +180,15 @@ h4 {
 
 
 .katDiv{
+	
 	width: 120px;
 	height: 90px;
 	margin: 5px;
 	margin-bottom: 20px;
 	text-align:  center;
   	display: inline-block;
-	font-weight: bold;
+	font-family: "Montserrat-light", Helvetica, Arial, sans-serif;
+	font-weight: 550;
 }
 
 

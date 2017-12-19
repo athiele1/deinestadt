@@ -45,8 +45,8 @@
     markButton(1);
     
 	
-	var katLabels = ["Bücher","Elektronik","Möbel","Spielzeug","Haushaltswaren","Kleidung"];
-	var katPaths = ["buch","elektronik","moebel","spielzeug","haushalt","kleidung"];
+	var katLabels = ["Bücher","Elektronik","Möbel","Spielzeug","Haushaltswaren","Kleidung","Lebensmittel"];
+	var katPaths = ["buch","elektronik","moebel","spielzeug","haushalt","kleidung","lebensmittel"];
 	
 	for(var i = 0; i < katPaths.length; i++){
 		katPaths[i] = 	pathLabelToPath(katPaths[i]);		
@@ -163,7 +163,10 @@
 		}
 	}
 	
-	
+	function clickKatSymbol(img){
+		//alert(img.name);
+		
+	}
 	
 	
 	
@@ -172,6 +175,8 @@
 	
 	//https://developers.google.com/places/place-id#find-id
 	//https://developers.google.com/maps/documentation/javascript/examples/place-details?hl=de
+	
+	
 	
 	function addPlace2(name, bGrad, lGrad, adresse, spendenAnnahmen){
 		
@@ -186,6 +191,7 @@
 		markerKatg.push(spendenAnnahmen);
 		
 		
+		
       	google.maps.event.addListener(marker, 'click', function() {
 			
 			var content = '<div><strong>' + name + '</strong><br>';
@@ -194,7 +200,8 @@
 				for(var i = 0; i < katLabels.length; i++){
 					
 					if(spendenAnnahmen[h] === katLabels[i]){
-						content += '<img src="' + katPaths[i] + '" width = "30px" name="'+ katLabels[i] +'">'	
+						
+						content += '<img src="' + katPaths[i] + '" width = "30px" name="'+ katLabels[i] +'"   onclick="clickKatSymbol(this);">'	
 						
 					}
 					

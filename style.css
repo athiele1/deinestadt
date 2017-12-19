@@ -255,7 +255,7 @@ h4 {
 #mySWOOOP {
 	margin-top:25px;
 	border:solid;
-	
+	min-width:550px;
 	border-width:medium;
 	border-radius: 1em;
     border-color:#939;
@@ -275,6 +275,7 @@ h4 {
 	border:solid;
 	border-width:medium;
 	border-radius: 1em;
+	min-width:550px;
 	border-color:#F00;
 }
 

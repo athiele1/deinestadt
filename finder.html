@@ -38,6 +38,7 @@
 	
 	var markers = [];
 	var markerKatg = [];
+	var markerContent = [];
 	
 	
     addHeadMenu(document.getElementById("divHead"));
@@ -179,67 +180,101 @@
 	//https://developers.google.com/places/place-id#find-id
 	//https://developers.google.com/maps/documentation/javascript/examples/place-details?hl=de
 	
+	//var labeli = 1;
 	
-	
-	function addPlace2(name, bGrad, lGrad, adresse, spendenAnnahmen, spendenSpecials){
+	function addPlace3(name, bGrad, lGrad, adresse, spendenAnnahmen, spendenSpecials){
 		
 		var pos = {lat: bGrad, lng: lGrad};
 	
 		var marker = new google.maps.Marker({
              map: map,
-             position: pos
+             position: pos,
+			// label: labeli + "",
+			 animation: google.maps.Animation.DROP
         });
 			
 		markers.push(marker);
 		markerKatg.push(spendenAnnahmen);
 		
+		//labeli++;
 		
+		
+		markerContent.push([name, bGrad, lGrad, adresse, spendenAnnahmen, spendenSpecials]); 
+				
 		
       	google.maps.event.addListener(marker, 'click', function() {
+			var num = 0;
 			
-			var content = '<div><strong>' + name + '</strong><br>';
+			for(g in markers){
+				if(markers[g] == this){
+					num = g;
+					break;
+				}
+			}
+		
+		
+			//markerContent[num][0] == name
+			var content = '<div><strong>' + markerContent[num][0] + '</strong><br>';
 			
-			for(h in spendenAnnahmen){
+			//markerContent[num][4] == spendenAnnahmen
+			for(h in markerContent[num][4]){
+			
+				var ic = 0;
 				for(var i = 0; i < katLabels.length; i++){
+										
 					
-					if(spendenAnnahmen[h] === katLabels[i]){
-						var specialI = spendenSpecials.pop();
+					if(markerContent[num][4][h] === katLabels[i]){
+						//markerContent[num][5] == spendenSpecials
+						var specialI = markerContent[num][5][ic];
 						
 						var specStringI = "";
 						
-						if(specStringI != null){
-							for(var j = 0; j < specialI.length; j++){
-								specStringI = specStringI + '\'' + specialI[j] + '\'';
-								if(j < specialI.length-1){
-									specStringI = specStringI + ',';
-								}
-							
+						for(var j = 0; j < specialI.length; j++){
+							specStringI = specStringI + '\'' + specialI[j] + '\'';
+							if(j < specialI.length-1){
+								specStringI = specStringI + ',';
 							}
 							
 						}
+							
+						
 						
 						
 						content += '<img src="' + katPaths[i] + '" width = "30px" name="'+ katLabels[i] +'"   onclick="clickKatSymbol(this,['+specStringI+']);">'	
-						
+						ic++;
 					}
 					
 				}
 				
 			}
-			content += '<br>' + adresse + '</div>';
+			//markerContent[num][0] == adresse
+			content += '<br>' + markerContent[num][3] + '</div>';
 			
 			
            infowindow.setContent(content);
               infowindow.open(map, this);
+			 
         });
 	}
 	
+	var p_c = 0;
 	function addPlace(name, place_id, spendenAnnahmen,spendenSpecials){
+		
+		 window.setTimeout(function() {
+			
+			addPlace2(name, place_id, spendenAnnahmen,spendenSpecials);
+		 }, p_c*200);
+
+		p_c++;
+	}
+	
+	
+	function addPlace2(name, place_id, spendenAnnahmen,spendenSpecials){
 			
 		service.getDetails({
           placeId: place_id
         }, function(place, status) {
-          if (status === google.maps.places.PlacesServiceStatus.OK) {
+          //if (status === google.maps.places.PlacesServiceStatus.OK) {
 			
 			var lng = place.geometry.location.lng();
 			var lat = place.geometry.location.lat();
@@ -249,11 +284,13 @@
 				nam = name;	
 			}
 			
-			addPlace2(nam, lat, lng,place.formatted_address.split(",")[0],spendenAnnahmen,spendenSpecials);
+			addPlace3(nam, lat, lng,place.formatted_address.split(",")[0],spendenAnnahmen,spendenSpecials);
 			
 			
 			  
-		  }
+		  /*}else{
+			alert("Place " + name + " konnte nicht hinzugefügt werden, überprüfe die Place ID! " + place_id)
+		  }*/
 		});	  
 		
 	}
@@ -355,7 +392,7 @@
            map: map
        });*/
 	  
-	    addPlace('Recycling-Hof Huchting','ChIJqbUwkyPWsEcRjsVzdGER4qo',[],[]);
+	    //addPlace('Recycling-Hof Huchting','ChIJqbUwkyPWsEcRjsVzdGER4qo',[],[]);
 		addPlace('Recycling-Hof Findorff','ChIJ-ZAsNVwosUcRZXa0iGgXO7Q',['Haushaltswaren'],[[]]);
 		addPlace('Recycling-Hof Hemelingen','ChIJf7Lbr4HYsEcRiRH8CRL9jXU',['Haushaltswaren'],[[]]);
 		addPlace('Möbelhaus Oslebshausen','ChIJJTWrsGApsUcRtZ77Vp0JN_g',['Möbel','Haushaltswaren'],[[],[]]);
@@ -365,7 +402,7 @@
 		addPlace('ProJob Bremen','ChIJ164EEyoosUcRy6I04KPS6ho',['Möbel','Haushaltswaren'],[[],[]]);
 		addPlace('Cafe Papagei','ChIJ-3so-BEosUcRPCYq-g-sjY0',['Lebensmittel'],[['Kaffee','Tee','Kekse']]);
 		addPlace('frauenzimmer','ChIJa5aoEBYosUcR7-oPi5SZBVM',['Lebensmittel'],[['Kaffee','Tee','Kekse']]);
-		addPlace('Bahnhofsmission Bremen','ChIJPW9aWBIosUcRIWbrsm-T2Vo',[],[]);
+		//addPlace('Bahnhofsmission Bremen','ChIJPW9aWBIosUcRIWbrsm-T2Vo',[],[]);
 		addPlace('Deutsches Rotes Kreuz Kreisverband Bremen e.V.','ChIJMzOAQ4QnsUcR1QxfNKM8QQU',['Kleidung','Bücher'],[[],[]]);
 		addPlace('Deutsches Rotes Kreuz Kreisverband Bremen e.V.','ChIJySe4uUnTtkcRAX3DZkNRfs8',['Kleidung'],[[]]);
 		addPlace('Bremer Suppenengel','ChIJdVHLMOPXsEcR6frrixM3ILg',['Lebensmittel'],[[]]);

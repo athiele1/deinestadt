@@ -216,7 +216,19 @@ h4 {
 	font-weight: 550;
 }
 
-
+.katSymbolDiv{
+	display:block;
+	background: white;
+	outline: 4px solid rgba(100,100,100,0.5);
+	padding-right: 30px;
+	padding-left: -40px;
+	position:absolute;	
+	font-family: "Montserrat-light", Helvetica, Arial, sans-serif;
+	font-weight: 550;
+	font-size: 13px;
+	transition: 0.4s;
+	
+}
 
 
 

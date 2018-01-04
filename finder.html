@@ -36,8 +36,11 @@
 	//Beinhaltet für jede Kategorie ein true/false, je nachdem ob es ausgewählt wurde
 	var kategorien = [];
 	
+	//Eine Liste aller google maps marker
 	var markers = [];
-	var markerKatg = [];
+	
+	
+	//Eine Liste von Listen, welche für jeden Marker dessen Attribute  speichert ([name, bGrad, lGrad, adresse, spendenAnnahmen, spendenSpecials])
 	var markerContent = [];
 	
 	
@@ -168,7 +171,59 @@
 	}
 	
 	
-	function clickKatSymbol(img,specials){
+	function hoverKatSymbol(event1,img,specials){
+		
+		if(specials.length > 0){
+			var divi = document.createElement("div");
+			var map = document.getElementById("map");
+			
+			divi.className = "katSymbolDiv";
+			divi.id = "katSymbolDivId";
+			
+			
+			
+			//Relative Pos. zum Parent Node: https://stackoverflow.com/questions/26423335/elements-coordinates-relative-to-its-parent
+			
+			var parentPos = map.getBoundingClientRect(),
+ 		  	 childrenPos = img.getBoundingClientRect(),
+   			 relativePos = {};
+
+			relativePos.top = childrenPos.top - parentPos.top,
+			relativePos.left = childrenPos.left - parentPos.left;
+			
+			divi.style.top = relativePos.top;
+			divi.style.left = relativePos.left + 35 + "px";
+			
+			
+			var liste = document.createElement("ul");
+			
+			for(i in specials){
+					var listElem = document.createElement("li");
+					listElem.appendChild(document.createTextNode(specials[i]));
+					liste.appendChild(listElem);			
+			}
+			
+			
+			
+			divi.appendChild(liste);
+			
+			
+			
+			
+			map.appendChild(divi);
+			
+		}
+	}
+	
+	function hoverOutKatSymbol(){
+		
+		var divi = document.getElementById("katSymbolDivId");
+		var map = document.getElementById("map");
+		
+		if(divi != null){
+			map.removeChild(divi);
+		}
+		
 		
 	}
 	
@@ -194,7 +249,6 @@
         });
 			
 		markers.push(marker);
-		markerKatg.push(spendenAnnahmen);
 		
 		//labeli++;
 		
@@ -240,7 +294,7 @@
 						
 						
 						
-						content += '<img src="' + katPaths[i] + '" width = "30px" name="'+ katLabels[i] +'"   onclick="clickKatSymbol(this,['+specStringI+']);">'	
+						content += '<img  src="' + katPaths[i] + '" width = "30px" name="'+ katLabels[i]  + '" onmouseout="hoverOutKatSymbol()" onmouseover="hoverKatSymbol(event,this,['+specStringI+']);">'	
 						ic++;
 					}
 					
@@ -321,7 +375,7 @@
 		for(i in markers){
 			var canStay = false;
 			var markerI = markers[i];
-			var markKat = markerKatg[i];
+			var markKat = markerContent[4][i];
 			
 			for(j in markKat){
 				

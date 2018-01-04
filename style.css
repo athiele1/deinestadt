@@ -312,6 +312,7 @@ h4 {
 	border-width:medium;
 	border-radius: 1em;
 	border-color:#666;
+	min-width:550px;
 }
 
 .rightAlign {

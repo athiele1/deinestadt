@@ -49,8 +49,8 @@
     markButton(1);
     
 	
-	var katLabels = ["Bücher","Elektronik","Möbel","Spielzeug","Haushaltswaren","Kleidung","Lebensmittel"];
-	var katPaths = ["buch","elektronik","moebel","spielzeug","haushalt","kleidung","lebensmittel"];
+	var katLabels = ["Bücher","Elektronik","Möbel","Spielzeug","Haushaltswaren","Kleidung","Lebensmittel","Sonstiges"];
+	var katPaths = ["buch","elektronik","moebel","spielzeug","haushalt","kleidung","lebensmittel","sonstige"];
 	
 	for(var i = 0; i < katPaths.length; i++){
 		katPaths[i] = 	pathLabelToPath(katPaths[i]);		
@@ -83,7 +83,7 @@
 	
 	
 	function los(){
-		updateMarkers();
+		
 		var plzInput = document.getElementById("plzInput");
 		var si = plzToStadtteil(plzInput.value);
 		
@@ -94,6 +94,7 @@
 			
 		}
 		window.scrollTo(0,document.body.scrollHeight);
+		updateMarkers();
 		
 	}
 	
@@ -237,7 +238,7 @@
 	
 	//var labeli = 1;
 	
-	function addPlace3(name, bGrad, lGrad, adresse, spendenAnnahmen, spendenSpecials){
+	function addPlace3(name, bGrad, lGrad, adresse, spendenAnnahmen, spendenSpecials, url){
 		
 		var pos = {lat: bGrad, lng: lGrad};
 	
@@ -253,7 +254,7 @@
 		//labeli++;
 		
 		
-		markerContent.push([name, bGrad, lGrad, adresse, spendenAnnahmen, spendenSpecials]); 
+		markerContent.push([name, bGrad, lGrad, adresse, spendenAnnahmen, spendenSpecials, url]); 
 				
 		
       	google.maps.event.addListener(marker, 'click', function() {
@@ -271,38 +272,51 @@
 			var content = '<div><strong>' + markerContent[num][0] + '</strong><br>';
 			
 			//markerContent[num][4] == spendenAnnahmen
+			var ic = 0;
 			for(h in markerContent[num][4]){
 			
-				var ic = 0;
+				
 				for(var i = 0; i < katLabels.length; i++){
 										
 					
 					if(markerContent[num][4][h] === katLabels[i]){
 						//markerContent[num][5] == spendenSpecials
+						
+						var overString = "";
 						var specialI = markerContent[num][5][ic];
 						
-						var specStringI = "";
 						
-						for(var j = 0; j < specialI.length; j++){
-							specStringI = specStringI + '\'' + specialI[j] + '\'';
-							if(j < specialI.length-1){
-								specStringI = specStringI + ',';
+						
+						if(specialI != null){
+							ic++;
+							var specStringI = "";
+						
+							for(var j = 0; j < specialI.length; j++){
+								specStringI = specStringI + '\'' + specialI[j] + '\'';
+								if(j < specialI.length-1){
+									specStringI = specStringI + ',';
+								}
+							
 							}
 							
-						}
 							
+							overString = 'onmouseout="hoverOutKatSymbol()" onmouseover="hoverKatSymbol(event,this,['+specStringI+']);"';
+						}
 						
 						
 						
-						content += '<img  src="' + katPaths[i] + '" width = "30px" name="'+ katLabels[i]  + '" onmouseout="hoverOutKatSymbol()" onmouseover="hoverKatSymbol(event,this,['+specStringI+']);">'	
-						ic++;
+						content += '<img  src="' + katPaths[i] + '" width = "30px" name="'+ katLabels[i]  + '" '+overString+'>'	
+					
 					}
 					
 				}
 				
 			}
-			//markerContent[num][0] == adresse
-			content += '<br>' + markerContent[num][3] + '</div>';
+			
+			
+			//markerContent[num][0] == adresse, markerContent[num][6] == url
+			content += '<br>' + markerContent[num][3] + '</div><div class="zurWebsiteDiv">&#x2192<a href="'+ markerContent[num][6] +'">Zur Website</a></div>';
+			
 			
 			
            infowindow.setContent(content);
@@ -312,18 +326,18 @@
 	}
 	
 	var p_c = 0;
-	function addPlace(name, place_id, spendenAnnahmen,spendenSpecials){
+	function addPlace(name, place_id, spendenAnnahmen,spendenSpecials, url){
 		
 		 window.setTimeout(function() {
 			
-			addPlace2(name, place_id, spendenAnnahmen,spendenSpecials);
+			addPlace2(name, place_id, spendenAnnahmen,spendenSpecials, url);
 		 }, p_c*200);
 
 		p_c++;
 	}
 	
 	
-	function addPlace2(name, place_id, spendenAnnahmen,spendenSpecials){
+	function addPlace2(name, place_id, spendenAnnahmen,spendenSpecials, url){
 			
 		service.getDetails({
           placeId: place_id
@@ -338,7 +352,7 @@
 				nam = name;	
 			}
 			
-			addPlace3(nam, lat, lng,place.formatted_address.split(",")[0],spendenAnnahmen,spendenSpecials);
+			addPlace3(nam, lat, lng,place.formatted_address.split(",")[0],spendenAnnahmen,spendenSpecials,url);
 			
 			
 			  
@@ -357,6 +371,7 @@
 	}*/
 	
 	function updateMarkers(){
+		infowindow.close();
 		
 		var choosedKatg = [];
 		
@@ -366,16 +381,20 @@
 			}
 		}
 		
+		
 		if(choosedKatg.length == 0){
 			choosedKatg = katLabels;
 		}
 		
 		
+		var canStayList = [];
+		
 		
 		for(i in markers){
 			var canStay = false;
+			
 			var markerI = markers[i];
-			var markKat = markerContent[4][i];
+			var markKat = markerContent[i][4];
 			
 			for(j in markKat){
 				
@@ -386,16 +405,40 @@
 					}
 					
 				}
-				
-				if(canStay){
-					markerI.setMap(map);
-				}else{
-					markerI.setMap(null);
-				}
+								
+			}
+			
+			if(canStay){
+					canStayList.push(true);
+			}else{
+					canStayList.push(false);
 			}
 			
 			
-		}		
+		}	
+		
+		for(l in canStayList){
+			
+			
+			changeMap(markers[l], canStayList[l], l*200+1)
+			
+		}
+		
+			
+	}
+	
+	function changeMap(marker, bool, time){
+		
+		window.setTimeout(function() {
+				if(bool && marker.getMap() != null){
+					
+				}else{
+					marker.setAnimation(google.maps.Animation.DROP);	
+					marker.setMap(bool ? map : null);	
+				}
+				
+		}, time);
+		
 	}
 	
 	
@@ -446,24 +489,34 @@
            map: map
        });*/
 	  
-	    addPlace('Möbellager Nord','ChIJFR1C4a4ssUcRmvI0n-WW-Ws',['Möbel','Haushaltswaren'],[[],[]]);
-	    //addPlace('Recycling-Hof Huchting','ChIJqbUwkyPWsEcRjsVzdGER4qo',[],[]);
-		addPlace('Recycling-Hof Findorff','ChIJ-ZAsNVwosUcRZXa0iGgXO7Q',['Haushaltswaren'],[[]]);
-		addPlace('Recycling-Hof Hemelingen','ChIJf7Lbr4HYsEcRiRH8CRL9jXU',['Haushaltswaren'],[[]]);
-		addPlace('Möbelhaus Oslebshausen','ChIJJTWrsGApsUcRtZ77Vp0JN_g',['Möbel','Haushaltswaren'],[[],[]]);
-		addPlace('Kaufhaus Hemelingen','ChIJM7PsFn4nsUcRc0HlMXA2_Qo',['Möbel','Elektronik','Kleidung','Bücher','Spielzeug','Haushaltswaren'],[[],[],[],[],[],[]]);
-		addPlace('Möbelhalle Kattenturm Mitte','ChIJla8GyiTYsEcRWjVMAHvEYZc',['Möbel','Kleidung','Bücher','Spielzeug','Haushaltswaren'],[[],[],[],[],[]]);
-		addPlace('Verein für Innere Mission in Bremen','ChIJhW9rIQ0osUcRrE3kNWcxOJ0',['Kleidung'],[['Schuhe','Tuch']]);
-		addPlace('ProJob Bremen','ChIJ164EEyoosUcRy6I04KPS6ho',['Möbel','Haushaltswaren'],[[],[]]);
-		addPlace('Cafe Papagei','ChIJ-3so-BEosUcRPCYq-g-sjY0',['Lebensmittel'],[['Kaffee','Tee','Kekse']]);
-		addPlace('frauenzimmer','ChIJa5aoEBYosUcR7-oPi5SZBVM',['Lebensmittel'],[['Kaffee','Tee','Kekse']]);
-		//addPlace('Bahnhofsmission Bremen','ChIJPW9aWBIosUcRIWbrsm-T2Vo',[],[]);
-		addPlace('Deutsches Rotes Kreuz Kreisverband Bremen e.V.','ChIJMzOAQ4QnsUcR1QxfNKM8QQU',['Kleidung','Bücher'],[[],[]]);
-		addPlace('Deutsches Rotes Kreuz Kreisverband Bremen e.V.','ChIJySe4uUnTtkcRAX3DZkNRfs8',['Kleidung'],[[]]);
-		addPlace('Bremer Suppenengel','ChIJdVHLMOPXsEcR6frrixM3ILg',['Lebensmittel'],[[]]);
-		addPlace('SOS Kinderdorf','ChIJ1e0jeh8osUcRYXT6fGKqtlM',['Spielzeug'],[[]]);
-		addPlace('SOS Kinderdorf','ChIJIT1y7-bXsEcRlL2yIBkmK6c',['Spielzeug'],[[]]);
-		addPlace('SOS Kinderdorf','ChIJC2LtuasssUcRfK7QtJZ95i8',['Spielzeug'],[[]]);
+addPlace('Verein für Innere Mission in Bremen','ChIJhW9rIQ0osUcRrE3kNWcxOJ0',['Kleidung'],[['Damen-und Herrenmode','Kinderbekleidung','Schuhe']],'https://www.inneremission-bremen.de/startseite/');
+addPlace('ProShop Bremen','ChIJ89bxYH4nsUcREksgXBw3boo',['Haushaltswaren','Spielzeug','Bücher','Sonstiges'],[[],[],[],['Textilien']],'http://www.projob-bremen.de/index.php?id=14');
+addPlace('ProJob Bremen','ChIJ164EEyoosUcRy6I04KPS6ho',['Möbel','Haushaltswaren'],[[],[]],'http://www.projob-bremen.de/index.php?id=18');
+addPlace('Cafe Papagei','ChIJ-3so-BEosUcRPCYq-g-sjY0',['Lebensmittel'],[['Kaffee','Tee','Kekse']],'https://www.inneremission-bremen.de/wohnungslosenhilfe/tagestreffs/cafe_papagei/');
+addPlace('frauenzimmer','ChIJa5aoEBYosUcR7-oPi5SZBVM',['Lebensmittel'],[['Kaffee','Tee','Kekse']],'https://www.inneremission-bremen.de/wohnungslosenhilfe/tagestreffs/frauenzimmer/');
+addPlace('Bahnhofsmission Bremen','ChIJPW9aWBIosUcRIWbrsm-T2Vo',['Lebensmittel'],[['Kaffee']],'http://www.bahnhofsmission-bremen.de/');
+addPlace('Deutsches Rotes Kreuz Kreisverband Bremen e.V.','ChIJMzOAQ4QnsUcR1QxfNKM8QQU',['Kleidung','Bücher'],[[],[]],'http://www.drk-bremen.de/startseite.html');
+addPlace('Deutsches Rotes Kreuz Kreisverband Bremen e.V.','ChIJySe4uUnTtkcRAX3DZkNRfs8',['Kleidung'],[[]],'http://www.drk-bremen.de/startseite.html');
+addPlace('Die Bremer Suppenengel','ChIJdVHLMOPXsEcR6frrixM3ILg',['Lebensmittel','Kleidung','Sonstiges'],[['Nudeln','Reis','Kaffee','Gewürze','Konserven'],[],['Schlafsäcke','Isomatten','Büromaterial','gebrauchte Smartphones']],'http://www.suppenengel.de/');
+addPlace('SOS Kinderdorf','ChIJ1e0jeh8osUcRYXT6fGKqtlM',['Bücher','Spielzeug','Kleidung'],[['Kinderbücher'],['Kinderspielzeug'],['Kinderkleidung']],'http://www.sos-kinderdorf.de/kinderdorf-bremen');
+addPlace('SOS Kinderdorf','ChIJIT1y7-bXsEcRlL2yIBkmK6c',['Bücher','Spielzeug','Kleidung'],[['Kinderbücher'],['Kinderspielzeug'],['Kinderkleidung']],'http://www.sos-kinderdorf.de/kinderdorf-bremen');
+addPlace('SOS Kinderdorf','ChIJC2LtuasssUcRfK7QtJZ95i8',['Bücher','Spielzeug','Kleidung'],[['Kinderbücher'],['Kinderspielzeug'],['Kinderkleidung']],'http://www.sos-kinderdorf.de/kinderdorf-bremen');
+addPlace('MöbellagerNord','ChIJFR1C4a4ssUcRA4l8ZIS8PZg',['Möbel','Haushaltswaren','Elektronik'],[[],['Geschirr','Gläser','Küchenartikel','Lampen','Textilien'],['Kleingeräte']],'https://www.moebellagernord.de/');
+
+addPlace('Recycling-Hof Huchting','ChIJ2fvAOyTWsEcRVzU5p3SESac',['Elektronik','Sonstiges'],[['Computer','Stereoanlagen','Büromachinen','Radio','Heizung','Lüftung'],['Bauelemente','Bauteile','Sanitärartikel','Metalle']],'http://gri-bremen.de/recycling-hoefe/huchting/');
+addPlace('Recycling-Hof Findorff','ChIJS7gsNVwosUcR9Bo7JzJFGJY',['Elektronik','Haushaltswaren','Bücher','Sonstiges'],[['Computer','Radio','Toaster','Kaffeemachinen'],['Geschirr','Besteck','Schallplatten','Lampen','Dekorationsartikel'],[],['Metalle','Textilien']],'http://gri-bremen.de/recycling-hoefe/findorff/');
+addPlace('Recycling-Hof Hemelingen','ChIJf7Lbr4HYsEcR2Xuf9waqeAc',['Elektronik','Haushaltswaren'],[['Waschmaschinen','Kühl-und Gefrierschränke','Herde','Mikrowellenherde','Nähmaschinen'],['Radios','Fernseher','Computer','Küchengeräte']],'http://gri-bremen.de/recycling-hoefe/hemelingen/');
+addPlace('Möbelhaus Oslebshausen','ChIJs-mssGApsUcRfqGHXBnLcGA',['Möbel','Haushaltswaren','Kleidung','Bücher','Sonstiges'],[[],[],[],[],['Wohnaccessoires']],'http://gri-bremen.de/mobelhallen/oslebshausen/');
+addPlace('Kaufhaus Hemelingen','ChIJG0WLFn4nsUcRzZnb6Pr6nO8',['Möbel','Elektronik','Kleidung','Bücher','Spielzeug','Haushaltswaren','Sonstiges'],[[],[],[],[],[],[],['Wohnaccessoires','Bilder']],'http://gri-bremen.de/mobelhallen/kaufhaus-hemelingen/');
+addPlace('Möbelhalle Kattenturm Mitte','ChIJNf_gtyTYsEcR6wO9qF5qo4I',['Möbel','Kleidung','Bücher','Spielzeug','Haushaltswaren','Sonstiges'],[[],[],[],[],['Haushaltsgeräte'],['Wohnaccessoires','Bilder']],'http://gri-bremen.de/mobelhallen/kattenturm-mitte/');
+
+
+
+
+
+
+
+
 		
 		
 		

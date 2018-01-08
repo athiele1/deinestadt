@@ -24,11 +24,12 @@ var btns = [];
 function addHeadMenu(container) {
 	
 	
-    var header = new Image();
-	header.src = "pics/logo_200.png";
+    /*var header = new Image();
+	header.src = "pics/logo_200.png";*/
 	var headerDiv = document.createElement("div");
+	
 	headerDiv.id = "div200";
-	headerDiv.appendChild(header);
+	//headerDiv.appendChild(header);
 	
 	container.appendChild(headerDiv);
 	

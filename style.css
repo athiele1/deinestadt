@@ -93,6 +93,7 @@ iframe{
 #div200{
 	margin: 0 auto;	
 	width: 200px;	
+	height: 200px;
 }
 
 
@@ -338,3 +339,58 @@ h4 {
 	float: right;
 	margin-right: 10px;
 }
+
+
+.introDiv{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background-color: var(--logoGreen);
+		animation: moveUp forwards;
+		animation-duration: 1s;
+		animation-delay: 0.5s;
+		animation-timing-function: ease-out;
+		
+}
+
+.introDivImage{
+	display: block;
+	margin: 0 auto;
+	margin-top: 20%;
+	width: 200px;
+	height: 200px;
+	animation: moveUp2 forwards;
+	animation-duration: 0.5s;
+	animation-delay: 0.5s;
+	animation-timing-function: ease-out;
+	
+}
+
+.introDivNO{
+		position: absolute;
+		width: 100%;
+		height: 200px;
+		background-color: var(--logoGreen);
+		
+}
+
+.introDivImageNO{
+	display: block;
+	margin: 0 auto;
+	width: 200px;
+	height: 200px;	
+}
+
+
+
+@keyframes moveUp {
+    from {}
+    to {height: 0px}
+}
+
+@keyframes moveUp2 {
+    from {}
+    to {margin-top: 0px;}
+}
+
+

@@ -135,6 +135,18 @@ h4 {
 	margin: 0 auto;	
 }
 
+h5 {
+	font-family: "Montserrat-light", Helvetica, Arial, sans-serif;
+	font-size: 26px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+
+}
+
+
+
+	
 
 
 .zumFinder:hover{
@@ -264,6 +276,23 @@ h4 {
 	font-size: 13px;
 	transition: 0.4s;
 	
+}
+
+#steps {
+	border:solid;
+	border-width:medium;
+	min-width:550px;
+	border-radius: 1em;
+	border-color:#000;
+}
+
+#step {
+	margin-left: 50px;
+}
+
+#stepsLogo {
+	float:right;
+	margin-right:150px;
 }
 
 

@@ -28,7 +28,7 @@ function addHeadMenu(container) {
 	header.src = "pics/logo_200.png";*/
 	var headerDiv = document.createElement("div");
 	
-	headerDiv.id = "div200";
+	headerDiv.id = "div100";
 	//headerDiv.appendChild(header);
 	
 	container.appendChild(headerDiv);
@@ -153,7 +153,15 @@ function addHeadMenu(container) {
 		
 	}
 	
+	/*var fb = new Image();
+	fb.src = "pics/facebook.png";
+	fb.style.display = "inline";
+	fb.style.width = "30px";
+	fb.style.height = "30px";*/
+	
 	divUpMenu.appendChild(divHolder);
+	
+	//divUpMenu.appendChild(fb);
 	
 	container.append(divUpMenu);
 	

@@ -144,7 +144,14 @@ h5 {
 
 }
 
-	
+#MainSentence {
+	font-family: Calibri;
+	font-size: 38px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+
+}
 
 
 .zumFinder:hover{
@@ -252,8 +259,8 @@ h5 {
 
 .katDiv{
 	
-	width: 120px;
-	height: 90px;
+	width: 100px;
+	height: 75px;
 	margin: 5px;
 	margin-bottom: 20px;
 	text-align:  center;
@@ -286,13 +293,24 @@ h5 {
 
 #step {
 	margin-left: 50px;
+	
 }
 
 #stepsLogo {
+
+	margin-right:50px;
 	float:right;
-	margin-right:150px;
 }
 
+#stepsCategory {
+	margin-right:90px;
+	float:right;
+	margin-top:-10px;
+}
+	
+#SocialLinks {
+	float:right;
+}
 
 
 #impressum {

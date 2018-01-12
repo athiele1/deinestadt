@@ -28,20 +28,26 @@
 
 <div id="divHead"></div>
 
+<div id="SocialLinks">
+<p>  <a href="https://www.facebook.com/bremenspendet/"><img src="pics/facebook.png" width="40" height="40"></a>
+ <a href="https://www.instagram.com/bremenspendet/"><img src="pics/instagram.png" width="40" height="40"></a></p> </div>
+
 <div id="divContent">
 
-<h1><font color="#207db3">Sie möchten gerne Gegenstände spenden, wissen aber nicht wohin? Wir helfen weiter!</font></h1>
+<div id="MainSentence"><font color="#207db3">Sie möchten gerne Gegenstände spenden, wissen aber nicht wohin? Wir helfen weiter!</font> </div>
 <div id="steps">
-<div id="step"><h5> In drei einfachen Schritten zur Sachspende: </h5> </div>
-<div id="step"><h5> 1. Wählt in unserem Spenden-Finder den Artikel, den ihr spenden wollt.
- </h5>  </div>
+<div id="step"><h5> <b>In drei einfachen Schritten zur Sachspende:<b> </h5> </div>
+<div id="stepsCategory"> <img src="pics/finder/c_Kleidung_2.png" width:"50" height="50"> </div>
+<div id="step"><h5> 1. Wählt in unserem Spenden-Finder den Artikel, den ihr spenden wollt. </h5> </div>
+<div id="stepsLogo">  <img src="pics/PLZ.png"> </div>
 <div id="step"><h5> 2. Gebt eure Postleitzahl ein, wenn ihr speziell in einem Stadtteil spenden wollt. 
 </h5> </div>
+<div id="stepsLogo"> <img src="pics/LOS.png"> </div>
 <div id="step"><h5> 3. Klickt auf LOS und lasst den Spenden-Finder für euch die Abgabestellen heraussuchen. 
  </h5> </div>
  </div>
 <h5> Danach müsst ihr nur noch zu einem der Standorte gehen und die Spende abgeben. <br>Probiert den Spenden-Finder doch direkt aus:</h5>
-<input class="zumFinder" type="image" src="pics/zumFinder.png" style="margin:0 auto;display:block" onClick="window.location='finder.html'";">
+<input class="zumFinder" type="image" src="pics/zumSpendenfinder.png" style="margin:0 auto;display:block" onClick="window.location='finder.html'";">
 
 
 
@@ -75,7 +81,7 @@ Um dies zu erreichen haben wir den Spenden-Finder entwickelt. Üben den Spenden-
 -->
 
 
-<h1>Halte dich auf dem Laufenden...</h1>
+<!--<h1>Halte dich auf dem Laufenden...</h1>
 <h3>Diese Website ist noch im Aufbau, du kannst dich in der Zwischenzeit auf unseren Sozialen Netzwerken über diese Aktion weiter informieren:</h3>
 
 
@@ -83,7 +89,7 @@ Um dies zu erreichen haben wir den Spenden-Finder entwickelt. Üben den Spenden-
 <p><img src="pics/instagram.png" width="20" height="20"> <a href="https://www.instagram.com/bremenspendet/">www.instagram.com/bremenspendet</a></p>
 <h3>Zu erreichen sind wir unter: info@bremenspendet.de</h3>
 
-
+-->
 
 
 </div>
@@ -96,7 +102,8 @@ Um dies zu erreichen haben wir den Spenden-Finder entwickelt. Üben den Spenden-
 
 addHeadMenu(document.getElementById("divHead"));;
 addButtomMenu(document.getElementById("divButtom"));;
-markButton(0);
+markButton(0); 
+
 
 </script>
 

@@ -1,0 +1,54 @@
+
+<html>
+<head>
+<link rel="shortcut icon" type="image/png" href="pics/logo_300.png"/>
+<title>Bremen spendet</title>
+<meta charset="utf-8"/>
+<link rel="stylesheet" type="text/css" href="style.css">
+<link href="https://fonts.googleapis.com/css?family=Oswald:400" rel="stylesheet"> 
+<script src="main.js"></script>
+
+</head>
+<body>
+
+<div class="introDivNO"><div class="introDivImageNO"><img src="pics/logo_200.png" width="100px" height="100px"></div></div>
+
+<div id="divHead"></div>
+
+<div id="divContent">
+
+
+<form id="kontaktformular" name="kontaktformular" action="http://www.formular-chef.de/fc.cgi"
+method="post">
+<input type="hidden" name="empfaenger" value="oertel@uni-bremen.de" />
+<div>
+  <label for="absender">Ihre E-Mail-Adresse:</label>
+  <input type="text" id="absender" name="absender" />
+</div>
+<div>
+  <label for="nachricht">Ihre Nachricht:</label>
+  <textarea id="nachricht" name="nachricht" cols="20" rows="5"></textarea> 
+</div>
+
+<div>
+  <input type="submit" value="Abschicken" />
+</div>
+</form>
+
+</div>
+
+
+
+<div id="divButtom"></div>
+
+</body>
+
+<script>
+
+addHeadMenu(document.getElementById("divHead"));;
+addButtomMenu(document.getElementById("divButtom"));;
+markButton(2);
+
+</script>
+
+</html>

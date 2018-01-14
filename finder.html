@@ -19,7 +19,7 @@
   <input type="text"  style="width:80px" id="plzInput" class="noFocus" oninput="plzCheck(this)" max = "99999" maxLength="5" onKeyPress="return isNumeric(event)">
   <span id="plzFound" style="color:green"></span>
   <br><br>
-  <input type="button" id="los" class="button1" value="Los!" onClick="los()">
+  <input type="button" id="los" class="losbutton1" value="Los!" onClick="los()">
   <br>
   <br>
   <!--<h1>Der "Spenden-Finder" ist noch in Arbeit.</h1>
@@ -34,6 +34,7 @@
 <div id="divButtom"></div>
 </body>
 <script>
+	//Die Google Map
     var infowindow,service,map;
 	
 	//Beinhaltet für jede Kategorie ein true/false, je nachdem ob es ausgewählt wurde
@@ -51,19 +52,23 @@
     addButtomMenu(document.getElementById("divButtom"));
     markButton(1);
     
-	
+	//Alle Kategorien
 	var katLabels = ["Bücher","Elektronik","Möbel","Spielzeug","Haushaltswaren","Kleidung","Lebensmittel","Sonstiges"];
+	
+	//Die Pfade zu den Bildern der Kategorie (ohne Dateiendung)
 	var katPaths = ["buch","elektronik","moebel","spielzeug","haushalt","kleidung","lebensmittel","sonstige"];
 	
+	//Passt die Pfade an
 	for(var i = 0; i < katPaths.length; i++){
 		katPaths[i] = 	pathLabelToPath(katPaths[i]);		
 	}
-	
+
 	for(var i = 0; i < katLabels.length; i++){
 		addKategorie(katLabels[i],katPaths[i]);
 			
 	}
-		
+	
+	//Alle "Stadtteile", also PLZ plus Position
 	var stadtteile = [];
 	addAllPLZ();
 	
@@ -77,6 +82,7 @@
 		this.bgrad = pbgrad;
 	}
 	
+	//Fügt Stadtteil hinzu
 	function addStadtTeil(plz, lgrad, bgrad){
 		
 		var si = new Stadtteil(plz, lgrad, bgrad);
@@ -84,7 +90,7 @@
 		stadtteile.push(si);
 	}
 	
-	
+	//Sobald der Knopf Los gedrückt wird
 	function los(){
 		
 		var plzInput = document.getElementById("plzInput");
@@ -101,6 +107,7 @@
 		
 	}
 	
+	//Wandelt eine PLZ zum Stadteil um
 	function plzToStadtteil(plz){
 		var s = plz.toString();
 	
@@ -115,14 +122,14 @@
 	
 	
 	
-	
+	//Passt die Kategorien Bilder Pfade an
 	function pathLabelToPath(katPath){
 		return 	"pics/finder/c_" + katPath + ".png";
 		
 	}
 	
 	
-	
+	//Ersellt die klickbaren Kategorien Auswahlboxen
 	function addKategorie(name, pfad){
 	
 		var nr = kategorien.length;
@@ -161,6 +168,7 @@
 		document.getElementById("divKat").appendChild(div);	
 	}
 	
+	//Sobald eine Kategorie angedrückt wird, wechselt Umrahmung, setz den Bool in kategorien[]
 	function clickKategorie(nr){
 		var img = document.getElementById("img_" + nr);
 		var pfad = img.src.substring(0,img.src.length-4);
@@ -176,7 +184,7 @@
 		}
 	}
 	
-	
+	//Sobald über Katg-Bild im Popup Fenster eines Markers gehovert wird
 	function hoverKatSymbol(event1,img,specials){
 		
 		if(specials.length > 0){
@@ -220,7 +228,7 @@
 			
 		}
 	}
-	
+	//Sobald über Katg-Bild im Popup Fenster eines Markers rausgehovert wird
 	function hoverOutKatSymbol(){
 		
 		var divi = document.getElementById("katSymbolDivId");
@@ -243,6 +251,8 @@
 	
 	//var labeli = 1;
 	
+	
+	//Fügt eine Einrichtungstandort hinzu
 	function addPlace3(name, bGrad, lGrad, adresse, spendenAnnahmen, spendenSpecials, url){
 		
 		var pos = {lat: bGrad, lng: lGrad};
@@ -341,7 +351,7 @@
 		p_c++;
 	}
 	
-	
+	//Fügt eine Einrichtungstandort hinzu
 	function addPlace2(name, place_id, spendenAnnahmen,spendenSpecials, url){
 			
 		service.getDetails({
@@ -375,6 +385,8 @@
 		
 	}*/
 	
+	
+	//Updated die Marker (Falls zum Beispiel andere Kategorien ausgewählt wurden + LOS)
 	function updateMarkers(){
 		infowindow.close();
 		
@@ -431,7 +443,7 @@
 		
 			
 	}
-	
+	//Fügt einen Marker getimed zur Map hinzu
 	function changeMap(marker, bool, time){
 		
 		window.setTimeout(function() {
@@ -472,7 +484,7 @@
 		
 	}*/
 	
-    
+    //Zur Initierung der Google Map
     function initMap() {
       var bremen = {lat: 53.076320, lng: 8.808581};
 	 
@@ -528,7 +540,7 @@ addPlace('Möbelhalle Kattenturm Mitte','ChIJNf_gtyTYsEcR6wO9qF5qo4I',['Möbel',
 
      }
 	 
-	 
+	 //Checkt die Eingabe des PLZ Eingabefelds
 	 //src: https://stackoverflow.com/questions/8354975/how-can-i-limit-possible-inputs-in-a-html5-number-element
 	function plzCheck(object) {
     if (object.value.length > object.maxLength){

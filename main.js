@@ -15,12 +15,16 @@ var b1 = document.createElement("input");
 var b2 = document.createElement("input");
 var b3 = document.createElement("input");*/
 
+//Die obenren Menübezeichnungen
 var buttonText = ["INITIATIVE","SPENDEN-FINDER","PARTNER"];
+//Die Links der Buttons
 var buttonLink = ["index.html","finder.html","partner.html"];
 
-//var buttons2 = [];
+//Die obenren Menübuttons
 var btns = [];
 
+
+//Füllt den oberen Kopfbereich
 function addHeadMenu(container) {
 	
 	
@@ -224,7 +228,7 @@ function addHeadMenu(container) {
 	//document.body.appendChild(container);	
 }
 
-
+//Füllt den unteren (Impressum etc) Bereich
 function addButtomMenu(container2) {
 	
 	var horizontalLine = document.createElement("hr");
@@ -252,12 +256,14 @@ function addButtomMenu(container2) {
 	
 }
 
+//Deselectiert alle oberen Menüknöpfe
 function resetButtons(){
 	for(var btni in btns){
 		btni.className = "topButton";		
 	}	
 }
 
+//Selectiert einen oberen Menüknöpfe
 function markButton(i){
 	resetButtons();
 	btns[i].className = "topButtonClicked";
@@ -265,7 +271,7 @@ function markButton(i){
 	
 }
 
-function selectButton(spani){
+/*function selectButton(spani){
 	spani.style.borderBottom = "5px solid red";
 	//alert(buttons2[i].data);
 	spani.innerHTML = buttonText[spani.id].fontcolor("red");
@@ -284,6 +290,6 @@ function deselectButton(spani){
 	//alert(spani.innerHTML);
 	//buttons2[i].innerHTML.style.color = "red";
 }
-
+*/
 
 

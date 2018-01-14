@@ -13,13 +13,14 @@ hierüber kann das Design aller Seiten angepasst werden.
 }
 
 
-
+/* Das Div der Kopfzeile*/
 #divHead {
 	
 	margin: 0 auto;	
     
 }
 
+/* Das Div des untersten Bereich (Impressum, Kontakt etc.)*/
 #divButtom {
 	margin: 0 auto;	
 	margin-top: -20px;
@@ -27,6 +28,14 @@ hierüber kann das Design aller Seiten angepasst werden.
 	background-color: #EEEEEE;
 }
 
+/* Der Div des welche die Texte Impressum, Kontakte etc umfässt */
+#divBottomMenu{
+	width: 60px;
+	height: 30px;
+	margin: 0 auto;	
+}
+
+/* Das Div des Inhalts Bereichs*/
 #divContent {
 	padding-left: 20%;
 	padding-right: 20%;
@@ -42,6 +51,7 @@ body {
     margin: 0;
 }
 
+/* Alle horizontalen Linien*/
 hr{
 	height: 2px;
 	border: 0px;
@@ -59,6 +69,7 @@ iframe{
 	
 }
 
+/* Die google Maps Karte*/
 #map {
     height: 600px;
     width: 100%;
@@ -68,12 +79,7 @@ iframe{
 
 
 
-#divBottomMenu{
-	width: 60px;
-	height: 30px;
-	margin: 0 auto;	
-}
-
+/* Div mit der festen breite 768 und mittig positioniert*/
 #div768{
 	margin: 0 auto;	
 	width: 768px;
@@ -154,21 +160,13 @@ h5 {
 
 }
 
-
+/* Der Button "zum Spendenfinder"*/
 .zumFinder:hover{
 	cursor: pointer;
 	filter: brightness(1.5);
 }
 
-@keyframes flash {
-	0% {
-		opacity: .4;
-	}
-	100% {
-		opacity: 1;
-	}
-}
-
+/* Die oberen Menü Knöpfe*/
 .topButton {
 	background-color: white;
     border: 5px;
@@ -187,7 +185,8 @@ h5 {
 	color: var(--logoBlue);
 }
 
-.button1{
+/* Der Los Button der SpendenFinder Seite*/
+.losbutton1{
 	width: 100px;
 	height: 50px;
 	color: #333;
@@ -201,11 +200,11 @@ h5 {
 	
 }
 
-.button1:hover{
+.losbutton1:hover{
 	background-color: var(--logoGreen);
 }
 
-.button:active{
+.losbutton1:active{
 		background-color: #063;
 }
 
@@ -222,6 +221,7 @@ h5 {
 	color: var(--logoBlue);
 }
 
+/* Keine Umrandungen wenn man was "hovert"*/
 .noFocus {
 	outline: 0 !important;
 	border 0;
@@ -236,7 +236,7 @@ h5 {
 
 
 
-
+/* Keine Umrandungen wenn man was "hovert"*/
 .noselect {
 /*source: https://stackoverflow.com/questions/826782/how-to-disable-text-selection-highlighting-using-css*/
   -webkit-touch-callout: none; /* iOS Safari */
@@ -248,6 +248,8 @@ h5 {
                                   supported by Chrome and Opera */
 }
 
+
+/* Die Kategorien Bilder im Spendenfinder*/
 .katImg{
 	transition-duration: 0.4s;	
 	
@@ -258,18 +260,20 @@ h5 {
 	filter: brightness(1.3);
 }
 
+/* Div umfässt Die Kategorien Bilder im Spendenfinder*/
 .katDiv{
 	
 	width: 100px;
 	height: 75px;
 	margin: 5px;
-	margin-bottom: 20px;
+	margin-bottom: 50px;
 	text-align:  center;
   	display: inline-block;
 	font-family: "Montserrat-light", Helvetica, Arial, sans-serif;
 	font-weight: 550;
 }
 
+/* Die Kategorien Bilder im Popup Marker Menü des Spendenfinder*/
 .katSymbolDiv{
 	display:block;
 	background: white;
@@ -415,7 +419,7 @@ h5 {
 	margin-right: 10px;
 }
 
-
+/* Das Div des Bremen Spendet Intros*/
 .introDiv{
 		position: absolute;
 		width: calc(100% - 20px);
@@ -428,6 +432,7 @@ h5 {
 		
 }
 
+/* Das Div des Bildes des Bremen Spendet Intros*/
 .introDivImage{
 	display: block;
 	margin: 0 auto;
@@ -441,7 +446,7 @@ h5 {
 	
 }
 
-.introDivNO{
+/*.introDivNO{
 		position: absolute;
 		width: calc(100% - 20px);
 		height: 100px;
@@ -454,8 +459,10 @@ h5 {
 	margin: 0 auto;
 	width: 100px;
 	height: 100px;	
-}
+}*/
 
+
+/* Bild Bremen Spendet Logo Intro (nur der Kreis)*/
 .logoCircle{
 	position: absolute;
 	animation-duration: 1s;
@@ -466,6 +473,7 @@ h5 {
 	
 }
 
+/* Bild Bremen Spendet Logo Intro (nur der Text)*/
 .logoName{
 	animation-duration: 1s;
 	animation: shrink 0.7s forwards;
@@ -503,7 +511,7 @@ h5 {
 	height:100px;
 	width:100px;
 	/*margin: 0;
-	margin-left: 0%;-->*/
+	margin-left: 0%;*/*/
 		
 		
 	}

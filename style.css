@@ -17,7 +17,7 @@ hierüber kann das Design aller Seiten angepasst werden.
 #divHead {
 	
 	margin: 0 auto;	
-	
+    
 }
 
 #divButtom {
@@ -39,6 +39,7 @@ hierüber kann das Design aller Seiten angepasst werden.
 body {
 	background-color: var(--logoGreen);
 	/*background-image: url("pics/background.jpg");*/
+    margin: 0;
 }
 
 hr{

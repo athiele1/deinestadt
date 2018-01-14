@@ -26,16 +26,16 @@ function addHeadMenu(container) {
 	
     /*var header = new Image();
 	header.src = "pics/logo_200.png";*/
-	var headerDiv = document.createElement("div");
+	//var headerDiv = document.createElement("div");
 	
-	headerDiv.id = "div100";
+	//headerDiv.id = "div100";
 	//headerDiv.appendChild(header);
 	
-	container.appendChild(headerDiv);
+	//container.appendChild(headerDiv);
 	
 	
 	//var container = document.createElement("div");
-	//container.align = "center";
+	////container.align = "center";
 	
 	
 	var divUpMenu = document.createElement("div");

@@ -74,10 +74,10 @@ $mail_senden = mail($empfaenger,$betreff,$msg,$header);
  
 //Weiterleitung, hier konnte jetzt per echo auch Ausgaben stehen
 if($mail_senden){
-  echo "Mail wurde gesendet!";
+  header("Location: http://bremenspendet.de/Contact.html");
   exit();
 } else{
-  echo "Mail wurde nicht gesendet!";
+  header("Location: http://bremenspendet.de/Contact.html");
   exit();
   
 }

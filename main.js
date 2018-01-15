@@ -246,10 +246,14 @@ function addButtomMenu(container2) {
 
 	var impressum = document.createElement("p");
 	impressum.innerHTML = '<a href="impressum.html" title="Impressum">Impressum</a>';
+	
+	var contact = document.createElement("p");
+	contact.innerHTML = '<a href="contact.html" title="Kontakt">Kontakt</a>';
 
 
 	divMenu.appendChild(h4);
 	h4.appendChild(impressum);
+	h4.appendChild(contact);
 	container2.appendChild(divMenu);
 	
 	

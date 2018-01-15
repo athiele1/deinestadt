@@ -20,9 +20,17 @@
 <h1>Danke!</h1>
 Ihre Eingabe Nachricht wurde an uns verschickt. Wir werden sie schnellstmöglich bearbeiten. 
 
- <form action="formmail.php" method="POST">
+  <form action="formmail.php" method="POST">
  <input type="hidden" name="subject" value="Kontaktformular">
  <input type="hidden" name="access" value="irregeheim">
+ 
+ <label for="Name"><b>Name:</b></label><br>
+<input type="text" id="Name" name="Name"><br><br>
+<label for="Email"><b>E-Mail:</b></label><br>
+<input type="text" id="Email" name="Email"><br><br>
+ <label for="Betreff"><b>Betreff:</b></label><br>
+<input type="text" id="Betreff" name="Betreff"><br><br>
+ <label for="Nachricht"><b>Nachricht:</b></label><br>
  <textarea name="Eingabe" cols="60" rows="20" wrap="PHYSICAL" id="Eingabe"></textarea>
  <input type="submit" value="Abschicken">
  </form>

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100');
+
 /**
 style.css
 
@@ -11,6 +13,8 @@ hierüber kann das Design aller Seiten angepasst werden.
 body, html {
     margin: 0;     
     padding: 0;
+    font-family: 'Roboto';
+    
 }
 
 :root {
@@ -23,15 +27,13 @@ body, html {
 
 /* Das Div der Kopfzeile*/
 #divHead {
-
     margin: 0 auto;	
-
 }
 
 /* Das Div des untersten Bereich (Impressum, Kontakt etc.)*/
 #divButtom {
     margin: 0 auto;	
-    margin-top: -20px;
+    margin-top: -10px;
     padding-bottom: 30px;
     background-color: rgba(0, 0, 0, 0.7);
 }
@@ -49,8 +51,8 @@ body, html {
     padding-right: 20%;
     padding-top: 30px;
     padding-bottom: 60px;
-    margin: 0 auto;	
-    background-color: rgba(255, 255, 255, 0,3);
+    margin: 0 auto;
+    background-color: rgba(114, 230, 171, 0.6);
     
 }
 
@@ -586,7 +588,7 @@ textarea:focus {
 }
 
 #spendenfiner-button {
-    background-color: #4CAF50; /* Green */
+    background-color: #207db3; /* Green */
     border: none;
     color: white;
     padding: 15px 32px;
@@ -608,3 +610,9 @@ textarea:focus {
 #MainSentence font {
     color: white;
 }
+
+#spendenfiner-button:hover {
+    background-color: #19648f;
+    cursor: pointer;
+}
+

@@ -165,11 +165,7 @@ h5 {
     text-align: center;
 }
 
-/* Der Button "zum Spendenfinder"*/
-.zumFinder:hover{
-    cursor: pointer;
-    filter: brightness(1.5);
-}
+
 
 /* Die oberen Menü Knöpfe*/
 .topButton {
@@ -424,6 +420,14 @@ h5 {
     min-width:550px;
 }
 
+.borderDiv{
+		 border:solid red thick;
+   		 min-width:320px;
+    	border-radius: 1em;
+}
+
+
+
 .rightAlign {
     text-align: right;
     float: right;
@@ -593,9 +597,12 @@ textarea:focus {
     color: white;
     padding: 15px 32px;
     text-align: center;
-    text-decoration: none;
+    
     display: inline-block;
     font-size: 16px;
+}
+#spendenfiner-button:hover {
+	text-decoration: underline;
 }
 
 #divContent h5 {

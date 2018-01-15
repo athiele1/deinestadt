@@ -7,66 +7,69 @@ hierüber kann das Design aller Seiten angepasst werden.
 **/
 
 /*Variablen:*/
-:root {
-  --logoGreen: #71e6ab;
-  --logoBlue: #1e7ab3;
+
+body, html {
+    margin: 0;     
+    padding: 0;
 }
+
+:root {
+    --logoGreen: #71e6ab;
+    --logoBlue: #1e7ab3;
+}
+
+
 
 
 /* Das Div der Kopfzeile*/
 #divHead {
-	
-	margin: 0 auto;	
-    
+
+    margin: 0 auto;	
+
 }
 
 /* Das Div des untersten Bereich (Impressum, Kontakt etc.)*/
 #divButtom {
-	margin: 0 auto;	
-	margin-top: -20px;
-	padding-bottom: 30px;
-	background-color: #EEEEEE;
+    margin: 0 auto;	
+    margin-top: -20px;
+    padding-bottom: 30px;
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 /* Der Div des welche die Texte Impressum, Kontakte etc umfässt */
 #divBottomMenu{
-	width: 60px;
-	height: 30px;
-	margin: 0 auto;	
+    width: 60px;
+    height: 30px;
+    margin: 0 auto;	
 }
 
 /* Das Div des Inhalts Bereichs*/
 #divContent {
-	padding-left: 20%;
-	padding-right: 20%;
-	padding-top: 30px;
-	padding-bottom: 60px;
-	margin: 0 auto;	
-	background-color: white;
-}
-
-body {
-	background-color: var(--logoGreen);
-	/*background-image: url("pics/background.jpg");*/
-    margin: 0;
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-top: 30px;
+    padding-bottom: 60px;
+    margin: 0 auto;	
+    background-color: rgba(255, 255, 255, 0,3);
+    
 }
 
 /* Alle horizontalen Linien*/
 hr{
-	height: 2px;
-	border: 0px;
-	background-color: lightgrey;
-	/*https://www.cssmatic.com/box-shadow*/
-	box-shadow: px 18px 64px 0px rgba(156,156,156,1);
+    height: 2px;
+    border: 0px;
+    background-color: lightgrey;
+    /*https://www.cssmatic.com/box-shadow*/
+    box-shadow: px 18px 64px 0px rgba(156,156,156,1);
 }
 
 /*Youtube-Videos*/
 iframe{
-	margin: 0 auto;	
-	display: block; /*Sonst lässt sich die position nicht setzen*/
-	width: 600px;
-	height: 338px;
-	
+    margin: 0 auto;	
+    display: block; /*Sonst lässt sich die position nicht setzen*/
+    width: 600px;
+    height: 338px;
+
 }
 
 /* Die google Maps Karte*/
@@ -81,32 +84,32 @@ iframe{
 
 /* Div mit der festen breite 768 und mittig positioniert*/
 #div768{
-	margin: 0 auto;	
-	width: 768px;
+    margin: 0 auto;	
+    width: 768px;
 }
 
 #div350{
-	margin: 0 auto;	
-	width: 350px;
-	
+    margin: 0 auto;	
+    width: 350px;
+
 }
 
 #div600{
-	margin: 0 auto;	
-	width: 600px;
-	
+    margin: 0 auto;	
+    width: 600px;
+
 }
 
 #div200{
-	margin: 0 auto;	
-	width: 200px;	
-	height: 200px;
+    margin: 0 auto;	
+    width: 200px;	
+    height: 200px;
 }
 
 #div100{
-	margin: 0 auto;	
-	width: 100px;	
-	height: 100px;
+    margin: 0 auto;	
+    width: 100px;	
+    height: 100px;
 }
 
 
@@ -114,61 +117,61 @@ iframe{
 /*Festlegung Schriftarten für die Schriftgrößen*/
 
 h1 {
-	font-family: Calibri;
-	font-size: 34px;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: 500;
-	line-height: 26.4px;
-	border-top: 50px solid white;
+    font-family: Calibri;
+    font-size: 34px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    line-height: 26.4px;
+    border-top: 50px solid white;
 }
 
 h3 {
-	font-family: "Montserrat-light", Helvetica, Arial, sans-serif;
-	font-size: 18px;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: 500;
-	line-height: 23px;
+    font-family: "Montserrat-light", Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    line-height: 23px;
 }
 
 h4 {
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	font-size: 12px;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: 500;
-	color:#333;
-	margin: 0 auto;	
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    color:#333;
+    margin: 0 auto;	
 }
 
 h5 {
-	font-family: "Montserrat-light", Helvetica, Arial, sans-serif;
-	font-size: 18px;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: 500;
+    font-family: "Montserrat-light", Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
 
 }
 
 #MainSentence {
-	font-family: Calibri;
-	font-size: 38px;
-	font-style: normal;
-	font-variant: normal;
-	font-weight: 500;
-
+    font-family: Calibri;
+    font-size: 38px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    text-align: center;
 }
 
 /* Der Button "zum Spendenfinder"*/
 .zumFinder:hover{
-	cursor: pointer;
-	filter: brightness(1.5);
+    cursor: pointer;
+    filter: brightness(1.5);
 }
 
 /* Die oberen Menü Knöpfe*/
 .topButton {
-	background-color: white;
+    background-color: white;
     border: 5px;
     color: black;
     padding: 10px 32px;
@@ -176,150 +179,151 @@ h5 {
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
-	transition-duration: 0.4s;
-	
+    transition-duration: 0.4s;
+
 }
 
 .topButton:hover {
-	border-bottom: 5px solid var(--logoBlue);
-	color: var(--logoBlue);
+    border-bottom: 5px solid var(--logoBlue);
+    color: var(--logoBlue);
 }
 
 /* Der Los Button der SpendenFinder Seite*/
 .losbutton1{
-	width: 100px;
-	height: 50px;
-	color: #333;
-	background-color: #E9E9E9;
-	font-family: Calibri;
-	font-size: 18px;
-	font-weight: 700;
-	transition-duration: 0.4s;
-	border: 3px solid darkgrey;
-	cursor: pointer;
-	
+    width: 100px;
+    height: 50px;
+    color: #333;
+    background-color: #E9E9E9;
+    font-family: Calibri;
+    font-size: 18px;
+    font-weight: 700;
+    transition-duration: 0.4s;
+    border: 3px solid darkgrey;
+    cursor: pointer;
+
 }
 
 .losbutton1:hover{
-	background-color: var(--logoGreen);
+    background-color: var(--logoGreen);
 }
 
 .losbutton1:active{
-		background-color: #063;
+    background-color: #063;
 }
 
 
 .topButtonClicked {
-	background-color: white;
+    background-color: white;
     border: 5px;
     padding: 10px 32px;
     text-align: center;
     display: inline-block;
     font-size: 16px;
-	cursor: pointer;
-	border-bottom: 5px solid var(--logoBlue);
-	color: var(--logoBlue);
+    cursor: pointer;
+    border-bottom: 5px solid var(--logoBlue);
+    color: var(--logoBlue);
 }
 
 /* Keine Umrandungen wenn man was "hovert"*/
 .noFocus {
-	outline: 0 !important;
-	border 0;
+    outline: 0 !important;
+    border 0;
 }
 
 .noFocus:focus {
-	outline: 0 !important;
-	border 0;
+    outline: 0 !important;
+    border 0;
 }
-	
+
 
 
 
 
 /* Keine Umrandungen wenn man was "hovert"*/
 .noselect {
-/*source: https://stackoverflow.com/questions/826782/how-to-disable-text-selection-highlighting-using-css*/
-  -webkit-touch-callout: none; /* iOS Safari */
+    /*source: https://stackoverflow.com/questions/826782/how-to-disable-text-selection-highlighting-using-css*/
+    -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome and Opera */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+    supported by Chrome and Opera */
 }
 
 
 /* Die Kategorien Bilder im Spendenfinder*/
 .katImg{
-	transition-duration: 0.4s;	
-	
+    transition-duration: 0.4s;	
+
 }
 
 
 .katImg:hover {
-	filter: brightness(1.3);
+    filter: brightness(1.3);
 }
 
 /* Div umfässt Die Kategorien Bilder im Spendenfinder*/
 .katDiv{
-	
-	width: 100px;
-	height: 75px;
-	margin: 5px;
-	margin-bottom: 50px;
-	text-align:  center;
-  	display: inline-block;
-	font-family: "Montserrat-light", Helvetica, Arial, sans-serif;
-	font-weight: 550;
+
+    width: 100px;
+    height: 75px;
+    margin: 5px;
+    margin-bottom: 50px;
+    text-align:  center;
+    display: inline-block;
+    font-family: "Montserrat-light", Helvetica, Arial, sans-serif;
+    font-weight: 550;
 }
 
 /* Die Kategorien Bilder im Popup Marker Menü des Spendenfinder*/
 .katSymbolDiv{
-	display:block;
-	background: white;
-	outline: 4px solid rgba(100,100,100,0.5);
-	padding-right: 30px;
-	padding-left: -40px;
-	position:absolute;	
-	font-family: "Montserrat-light", Helvetica, Arial, sans-serif;
-	font-weight: 550;
-	font-size: 13px;
-	transition: 0.4s;
-	
+    display:block;
+    background: white;
+    outline: 4px solid rgba(100,100,100,0.5);
+    padding-right: 30px;
+    padding-left: -40px;
+    position:absolute;	
+    font-family: "Montserrat-light", Helvetica, Arial, sans-serif;
+    font-weight: 550;
+    font-size: 13px;
+    transition: 0.4s;
+
 }
 
 #steps {
-	border:solid;
-	border-width:medium;
-	min-width:550px;
-	border-radius: 1em;
-	border-color:#72e6ab;
+    border:solid;
+    border-width:medium;
+    min-width:550px;
+    border-radius: 1em;
+    border-color: white;
+
 }
 
 #step {
-	margin-left: 50px;
-	
+    margin-left: 50px;
+
 }
 
 #stepsLogo {
 
-	margin-right:50px;
-	float:right;
+    margin-right:50px;
+    float:right;
 }
 
 #stepsCategory {
-	margin-right:90px;
-	float:right;
-	margin-top:-10px;
+    margin-right:90px;
+    float:right;
+    margin-top:-10px;
 }
 #stepsCategory2 {
-	margin-right:50px;
-	float:right;
-	margin-top:-20px;
+    margin-right:50px;
+    float:right;
+    margin-top:-20px;
 }
-	
+
 #SocialLinks {
-	float:right;
+    float:right;
 }
 
 
@@ -329,176 +333,176 @@ h5 {
 
 /* Partnerseite fängt hier an */
 #Logo {
-	height: 150px;
+    height: 150px;
     width: 30%;
-	float:left;
-	
+    float:left;
+
 }
 
 #pic {
-   float:left;
-   margin-left: 50px;
-   width: 100%;
-   height: 100%;
-   
+    float:left;
+    margin-left: 50px;
+    width: 100%;
+    height: 100%;
+
 }
 
 #upperText {
-	width:70%;
-	min-width:350px;
-	height:150px;
-	float:right;
-	font-family: Calibri;
-	
+    width:70%;
+    min-width:350px;
+    height:150px;
+    float:right;
+    font-family: Calibri;
+
 }
 #upperText p {
-	margin-left:100px;
-	
+    margin-left:100px;
+
 }
 
 #lowerPart {
-	margin-left:50px;
-	margin-right:50px;
-	min-width:350px;
-	font-family: Calibri;
-	
+    margin-left:50px;
+    margin-right:50px;
+    min-width:350px;
+    font-family: Calibri;
+
 }
 
 
 #ASB {
-	border:solid;
-	border-width:medium;
-	min-width:550px;
-	border-radius: 1em;
-	border-color:#FC0;
+    border:solid;
+    border-width:medium;
+    min-width:550px;
+    border-radius: 1em;
+    border-color:#FC0;
 }
 
 #AWO {
     margin-top:25px;
-	border:solid;
-	border-width:medium;
-	min-width:550px;
-	border-radius: 1em;
-	border-color:#F00;
+    border:solid;
+    border-width:medium;
+    min-width:550px;
+    border-radius: 1em;
+    border-color:#F00;
 }
 
 #mySWOOOP {
-	margin-top:25px;
-	border:solid;
-	min-width:550px;
-	border-width:medium;
-	border-radius: 1em;
+    margin-top:25px;
+    border:solid;
+    min-width:550px;
+    border-width:medium;
+    border-radius: 1em;
     border-color:#939;
 }
 
 #IM {
-	margin-top:25px;
-	border:solid;
-	border-width:medium;
-	border-radius: 1em;
-	min-width:550px;
-	border-color:#06F;
+    margin-top:25px;
+    border:solid;
+    border-width:medium;
+    border-radius: 1em;
+    min-width:550px;
+    border-color:#06F;
 }
 
 #DRK {
-	margin-top:25px;
-	border:solid;
-	border-width:medium;
-	border-radius: 1em;
-	min-width:550px;
-	border-color:#F00;
+    margin-top:25px;
+    border:solid;
+    border-width:medium;
+    border-radius: 1em;
+    min-width:550px;
+    border-color:#F00;
 }
 
 #Suppenengel {
-	margin-top:25px;
-	border:solid;
-	border-width:medium;
-	border-radius: 1em;
-	border-color:#666;
-	min-width:550px;
+    margin-top:25px;
+    border:solid;
+    border-width:medium;
+    border-radius: 1em;
+    border-color:#666;
+    min-width:550px;
 }
 
 .rightAlign {
-	text-align: right;
-	float: right;
-	margin-right: 10px;
+    text-align: right;
+    float: right;
+    margin-right: 10px;
 }
 
 /* Das Div des Bremen Spendet Intros*/
 .introDiv{
-		position: absolute;
-		width: calc(100% - 20px);
-		height: 100%;
-		background-color: var(--logoGreen);
-		animation: moveUp forwards;
-		animation-duration: 1s;
-		animation-delay: 0.5s;
-		animation-timing-function: ease-out;
-		
+    position: absolute;
+    width: calc(100% - 20px);
+    height: 100%;
+    background-color: var(--logoGreen);
+    animation: moveUp forwards;
+    animation-duration: 1s;
+    animation-delay: 0.5s;
+    animation-timing-function: ease-out;
+
 }
 
 /* Das Div des Bildes des Bremen Spendet Intros*/
 .introDivImage{
-	display: block;
-	margin: 0 auto;
-	margin-top: 20%;
-	width: 200px;
-	height: 200px;
-	animation: moveUp2 forwards;
-	animation-duration: 0.7s;
-	animation-delay: 0.5s;
-	animation-timing-function: ease-out;
-	
+    display: block;
+    margin: 0 auto;
+    margin-top: 20%;
+    width: 200px;
+    height: 200px;
+    animation: moveUp2 forwards;
+    animation-duration: 0.7s;
+    animation-delay: 0.5s;
+    animation-timing-function: ease-out;
+
 }
 
 /*.introDivNO{
-		position: absolute;
-		width: calc(100% - 20px);
-		height: 100px;
-		background-color: var(--logoGreen);
-		
+position: absolute;
+width: calc(100% - 20px);
+height: 100px;
+background-color: var(--logoGreen);
+
 }
 
 .introDivImageNO{
-	display: block;
-	margin: 0 auto;
-	width: 100px;
-	height: 100px;	
+display: block;
+margin: 0 auto;
+width: 100px;
+height: 100px;	
 }*/
 
 
 /* Bild Bremen Spendet Logo Intro (nur der Kreis)*/
 .logoCircle{
-	position: absolute;
-	animation-duration: 1s;
-	
-	animation: spinShrink 0.7s forwards;
-	animation-delay: 0.5s;
-	animation-timing-function: ease;
-	
+    position: absolute;
+    animation-duration: 1s;
+
+    animation: spinShrink 0.7s forwards;
+    animation-delay: 0.5s;
+    animation-timing-function: ease;
+
 }
 
 /* Bild Bremen Spendet Logo Intro (nur der Text)*/
 .logoName{
-	animation-duration: 1s;
-	animation: shrink 0.7s forwards;
-	animation-delay: 0.5s;
-	animation-timing-function: ease;
+    animation-duration: 1s;
+    animation: shrink 0.7s forwards;
+    animation-delay: 0.5s;
+    animation-timing-function: ease;
 }
 
 @keyframes spinShrink {
-	0% { transform: rotate(0deg);}
-	100% { transform: rotate(360deg);
-	height:100px;
-	width:100px;}
+    0% { transform: rotate(0deg);}
+    100% { transform: rotate(360deg);
+        height:100px;
+        width:100px;}
 }
 
 @keyframes shrink {
-	0% { }
-	100% { 
-	height:100px;
-	width:100px;
-	}
+    0% { }
+    100% { 
+        height:100px;
+        width:100px;
+    }
 }
 
 
@@ -506,45 +510,101 @@ h5 {
 @keyframes moveUp {
     from {}
     to {height: 100px;
-		}
+    }
 }
 
 @keyframes moveUp2 {
     from {}
-	to{margin: 0 auto;
-	
-	height:100px;
-	width:100px;
-	/*margin: 0;
-	margin-left: 0%;*/*/
-		
-		
-	}
+    to{margin: 0 auto;
+
+        height:100px;
+        width:100px;
+        /*margin: 0;
+        margin-left: 0%;*/*/
+
+
+    }
 }
 
 /* Das Kontaktformular */ 
 form {
-  background-color: #eee;
-  width: 370px; /* Breite des Formulars */
-  padding: 20px;
-  border: 1px solid #8c8c8c;
+    background-color: #eee;
+    width: 370px; /* Breite des Formulars */
+    padding: 20px;
+    border: 1px solid #8c8c8c;
 }
 label { /* Beschriftung auf eigener Zeile */
-  display: block;
-  cursor: pointer; /* Mauszeiger wird zur Hand */
-  font-family: Calibri;
+    display: block;
+    cursor: pointer; /* Mauszeiger wird zur Hand */
+    font-family: Calibri;
 }
 input#absender,
 textarea {
-  width: 300px;
-  border: 1px solid #8c8c8c;
-  margin-bottom: 1em;
+    width: 300px;
+    border: 1px solid #8c8c8c;
+    margin-bottom: 1em;
 }
 textarea {
-  height: 7em;
+    height: 7em;
 }
 input:focus,
 textarea:focus {
-  background-color: #d9d9d9;
+    background-color: #d9d9d9;
 }
 
+
+.video-container {
+    position: fixed;
+    z-index: -1000;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    background-size: cover;
+}
+
+#coffee-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+#divButtom a {
+    color: white;
+}
+
+
+
+.button-wrapper {
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+    text-align: center;    
+}
+
+#spendenfiner-button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+#divContent h5 {
+    text-align: center;
+    color: white;
+}
+
+#steps h5 {
+    text-align: left;
+}
+
+#MainSentence font {
+    color: white;
+}

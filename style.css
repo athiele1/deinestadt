@@ -13,8 +13,11 @@ hierüber kann das Design aller Seiten angepasst werden.
 body, html {
     margin: 0;     
     padding: 0;
-    font-family: 'Roboto';
-    
+
+}
+
+body * {
+    font-family: "Roboto", sans-serif;
 }
 
 :root {
@@ -29,6 +32,11 @@ body, html {
 #divHead {
     margin: 0 auto;	
 }
+
+#divHead div {
+    font: "Roboto";
+}
+
 
 /* Das Div des untersten Bereich (Impressum, Kontakt etc.)*/
 #divButtom {
@@ -52,8 +60,8 @@ body, html {
     padding-top: 30px;
     padding-bottom: 60px;
     margin: 0 auto;
-    background-color: rgba(114, 230, 171, 0.6);
-    
+    background-color: rgba(0, 0, 0, 0.5);
+
 }
 
 /* Alle horizontalen Linien*/
@@ -119,7 +127,6 @@ iframe{
 /*Festlegung Schriftarten für die Schriftgrößen*/
 
 h1 {
-    font-family: Calibri;
     font-size: 34px;
     font-style: normal;
     font-variant: normal;
@@ -129,7 +136,6 @@ h1 {
 }
 
 h3 {
-    font-family: "Montserrat-light", Helvetica, Arial, sans-serif;
     font-size: 18px;
     font-style: normal;
     font-variant: normal;
@@ -138,7 +144,6 @@ h3 {
 }
 
 h4 {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 12px;
     font-style: normal;
     font-variant: normal;
@@ -148,7 +153,6 @@ h4 {
 }
 
 h5 {
-    font-family: "Montserrat-light", Helvetica, Arial, sans-serif;
     font-size: 18px;
     font-style: normal;
     font-variant: normal;
@@ -157,7 +161,6 @@ h5 {
 }
 
 #MainSentence {
-    font-family: Calibri;
     font-size: 38px;
     font-style: normal;
     font-variant: normal;
@@ -192,7 +195,6 @@ h5 {
     height: 50px;
     color: #333;
     background-color: #E9E9E9;
-    font-family: Calibri;
     font-size: 18px;
     font-weight: 700;
     transition-duration: 0.4s;
@@ -270,7 +272,6 @@ h5 {
     margin-bottom: 50px;
     text-align:  center;
     display: inline-block;
-    font-family: "Montserrat-light", Helvetica, Arial, sans-serif;
     font-weight: 550;
 }
 
@@ -282,7 +283,6 @@ h5 {
     padding-right: 30px;
     padding-left: -40px;
     position:absolute;	
-    font-family: "Montserrat-light", Helvetica, Arial, sans-serif;
     font-weight: 550;
     font-size: 13px;
     transition: 0.4s;
@@ -325,10 +325,6 @@ h5 {
 }
 
 
-#impressum {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
 /* Partnerseite fängt hier an */
 #Logo {
     height: 150px;
@@ -350,7 +346,6 @@ h5 {
     min-width:350px;
     height:150px;
     float:right;
-    font-family: Calibri;
 
 }
 #upperText p {
@@ -362,7 +357,6 @@ h5 {
     margin-left:50px;
     margin-right:50px;
     min-width:350px;
-    font-family: Calibri;
 
 }
 
@@ -492,7 +486,6 @@ form {
 label { /* Beschriftung auf eigener Zeile */
     display: block;
     cursor: pointer; /* Mauszeiger wird zur Hand */
-    font-family: Calibri;
 }
 input#absender,
 textarea {
@@ -572,4 +565,3 @@ textarea:focus {
     background-color: #19648f;
     cursor: pointer;
 }
-

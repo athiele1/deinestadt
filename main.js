@@ -16,9 +16,9 @@ var b2 = document.createElement("input");
 var b3 = document.createElement("input");*/
 
 //Die obenren Menübezeichnungen
-var buttonText = ["INITIATIVE","SPENDEN-FINDER","PARTNER"];
+var buttonText = ["INITIATIVE","SPENDEN-FINDER","SPENDEN-VERMITTLER","PARTNER","TEAM"];
 //Die Links der Buttons
-var buttonLink = ["index.html","finder.html","partner.html"];
+var buttonLink = ["index.html","finder.html","mediator.html","Partner.html","team.html"];
 
 //Die obenren Menübuttons
 var btns = [];
@@ -53,12 +53,12 @@ function addHeadMenu(container) {
 	var divHolder = document.createElement("div");
 	//divHolder.style.border = "1px solid red";
 	
-	divHolder.style.width = "500px";
+	divHolder.style.width = "900px";
 	divHolder.style.margin = "0 auto";
 	divHolder.style.marginTop = "4px";
 	divHolder.style.display = "block";
 	
-	for(var i = 0; i < 3; i++){
+	for(var i = 0; i < 5; i++){
 		
 		var btni = document.createElement("input");
 		btni.type = "button";
@@ -145,7 +145,7 @@ function addHeadMenu(container) {
 		btns.push(btni);
 		divHolder.appendChild(btni);
 		
-		if(i < 2){
+		if(i < 4){
 		 var lineI = document.createElement("span");
 		 //lineI.style.width = "2px";
 		 //lineI.innerHTML = "&nbsp";

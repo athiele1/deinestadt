@@ -1,12 +1,47 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Unbenanntes Dokument</title>
-</head>
 
+<html>
+<head>
+<link rel="shortcut icon" type="image/png" href="pics/logo_300.png"/>
+<title>Bremen spendet</title>
+<meta charset="utf-8"/>
+<link rel="stylesheet" type="text/css" href="style.css">
+<link href="https://fonts.googleapis.com/css?family=Oswald:400" rel="stylesheet"> 
+<script src="main.js"></script>
+
+</head>
 <body>
+<!--
+<div class="introDivNO"><div class="introDivImageNO"><img src="pics/logo_200.png" width="100px" height="100px"></div></div>
+-->
+<div id="divHead"></div>
+
+<div id="divContent">
+
 <h1>Danke!</h1>
-Ihre Eingabe <Eingabe> wurde an uns verschickt.
+Ihre Eingabe Nachricht wurde an uns verschickt. Wir werden sie schnellstmöglich bearbeiten. 
+
+ <form action="formmail.php" method="POST">
+ <input type="hidden" name="subject" value="Kontaktformular">
+ <input type="hidden" name="access" value="irregeheim">
+ <textarea name="Eingabe" cols="60" rows="20" wrap="PHYSICAL" id="Eingabe"></textarea>
+ <input type="submit" value="Abschicken">
+ </form>
+
+
+</div>
+
+
+
+<div id="divButtom"></div>
+
 </body>
+
+<script>
+
+addHeadMenu(document.getElementById("divHead"));;
+addButtomMenu(document.getElementById("divButtom"));;
+markButton(2);
+
+</script>
+
 </html>

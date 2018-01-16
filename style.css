@@ -13,11 +13,14 @@ hierüber kann das Design aller Seiten angepasst werden.
 body, html {
     margin: 0;     
     padding: 0;
+}
 
+::-webkit-scrollbar { 
+    display: none; 
 }
 
 body * {
-    font-family: "Roboto", sans-serif;
+    font-family: sans-serif !important;
 }
 
 :root {
@@ -30,13 +33,14 @@ body * {
 
 /* Das Div der Kopfzeile*/
 #divHead {
-    margin: 0 auto;	
+    margin: 0 auto;
+    box-shadow: 1px 1px 1px 1px;
 }
 
 #divHead div {
     font: "Roboto";
+    
 }
-
 
 /* Das Div des untersten Bereich (Impressum, Kontakt etc.)*/
 #divButtom {
@@ -61,6 +65,7 @@ body * {
     padding-bottom: 60px;
     margin: 0 auto;
     background-color: rgba(255, 255, 255, 0.5);
+    
 
 }
 
@@ -166,6 +171,7 @@ h5 {
     font-variant: normal;
     font-weight: 500;
     text-align: center;
+    color: rgba(0, 0, 0, 0.7);
 }
 
 
@@ -194,7 +200,7 @@ h5 {
     width: 100px;
     height: 50px;
     color: #333;
-    background-color: #E9E9E9;
+    background-color: #207db3;
     font-size: 18px;
     font-weight: 700;
     transition-duration: 0.4s;
@@ -295,6 +301,7 @@ h5 {
     min-width:550px;
     border-radius: 1em;
     border-color: white;
+    margin-top: 20px;
 
 }
 
@@ -540,12 +547,14 @@ textarea:focus {
     color: white;
     padding: 15px 32px;
     text-align: center;
-    
+    text-decoration-style: none;
     display: inline-block;
     font-size: 16px;
 }
 #spendenfiner-button:hover {
-	text-decoration: underline;
+	text-decoration: none;
+    background-color: #19648f;
+    cursor: pointer;
 }
 
 #divContent h5 {
@@ -561,7 +570,3 @@ textarea:focus {
     color: white;
 }
 
-#spendenfiner-button:hover {
-    background-color: #19648f;
-    cursor: pointer;
-}

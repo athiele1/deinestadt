@@ -1,102 +1,165 @@
-<html>
+<!doctype html>
+
+<html lang="en">
     <head>
-        <link rel="shortcut icon" type="image/png" href="pics/logo_300.png"/>
-        <title>Bremen spendet</title>
-        <meta name="description" content="Diese Website soll es erleichtern Sachspenden in Bremen abzugeben. Die potentiellen Abgabestellen für Spenden werden hier anschaulich präsentiert." />
-        <meta charset="utf-8"/>
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <link href="https://fonts.googleapis.com/css?family=Oswald:400" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
+    	<link rel="shortcut icon" type="image/png" href="pics/logo_300.png"/>
+    	
+         <link rel="stylesheet" type="text/css" href="style.css">
+        <meta charset="utf-8">
+        <title>Video-Page</title>
+        <meta name="description" content="Video Landing Page">
+        <meta name="author" content="Bremen spendet">
+
         <style type="text/css">
-            #divContent h3 {
-                font-family: Calibri;
+
+            *{
+                box-sizing: border-box;
             }
-            #divContent h3 {
-                font-family: Calibri;
+            
+            body{
+                margin:0;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size:1rem;
+                font-weight:normal;
+                line-height:1.5;
+                color:#333;
+                overflow-x:hidden;
             }
-            #divContent p a {
-                font-family: Calibri;
+
+            .v-header{
+                height:100vh;
+                display:flex;
+                align-items:center;
+                color:#fff;
             }
+
+            .container{
+                max-width:960px;
+                padding-left:1rem;
+                padding-right:1rem;
+                margin:auto;
+                text-align:center;
+            }
+
+            .fullscreen-video-wrap{
+                position:absolute;
+                top:0;
+                left:0;
+                width:100%;
+                height:100vh;
+                overflow:hidden;
+            }
+
+            .fullscreen-video-wrap video{
+                min-height:100%;
+                min-width:100%;
+            }
+
+            .header-overlay{
+                height:100vh;
+                position: absolute;
+                top:0;
+                left:0;
+                width:100vw;
+                z-index:1;
+                background: black;
+                opacity: 0.5;
+            }
+
+            .header-content{
+                z-index:2;
+            }
+
+            .header-content h1{
+                font-size:50px;
+                margin-bottom:0;
+            }
+
+            .header-content p{
+                font-size:1.5rem;
+                display:block;
+                padding-bottom:2rem;
+            }
+
+            .btn{
+                background: #72e6ab;
+                color: white;
+                font-size:1.2rem;
+                padding: 1rem 2rem;
+                text-decoration: none;
+                border-radius: 10px;
+            }
+
+            .btn:hover {
+                cursor: pointer;
+                background: #66cf99;
+            }
+
+            .section{
+                padding:20px 0;
+            }
+
+            .section-b{
+                background:#333;
+                color:#fff;
+            }
+
+            @media(max-width:960px){
+                .container{
+                    padding-right:3rem;
+                    padding-left:3rem;
+                }
+            }
+
+            img {
+                width: 200px;
+                height: 200px;
+                z-index: 2;
+                display: block;
+                margin: 0 auto;
+            }
+
         </style>
-        <script src="main.js"></script>
 
     </head>
+
     <body>
+        
+        <!-- Source: Traversy Media, https://www.youtube.com/watch?v=Xy3GlrddZFI&t=396s 
+             Includes styling of the elements in the sytle-section inside the head tags
+        -->
+        <header class="v-header container">
 
-
-        <!--<div class="introDiv"><div class="introDivImage"><img class="logoCircle" src="pics/logo_circle.png" width="200px" height="200px"><img class="logoName" src="pics/logo_text.png" width="200px" height="200px" style="position:absolute;"></div></div>
--->
-
-        <div id="divHead">
-            <div id="SocialLinks">
-                <p>  <a href="https://www.facebook.com/bremenspendet/" target="_blank"><img src="pics/facebook.svg" width="40" height="40"></a>
-                    <a href="https://www.instagram.com/bremenspendet/" target="_blank"><img src="pics/instagram.svg" width="40" height="40"></a></p> 
+            <div class="fullscreen-video-wrap">
+                <video src="videos/hammock.mp4" autoplay loop>
+                </video>
             </div>
-        </div>
-
-        <div id="divContent">
-            <div id="MainSentence"><font color="#207db3">Sie möchten gerne Gegenstände spenden, wissen aber nicht wohin? Wir helfen weiter!</font> </div>
-            <div id="steps">
-                <div id="step"><h5> <b>In drei einfachen Schritten zur Sachspende:</b></h5></div>
-                <div id="stepsCategory"> <img src="pics/finder/c_Kleidung_2.png" width:"50" height="50"> </div>
-                <div id="step"><h5> 1. Wählt in unserem Spenden-Finder den Artikel, den ihr spenden wollt. </h5> </div>
-                <div id="stepsLogo">  <img src="pics/PLZ.png"> </div>
-                <div id="step"><h5> 2. Gebt eure Postleitzahl ein, wenn ihr speziell in einem Stadtteil spenden wollt. 
-                    </h5> </div>
-                <div id="stepsCategory2"> <img src="pics/LOS.png"> </div>
-                <div id="step"><h5>3. Klickt auf LOS und lasst den Spenden-Finder für euch die Abgabestellen heraussuchen.</h5> 
-                </div>
+            <div class="header-overlay"></div>
+            <div class="header-content text-md-center">
+                <div class="introDivImage"><img id="logoCircle" class="logoCircle" src="pics/logo_circle.png" width="200px" height="200px"><img class="logoName" src="pics/logo_text.png" width="200px" height="200px" style="position:absolute;"></div>
+                <h1>Bremen spendet</h1>
+                <p>Du hast eine Sachspende, weißt aber nicht, an welcher Stelle sie am besten aufgehoben ist? Dann nichts wie los zu unserem Spendenfinder!</p>
+                <a  onMouseOut="outhover()" onMouseOver="hover()" href="initiative.html" class="btn">Jetzt spenden!</a>
             </div>
-            <h5> Danach müsst ihr nur noch zu einem der Standorte gehen und die Spende abgeben. <br>Probiert den Spenden-Finder doch direkt aus:</h5>
-            <div class="button-wrapper">
-                <input type="submit" id="spendenfiner-button"   onclick="window.location.href='finder.html'" value="zum SPENDEN-FINDER"></button>
-            </div>
-            <!--
-<input class="zumFinder" type="image" src="pics/zumSpendenfinder.png" style="margin:0 auto;display:block" onClick="window.location='finder.html'"/>
--->
-        </div>
-
-        <div id="divButtom"></div>
+        </header>
+        
+        <script>
+			var logoCircle = document.getElementById("logoCircle");
+			
+		
+			function hover(){
+				logoCircle.className = "logoCircleSpin";
+			}
+			
+			function outhover(){
+				logoCircle.className = "logoCircle";
+			}
+		
+		</script>
+        
+        
 
     </body>
-
-    <script>
-        addHeadMenu(document.getElementById("divHead"));;
-        addButtomMenu(document.getElementById("divButtom"));;
-        markButton(0); 
-    </script>
-
+    
+    
 </html>
-
-<!--
-<p>
-<h3> Diese Website soll es ihnen ermöglichen einfach Sachspenden in Bremen abzugeben.
-Um dies zu erreichen haben wir den Spenden-Finder entwickelt. Üben den Spenden-Finder können Sie einfach eingeben, welche Sachspenden Sie gerne abgeben würden. In einer Karte werden Ihnen dann bequem alle Standorte in Bremen angezeigt, die Ihre Spende annehmen wollen. Unsere Seite soll Ihnen also dabei helfen die schlummernden Schätze in Ihren Häusern zu finden und an die richtige Hilfsorganisation zu bringen. -->
-
-<!--Wir erhoffen uns, dass durch unsere Initiative die Sachspenden zu den populäreren Geld- und Zeitspenden aufholen können.-->
-
-
-<!--Was würden Sie spenden? Diese Frage beantworten die meisten deutschen Bürger mit der Antwort Geld. Dabei liegen in all unseren Häusern noch Gegenstände herum, die nicht mehr benutzt werden, jedoch noch über einen gewissen Wert verfügen. Oft finden diese Gegenstände aber nicht den Weg zu Spendenshops und enden nach Jahren im Müll. Gründe hierfür sind oft das fehlende Wissen über welche Gegenstände als Spende geeignet sind und wo man sie abgeben kann. Die Aktion Bremen spendet, gegründet von 7 Studenten der Universität Bremen, will sich dieser Problematik, zunächst auf das Bundesland Bremen fokussiert, annehmen. Als Ergebnis entstand die Website, auf der Sie sich gerade befinden. Durch Nutzung dieser Website werden Sie in der Lage sein einfach herauszufinden welche Gegenstände aus Ihrem Haushalt als Spende zählen und welcher Spendenshop in Ihrer Nähe diese Spenden annimmt.-->
-
-
-<!--</h3></p>-->
-
-<!--<iframe src="https://www.youtube.com/embed/VYqqo8nhQEc?rel=0" frameborder="0" allowfullscreen;	></iframe>-->
-
-
-
-
-
-<!--<h1>...deshalb Entrümpeln, und spenden!</h1> 
-
-<p><h3>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</h3></p>
-
-
-</div>
-
--->
-
-
-<!--<h1>Halte dich auf dem Laufenden...</h1>
-<h3>Diese Website ist noch im Aufbau, du kannst dich in der Zwischenzeit auf unseren Sozialen Netzwerken über diese Aktion weiter informieren:</h3>
--->

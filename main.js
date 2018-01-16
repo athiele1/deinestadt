@@ -18,7 +18,7 @@ var b3 = document.createElement("input");*/
 //Die obenren Menübezeichnungen
 var buttonText = ["INITIATIVE","SPENDEN-FINDER","SPENDEN-VERMITTLER","PARTNER","TEAM"];
 //Die Links der Buttons
-var buttonLink = ["index.html","finder.html","mediator.html","Partner.html","team.html"];
+var buttonLink = ["initiative.html","finder.html","mediator.html","Partner.html","team.html"];
 
 //Die obenren Menübuttons
 var btns = [];

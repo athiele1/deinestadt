@@ -45,6 +45,42 @@
     text-decoration: none;
     cursor: pointer;
 }
+
+a.info
+{
+position:relative;
+z-index:1;
+background-color:#ff0;
+color:#2D006B;
+text-decoration:none;
+}
+
+a.info:hover
+{
+z-index:2;
+background-color:#C0FF3E;
+}
+
+a.info span
+{
+display: none;
+}
+
+a.info:hover span
+{
+display:block;
+position:absolute;
+top:2em;
+left:2em;
+width:30em;
+border:1px solid #12127D;
+background-color:#fc0;
+color:#000;
+text-align: center;
+padding: 5px;
+font-size: 0.8em;
+} 
+
 </style>
 </head>
 <body>
@@ -58,7 +94,7 @@
 <h1>Seite zur Vermittlung von Spenden</h1>
 
 
-
+<a class="info" href="#">  <img src="pics/info.png" ><span>Der Spenden-Vermittler befindet sich noch in der Testphase. Eingestellte Spenden werden noch nicht gespeichert. Um die Funktion zu demonstrieren, können Sie aber ohne Probleme bereits Spenden erstellen. Die komplette Speicherung der Daten erfolgt in der Zukunft.</span></a> <br><br>
 
 <button id="myBtn">Spende einstellen</button>
 
@@ -74,7 +110,7 @@
  <textarea name="Description" cols="60" rows="20" wrap="PHYSICAL" id="Description"></textarea>
 <label for="Email"><b>E-Mail:</b></label><br>
 <input type="text" id="Email" name="Email"><br><br>
-<button id="confirm">Einstellen</button> <button id="close">Abbrechen</button>
+<button id="confirm">Einstellen</button> <button id="confirm">Abbrechen</button>
 
 
   </div>
@@ -101,7 +137,7 @@ var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
 
 
-var con = document.getElementsByClassName("confirm");
+var con = document.getElementById("confirm");
 
 
 btn.onclick = function() {
@@ -113,7 +149,7 @@ span.onclick = function() {
     modal.style.display = "none";
 }
 
-con.onClick = function() {
+con.onclick = function() {
 	modal.style.display = "none";
 }
 	

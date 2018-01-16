@@ -50,7 +50,6 @@ a.info
 {
 position:relative;
 z-index:1;
-background-color:#ff0;
 color:#2D006B;
 text-decoration:none;
 }
@@ -81,6 +80,34 @@ padding: 5px;
 font-size: 0.8em;
 } 
 
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+button {
+	 background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
 </style>
 </head>
 <body>
@@ -97,11 +124,13 @@ font-size: 0.8em;
 <a class="info" href="#">  <img src="pics/info.png" ><span>Der Spenden-Vermittler befindet sich noch in der Testphase. Eingestellte Spenden werden noch nicht gespeichert. Um die Funktion zu demonstrieren, können Sie aber ohne Probleme bereits Spenden erstellen. Die komplette Speicherung der Daten erfolgt in der Zukunft.</span></a> <br><br>
 
 <button id="myBtn">Spende einstellen</button>
-
-
+<p>&nbsp;</p>
+<p><br>
+  
+</p>
 <div id="myModal" class="modal">
-
-
+  
+  
   <div class="modal-content">
     <span class="close">&times;</span>
      <label for="Article"><b>Artikel:</b></label><br>
@@ -116,6 +145,19 @@ font-size: 0.8em;
   </div>
 
 </div>
+
+<table>
+  <tr>
+    <th>Artikel</th>
+    <th>Beschreibung</th>
+    <th>Email</th>
+  </tr>
+  <tr>
+    <td>Schrank</td>
+    <td>Der Artikel ist so gut wie neu. Er weist leichte Gebrauchspuren am Unterboden auf</td>
+    <td>beispiel@beispiel.de</td>
+  </tr>
+  </table>
 
 </div>
 

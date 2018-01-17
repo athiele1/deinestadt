@@ -45,8 +45,8 @@ function addHeadMenu(container) {
 	var divUpMenu = document.createElement("div");
 	//divUpMenu.style.width = "1242px";
 	divUpMenu.style.height = "50px";
-	divUpMenu.style.borderTop = "1px solid grey";
-	divUpMenu.style.borderBottom = "1px solid grey";
+	divUpMenu.style.borderTop = "1px solid #72e6ab";
+    divUpMenu.style.borderBottom = "1px solid #72e6ab";
 	divUpMenu.style.backgroundColor = "white";
     
 	//divUpMenu.style.boxShadow =  "0px 10px 10px grey";
@@ -237,8 +237,10 @@ function addButtomMenu(container2) {
 	container2.appendChild(horizontalLine);
 	
 	
-	var divMenu = document.createElement("div") ;
+	var divMenu = document.createElement("footer") ;
 	divMenu.id = "divBottomMenu";
+    divMenu.style.position = "fixed";
+    divMenu.style.bottom = "0";
 	
 	 
 	var h4 = document.createElement("h4");

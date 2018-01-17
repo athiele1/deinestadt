@@ -33,13 +33,13 @@ body * {
 
 /* Das Div der Kopfzeile*/
 #divHead {
+    position: fixed;
+    width: 100%;
     margin: 0 auto;
-    box-shadow: 1px 1px 1px 1px;
 }
 
 #divHead div {
     font: "Roboto";
-    
 }
 
 /* Das Div des untersten Bereich (Impressum, Kontakt etc.)*/
@@ -65,8 +65,6 @@ body * {
     padding-bottom: 60px;
     margin: 0 auto;
     background-color: rgba(255, 255, 255, 0.5);
-    
-
 }
 
 /* Alle horizontalen Linien*/
@@ -369,6 +367,7 @@ h5 {
 
 
 #ASB {
+    margin-top: 50px;
     border:solid;
     border-width:medium;
     min-width:550px;
@@ -508,26 +507,6 @@ textarea:focus {
     background-color: #d9d9d9;
 }
 
-
-.video-container {
-    position: fixed;
-    z-index: -1000;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    top: 0;
-    left: 0;
-    background-size: cover;
-}
-
-#coffee-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    min-width: 100%;
-    min-height: 100%;
-}
-
 #divButtom a {
     color: white;
 }
@@ -569,4 +548,11 @@ textarea:focus {
 #MainSentence font {
     color: white;
 }
+
+
+#MainSentence {
+    margin-top: 40px;
+}
+
+
 

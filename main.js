@@ -16,9 +16,9 @@ var b2 = document.createElement("input");
 var b3 = document.createElement("input");*/
 
 //Die obenren Menübezeichnungen
-var buttonText = ["INITIATIVE","SPENDEN-FINDER","SPENDEN-SUCHE","PARTNER","TEAM","DATENSAMMLUNG"];
+var buttonText = ["INITIATIVE","SPENDEN-FINDER","SPENDEN-SUCHE","PARTNER","TEAM","DATENSAMMLUNG","E"];
 //Die Links der Buttons
-var buttonLink = ["initiative.html","finder.html","mediator.html","Partner.html","team.html","library.html"];
+var buttonLink = ["initiative.html","finder.html","mediator.html","Partner.html","team.html","library.html","facilities.html"];
 
 //Die obenren Menübuttons
 var btns = [];
@@ -59,7 +59,7 @@ function addHeadMenu(container) {
     divHolder.style.marginTop = "4px";
     divHolder.style.display = "block";
 
-    for(var i = 0; i < 6; i++){
+    for(var i = 0; i < buttonText.length; i++){
 
         var btni = document.createElement("input");
         btni.type = "button";
@@ -290,4 +290,389 @@ function deselectButton(spani){
 }
 */
 
+
+
+	//Die Google Map
+    var infowindow,service,map;
+	
+	//Beinhaltet für jede Kategorie ein true/false, je nachdem ob es ausgewählt wurde
+	var kategorien = [];
+	
+	//Eine Liste aller google maps marker
+	var markers = [];
+	
+	
+	//Eine Liste von Listen, welche für jeden Marker dessen Attribute  speichert ([name, bGrad, lGrad, adresse, spendenAnnahmen, spendenSpecials])
+	var markerContent = [];
+	
+
+	//Passt die Kategorien Bilder Pfade an
+	function pathLabelToPath(katPath){
+		return 	"pics/finder/c_" + katPath + ".png";
+		
+	}
+	
+		//Alle Kategorien
+	var katLabels = ["Bücher","Elektronik","Möbel","Spielzeug","Haushaltswaren","Kleidung","Lebensmittel","Sonstiges"];
+	
+	//Die Pfade zu den Bildern der Kategorie (ohne Dateiendung)
+	var katPaths = ["buch","elektronik","moebel","spielzeug","haushalt","kleidung","lebensmittel","sonstige"];
+	
+	//Passt die Pfade an
+	for(var i = 0; i < katPaths.length; i++){
+		katPaths[i] = 	pathLabelToPath(katPaths[i]);		
+	}
+
+	
+	
+	
+	
+//Sobald über Katg-Bild im Popup Fenster eines Markers gehovert wird
+	function hoverKatSymbol(event1,img,specials){
+		
+		if(specials.length > 0){
+			var divi = document.createElement("div");
+			var map = document.getElementById("map");
+			
+			divi.className = "katSymbolDiv";
+			divi.id = "katSymbolDivId";
+			
+			
+			
+			//Relative Pos. zum Parent Node: https://stackoverflow.com/questions/26423335/elements-coordinates-relative-to-its-parent
+			
+			var parentPos = map.getBoundingClientRect(),
+ 		  	 childrenPos = img.getBoundingClientRect(),
+   			 relativePos = {};
+
+			relativePos.top = childrenPos.top - parentPos.top,
+			relativePos.left = childrenPos.left - parentPos.left;
+			
+			divi.style.top = relativePos.top;
+			divi.style.left = relativePos.left + 35 + "px";
+			
+			
+			var liste = document.createElement("ul");
+			
+			for(i in specials){
+					var listElem = document.createElement("li");
+					listElem.appendChild(document.createTextNode(specials[i]));
+					liste.appendChild(listElem);			
+			}
+			
+			
+			
+			divi.appendChild(liste);
+			
+			
+			
+			
+			map.appendChild(divi);
+			
+		}
+	}
+	//Sobald über Katg-Bild im Popup Fenster eines Markers rausgehovert wird
+	function hoverOutKatSymbol(){
+		
+		var divi = document.getElementById("katSymbolDivId");
+		var map = document.getElementById("map");
+		
+		if(divi != null){
+			map.removeChild(divi);
+		}
+		
+		
+	}
+	
+	
+	
+	
+	//Anleitungen/hilfstools:
+	
+	//https://developers.google.com/places/place-id#find-id
+	//https://developers.google.com/maps/documentation/javascript/examples/place-details?hl=de
+	
+	//var labeli = 1;
+	
+	
+	//Fügt eine Einrichtungstandort hinzu
+	function addPlace3(name, bGrad, lGrad, adresse, spendenAnnahmen, spendenSpecials, url){
+		
+		var pos = {lat: bGrad, lng: lGrad};
+	
+		var marker = new google.maps.Marker({
+             map: map,
+             position: pos,
+			// label: labeli + "",
+			 animation: google.maps.Animation.DROP
+        });
+			
+		markers.push(marker);
+		
+		//labeli++;
+		
+		
+		markerContent.push([name, bGrad, lGrad, adresse, spendenAnnahmen, spendenSpecials, url]); 
+				
+		
+      	google.maps.event.addListener(marker, 'click', function() {
+			var num = 0;
+			
+			for(g in markers){
+				if(markers[g] == this){
+					num = g;
+					break;
+				}
+			}
+		
+		
+			//markerContent[num][0] == name
+			var content = '<div><strong>' + markerContent[num][0] + '</strong><br>';
+			
+			//markerContent[num][4] == spendenAnnahmen
+			var ic = 0;
+			for(h in markerContent[num][4]){
+			
+				
+				for(var i = 0; i < katLabels.length; i++){
+										
+					
+					if(markerContent[num][4][h] === katLabels[i]){
+						//markerContent[num][5] == spendenSpecials
+						
+						var overString = "";
+						var specialI = markerContent[num][5][ic];
+						
+						
+						
+						if(specialI != null){
+							ic++;
+							var specStringI = "";
+						
+							for(var j = 0; j < specialI.length; j++){
+								specStringI = specStringI + '\'' + specialI[j] + '\'';
+								if(j < specialI.length-1){
+									specStringI = specStringI + ',';
+								}
+							
+							}
+							
+							
+							overString = 'onmouseout="hoverOutKatSymbol()" onmouseover="hoverKatSymbol(event,this,['+specStringI+']);"';
+						}
+						
+						
+						
+						content += '<img  src="' + katPaths[i] + '" width = "30px" name="'+ katLabels[i]  + '" '+overString+'>'	
+					
+					}
+					
+				}
+				
+			}
+			
+			
+			//markerContent[num][0] == adresse, markerContent[num][6] == url
+			content += '<br>' + markerContent[num][3] + '</div><div class="zurWebsiteDiv">&#x2192<a target="_blank" href="'+ markerContent[num][6] +'">Zur Website</a></div>';
+			
+			
+			
+           infowindow.setContent(content);
+              infowindow.open(map, this);
+			 
+        });
+	}
+	
+	var p_c = 0;
+	function addPlace(name, place_id, spendenAnnahmen,spendenSpecials, url){
+		
+		 window.setTimeout(function() {
+			
+			addPlace2(name, place_id, spendenAnnahmen,spendenSpecials, url);
+		 }, p_c*200);
+
+		p_c++;
+	}
+	
+	//Fügt eine Einrichtungstandort hinzu
+	function addPlace2(name, place_id, spendenAnnahmen,spendenSpecials, url){
+			
+		service.getDetails({
+          placeId: place_id
+        }, function(place, status) {
+          //if (status === google.maps.places.PlacesServiceStatus.OK) {
+			
+			var lng = place.geometry.location.lng();
+			var lat = place.geometry.location.lat();
+			var nam = place.name;
+			
+			if(name != null){
+				nam = name;	
+			}
+			
+			addPlace3(nam, lat, lng,place.formatted_address.split(",")[0],spendenAnnahmen,spendenSpecials,url);
+			
+			
+			  
+		  /*}else{
+			alert("Place " + name + " konnte nicht hinzugefügt werden, überprüfe die Place ID! " + place_id)
+		  }*/
+		});	  
+		
+	}
+	
+	
+	/*function addPlace(place_id, spendenAnnahmen){
+			
+		addPlace3(null,place_id, spendenAnnahmen);
+		
+	}*/
+	
+	
+	//Updated die Marker (Falls zum Beispiel andere Kategorien ausgewählt wurden + LOS)
+	function updateMarkers(){
+		infowindow.close();
+		
+		var choosedKatg = [];
+		
+		for(h in katLabels){
+			if(kategorien[h]){
+				choosedKatg.push(katLabels[h]);
+			}
+		}
+		
+		
+		if(choosedKatg.length == 0){
+			choosedKatg = katLabels;
+		}
+		
+		
+		var canStayList = [];
+		
+		
+		for(i in markers){
+			var canStay = false;
+			
+			var markerI = markers[i];
+			var markKat = markerContent[i][4];
+			
+			for(j in markKat){
+				
+				for(k in choosedKatg){
+					if(markKat[j] === choosedKatg[k]){
+						canStay = true;
+						break;	
+					}
+					
+				}
+								
+			}
+			
+			if(canStay){
+					canStayList.push(true);
+			}else{
+					canStayList.push(false);
+			}
+			
+			
+		}	
+		
+		for(l in canStayList){
+			
+			
+			changeMap(markers[l], canStayList[l], l*200+1)
+			
+		}
+		
+			
+	}
+	//Fügt einen Marker getimed zur Map hinzu
+	function changeMap(marker, bool, time){
+		
+		window.setTimeout(function() {
+				if(bool && marker.getMap() != null){
+					
+				}else{
+					marker.setAnimation(google.maps.Animation.DROP);	
+					marker.setMap(bool ? map : null);	
+				}
+				
+		}, time);
+		
+	}
+	
+	
+	/*function addPlace(place_id){
+		service.getDetails({
+          placeId: place_id
+        }, function(place, status) {
+          if (status === google.maps.places.PlacesServiceStatus.OK) {
+            
+			var marker = new google.maps.Marker({
+              map: map,
+              position: place.geometry.location
+            });
+			
+			
+            google.maps.event.addListener(marker, 'click', function() {
+              infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+                'Place ID: ' + place.place_id + '<br>' +
+                place.formatted_address + '</div>');
+              infowindow.open(map, this);
+         	 });
+       	 }
+        }
+		);
+
+		
+	}*/
+	
+    //Zur Initierung der Google Map
+    function initMap() {
+      var bremen = {lat: 53.076320, lng: 8.808581};
+	 
+		
+
+	  
+      map = new google.maps.Map(document.getElementById('map'), {
+      		zoom: 12,
+			minZoom: 10,
+            center: bremen
+       });
+	   
+	   
+	   infowindow = new google.maps.InfoWindow();
+	   service = new google.maps.places.PlacesService(map);
+	   
+     /*  var marker = new google.maps.Marker({
+           position: bremen,
+           map: map
+       });*/
+	  
+addPlace('Verein für Innere Mission in Bremen','ChIJhW9rIQ0osUcRrE3kNWcxOJ0',['Kleidung'],[['Damen-und Herrenmode','Kinderbekleidung','Schuhe']],'https://www.inneremission-bremen.de/startseite/');
+addPlace('ProShop Bremen','ChIJ89bxYH4nsUcREksgXBw3boo',['Haushaltswaren','Spielzeug','Bücher','Sonstiges'],[[],[],[],['Textilien']],'http://www.projob-bremen.de/index.php?id=14');
+addPlace('ProJob Bremen','ChIJ164EEyoosUcRy6I04KPS6ho',['Möbel','Haushaltswaren'],[[],[]],'http://www.projob-bremen.de/index.php?id=18');
+addPlace('Cafe Papagei','ChIJ-3so-BEosUcRPCYq-g-sjY0',['Lebensmittel'],[['Kaffee','Tee','Kekse']],'https://www.inneremission-bremen.de/wohnungslosenhilfe/tagestreffs/cafe_papagei/');
+addPlace('frauenzimmer','ChIJa5aoEBYosUcR7-oPi5SZBVM',['Lebensmittel'],[['Kaffee','Tee','Kekse']],'https://www.inneremission-bremen.de/wohnungslosenhilfe/tagestreffs/frauenzimmer/');
+addPlace('Bahnhofsmission Bremen','ChIJPW9aWBIosUcRIWbrsm-T2Vo',['Lebensmittel'],[['Kaffee']],'http://www.bahnhofsmission-bremen.de/');
+addPlace('Deutsches Rotes Kreuz Kreisverband Bremen e.V.','ChIJMzOAQ4QnsUcR1QxfNKM8QQU',['Kleidung','Bücher'],[[],[]],'http://www.drk-bremen.de/startseite.html');
+addPlace('Deutsches Rotes Kreuz Kreisverband Bremen e.V.','ChIJySe4uUnTtkcRAX3DZkNRfs8',['Kleidung'],[[]],'http://www.drk-bremen.de/startseite.html');
+addPlace('Die Bremer Suppenengel','ChIJdVHLMOPXsEcR6frrixM3ILg',['Lebensmittel','Sonstiges'],[['Nudeln','Hülsenfrüchte','Kaffee','Gewürze','Konserven'],['Schlafsäcke','Rucksäcke','Isomatten','Büromaterial','gebrauchte Smartphones','Seife','Zahnpasta','Pflaster','Binden']],'http://www.suppenengel.de/');
+addPlace('SOS Kinderdorf','ChIJ1e0jeh8osUcRYXT6fGKqtlM',['Bücher','Spielzeug','Kleidung'],[['Kinderbücher'],['Kinderspielzeug'],['Kinderkleidung']],'http://www.sos-kinderdorf.de/kinderdorf-bremen');
+addPlace('SOS Kinderdorf','ChIJIT1y7-bXsEcRlL2yIBkmK6c',['Bücher','Spielzeug','Kleidung'],[['Kinderbücher'],['Kinderspielzeug'],['Kinderkleidung']],'http://www.sos-kinderdorf.de/kinderdorf-bremen');
+addPlace('SOS Kinderdorf','ChIJC2LtuasssUcRfK7QtJZ95i8',['Bücher','Spielzeug','Kleidung'],[['Kinderbücher'],['Kinderspielzeug'],['Kinderkleidung']],'http://www.sos-kinderdorf.de/kinderdorf-bremen');
+addPlace('MöbellagerNord','ChIJFR1C4a4ssUcRA4l8ZIS8PZg',['Möbel','Haushaltswaren','Elektronik'],[[],['Geschirr','Gläser','Küchenartikel','Lampen','Textilien'],['Kleingeräte']],'https://www.moebellagernord.de/');
+
+addPlace('Recycling-Hof Huchting','ChIJ2fvAOyTWsEcRVzU5p3SESac',['Elektronik','Sonstiges'],[['Computer','Stereoanlagen','Büromachinen','Radio','Heizung','Lüftung'],['Bauelemente','Bauteile','Sanitärartikel','Metalle']],'http://gri-bremen.de/recycling-hoefe/huchting/');
+addPlace('Recycling-Hof Findorff','ChIJS7gsNVwosUcR9Bo7JzJFGJY',['Elektronik','Haushaltswaren','Bücher','Sonstiges'],[['Computer','Radio','Toaster','Kaffeemachinen'],['Geschirr','Besteck','Schallplatten','Lampen','Dekorationsartikel'],[],['Metalle','Textilien']],'http://gri-bremen.de/recycling-hoefe/findorff/');
+addPlace('Recycling-Hof Hemelingen','ChIJf7Lbr4HYsEcR2Xuf9waqeAc',['Elektronik','Haushaltswaren'],[['Waschmaschinen','Kühl-und Gefrierschränke','Herde','Mikrowellenherde','Nähmaschinen'],['Radios','Fernseher','Computer','Küchengeräte']],'http://gri-bremen.de/recycling-hoefe/hemelingen/');
+addPlace('Möbelhaus Oslebshausen','ChIJs-mssGApsUcRfqGHXBnLcGA',['Möbel','Haushaltswaren','Kleidung','Bücher','Sonstiges'],[[],[],[],[],['Wohnaccessoires']],'http://gri-bremen.de/mobelhallen/oslebshausen/');
+addPlace('Kaufhaus Hemelingen','ChIJG0WLFn4nsUcRzZnb6Pr6nO8',['Möbel','Elektronik','Kleidung','Bücher','Spielzeug','Haushaltswaren','Sonstiges'],[[],[],[],[],[],[],['Wohnaccessoires','Bilder']],'http://gri-bremen.de/mobelhallen/kaufhaus-hemelingen/');
+addPlace('Möbelhalle Kattenturm Mitte','ChIJNf_gtyTYsEcR6wO9qF5qo4I',['Möbel','Kleidung','Bücher','Spielzeug','Haushaltswaren','Sonstiges'],[[],[],[],[],['Haushaltsgeräte'],['Wohnaccessoires','Bilder']],'http://gri-bremen.de/mobelhallen/kattenturm-mitte/');
+
+
+
+		
+
+     }
 

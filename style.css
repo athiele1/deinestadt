@@ -431,6 +431,24 @@ h5 {
     min-width:550px;
 }
 
+#SOS {
+    margin-top:25px;
+    border:solid;
+    border-width:medium;
+    border-radius: 1em;
+    border-color:#00e200;
+    min-width:550px;
+}
+
+#GRI {
+    margin-top:25px;
+    border:solid;
+    border-width:medium;
+    border-radius: 1em;
+    border-color:#666;
+    min-width:550px;
+}
+
 .borderDiv{
 		 border:solid red thick;
    		 min-width:320px;

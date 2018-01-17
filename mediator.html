@@ -203,11 +203,18 @@ clo.onclick = function() {
 }
 
 con.onclick = function() {
+	if( document.getElementById("Article").value == '' || document.getElementById("Description").value == '' || document.getElementById("Email").value == ''){
+		 alert('Bitte füllen Sie alle Felder aus');
+		 return false;
+	}
+	else  {
 	modal.style.display = "none";
 	document.getElementById("field1").textContent = document.getElementById("Article").value;
 	document.getElementById("field2").textContent = document.getElementById("Description").value;
 	document.getElementById("field3").textContent = document.getElementById("Email").value;
+	}
 }
+
 	
 
 window.onclick = function(event) {

@@ -45,8 +45,8 @@ function addHeadMenu(container) {
     var divUpMenu = document.createElement("div");
     //divUpMenu.style.width = "1242px";
     divUpMenu.style.height = "50px";
-    divUpMenu.style.borderTop = "1px solid #72e6ab";
-    divUpMenu.style.borderBottom = "1px solid #72e6ab";
+    divUpMenu.style.borderTop = "3px solid white";
+    divUpMenu.style.borderBottom = "3px solid #72e6ab";
     divUpMenu.style.backgroundColor = "white";
 
     //divUpMenu.style.boxShadow =  "0px 10px 10px grey";

@@ -73,7 +73,7 @@ top:2em;
 left:2em;
 width:30em;
 border:1px solid #12127D;
-background-color:#fc0;
+background-color:#FFFFFF;
 color:#000;
 text-align: center;
 padding: 5px;
@@ -118,12 +118,12 @@ button {
 
 <div id="divContent">
 
-<h1>Seite zur Vermittlung von Spenden</h1>
+<h1>Hier können Organisationen gezielt nach Sachspenden suchen</h1>
 
 
-<a class="info" href="#">  <img src="pics/info.png" ><span>Der Spenden-Vermittler befindet sich noch in der Testphase. Eingestellte Spenden werden noch nicht gespeichert. Um die Funktion zu demonstrieren, können Sie aber ohne Probleme bereits Spenden erstellen. Die komplette Speicherung der Daten erfolgt in der Zukunft.</span></a> <br><br>
+<a class="info" href="#">  <img src="pics/info.png" ><span>Der Spenden-Vermittler befindet sich noch in der Testphase bis die Authentifizierung der Organisationen abgeschlossen ist.</span></a> <br><br>
 
-<button id="myBtn">Spende einstellen</button>
+<button id="myBtn">Gesuchte Spende einstellen</button>
 <p>&nbsp;</p>
 <p><br>
   
@@ -134,29 +134,34 @@ button {
   <div class="modal-content">
     <span class="close">&times;</span>
      <label for="Article"><b>Artikel:</b></label><br>
-<input type="text" id="Article" name="Article"><br><br>
+<input type="text" id="Article" name="Article" required><br><br>
  <label for="Description"><b>Beschreibung:</b></label><br>
- <textarea name="Description" cols="60" rows="20" wrap="PHYSICAL" id="Description"></textarea>
-<label for="Email"><b>E-Mail:</b></label><br>
-<input type="text" id="Email" name="Email"><br><br>
-<button id="confirm">Einstellen</button> <button id="confirm">Abbrechen</button>
+ <textarea name="Description" cols="60" rows="20" wrap="PHYSICAL" id="Description" required></textarea>
+<label for="Email"><b>Kontaktdaten</b></label><br>
+<input type="text" id="Email" name="Email" required><br><br>
+<button id="confirm">Einstellen</button> <button id="close">Abbrechen</button>
 
 
   </div>
 
 </div>
 
-<table>
+<table id="mytable">
   <tr>
     <th>Artikel</th>
     <th>Beschreibung</th>
-    <th>Email</th>
+    <th>Kontaktdaten</th>
   </tr>
   <tr>
-    <td>Schrank</td>
-    <td>Der Artikel ist so gut wie neu. Er weist leichte Gebrauchspuren am Unterboden auf</td>
-    <td>beispiel@beispiel.de</td>
+    <td>Tische & Stühle</td>
+    <td> Das Mobiliar wird zum Aufbau einer Schule benötigt.</td>
+    <td> Beispielorganisation Erreichbar unter beispiel@beispiel.de</td>
   </tr>
+  <tr>
+   <td> <span contentEditable="true" id="field1"> </td>
+    <td> <span contentEditable="true" id="field2"> </td>
+     <td> <span contentEditable="true" id="field3"> </td>
+      </tr>
   </table>
 
 </div>
@@ -178,6 +183,8 @@ var btn = document.getElementById("myBtn");
 
 var span = document.getElementsByClassName("close")[0];
 
+var clo = document.getElementById("close");
+
 
 var con = document.getElementById("confirm");
 
@@ -191,8 +198,15 @@ span.onclick = function() {
     modal.style.display = "none";
 }
 
+clo.onclick = function() {
+    modal.style.display = "none";
+}
+
 con.onclick = function() {
 	modal.style.display = "none";
+	document.getElementById("field1").textContent = document.getElementById("Article").value;
+	document.getElementById("field2").textContent = document.getElementById("Description").value;
+	document.getElementById("field3").textContent = document.getElementById("Email").value;
 }
 	
 

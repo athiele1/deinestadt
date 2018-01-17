@@ -18,7 +18,7 @@
 <div id="divContent">
 
 <h1>Danke!</h1>
-Ihre Eingabe Nachricht wurde an uns verschickt. Wir werden sie schnellstmöglich bearbeiten. 
+<h1>Ihre Eingabe Nachricht wurde an uns verschickt. Wir werden sie schnellstmöglich bearbeiten.<h1> 
 
   <form action="formmail.php" method="POST">
  <input type="hidden" name="subject" value="Kontaktformular">

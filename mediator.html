@@ -109,7 +109,7 @@ button {
     cursor: pointer;
 }
 
-.vorschau {
+.vorschau, .ergebnis {
 	height: 75px;
 	border: 1px solid #000;
 	margin: 10px 5px 0 0;
@@ -231,7 +231,6 @@ con.onclick = function() {
 	document.getElementById("field1").textContent = document.getElementById("Article").value;
 	document.getElementById("field2").textContent = document.getElementById("Description").value;
 	document.getElementById("field3").textContent = document.getElementById("Email").value;
-	document.getElementById("Picture").appendChild(document.getElementById("Bild").src);
 	}
 }
 
@@ -256,13 +255,17 @@ window.onclick = function(event) {
 					return function (e) {
 						// erzeuge Thumbnails.
 						var vorschau = document.createElement('img');
+						var ergebnis = document.createElement('img');
 						vorschau.className = 'vorschau';
 						vorschau.src = e.target.result;
 						vorschau.title = theFile.name;
-						document.getElementById('list')
-							.insertBefore(vorschau, null);
-							document.getElementById('Picture')
-							.insertBefore(vorschau, null);
+						ergebnis.className = 'ergebnis';
+						ergebnis.src = e.target.result;
+						ergebnis.title = theFile.name;
+						document.getElementById('list').insertBefore(vorschau, null);
+						document.getElementById('Picture').insertBefore(ergebnis, null);
+						
+							
 					};
 				})(f);
 				// Bilder als Data URL auslesen.
@@ -272,6 +275,7 @@ window.onclick = function(event) {
 		// Auf neue Auswahl reagieren und gegebenenfalls Funktion dateiauswahl neu ausführen.
 	document.getElementById('files')
 		.addEventListener('change', dateiauswahl, false);
+		
 
 addHeadMenu(document.getElementById("divHead"));;
 addButtomMenu(document.getElementById("divButtom"));;

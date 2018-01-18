@@ -32,14 +32,13 @@ body * {
 }
 
 
-
-
 /* Das Div der Kopfzeile*/
 #divHead {
     position: fixed;
     width: 100%;
     margin: 0 auto;
 }
+
 
 #divHead div {
     font: "Roboto";
@@ -222,9 +221,6 @@ h5 {
     background-color: #19648f;
 }
 
-.losbutton1:active{
-    background-color: #063;
-}
 
 
 .topButtonClicked {

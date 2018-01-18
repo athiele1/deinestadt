@@ -54,7 +54,7 @@ function addHeadMenu(container) {
     var divHolder = document.createElement("div");
     //divHolder.style.border = "1px solid red";
 
-    divHolder.style.width = "1050px";
+    divHolder.style.width = "1100px";
     divHolder.style.margin = "0 auto";
     divHolder.style.marginTop = "4px";
     divHolder.style.display = "block";

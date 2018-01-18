@@ -108,6 +108,17 @@ button {
     margin: 4px 2px;
     cursor: pointer;
 }
+
+.vorschau {
+	height: 75px;
+	border: 1px solid #000;
+	margin: 10px 5px 0 0;
+}
+
+output {
+	display: block;
+}
+
 </style>
 </head>
 <body>
@@ -133,6 +144,7 @@ button {
   
   <div class="modal-content">
     <span class="close">&times;</span>
+  
      <label for="Article"><b>Artikel:</b></label><br>
 <input type="text" id="Article" name="Article" required><br><br>
  <label for="Description"><b>Beschreibung:</b></label><br>
@@ -140,7 +152,8 @@ button {
 <label for="Email"><b>Kontaktdaten:</b></label><br>
 <input type="text" id="Email" name="Email" required><br><br>
 <label for="Image"><b>Foto hochladen:</b></label><br>
-<input type="file" id="Bild" accept=".jpg, .jpeg, .png" multiple > <br><br>
+	<input type="file" id="files" name="files[]" multiple />
+	<output id="list"></output> <br><br>
 <button id="confirm">Einstellen</button> <button id="close">Abbrechen</button>
 
 
@@ -165,7 +178,7 @@ button {
    <td> <span contentEditable="true" id="field1"> </td>
     <td> <span contentEditable="true" id="field2"> </td>
      <td> <span contentEditable="true" id="field3"> </td>
-     <td> <span contentEditable="true" id="field4"> </td>
+     <td> <img id="Picture"> </td>
       </tr>
   </table>
 
@@ -193,8 +206,6 @@ var clo = document.getElementById("close");
 
 var con = document.getElementById("confirm");
 
-var vorschau = document.createElement('img');
-
 
 btn.onclick = function() {
     modal.style.display = "block";
@@ -210,8 +221,9 @@ clo.onclick = function() {
 }
 
 con.onclick = function() {
+	
 	if( document.getElementById("Article").value == '' || document.getElementById("Description").value == '' || document.getElementById("Email").value == ''){
-		 alert('Bitte füllen Sie alle Felder aus');
+		 alert('Bitte füllen Sie alle Textfelder aus');
 		 return false;
 	}
 	else  {
@@ -219,7 +231,7 @@ con.onclick = function() {
 	document.getElementById("field1").textContent = document.getElementById("Article").value;
 	document.getElementById("field2").textContent = document.getElementById("Description").value;
 	document.getElementById("field3").textContent = document.getElementById("Email").value;
-	document.getElementById('field4').insertBefore(document.getElementById("Email"), null);
+	document.getElementById("Picture").appendChild(document.getElementById("Bild").src);
 	}
 }
 
@@ -230,6 +242,36 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+
+	function dateiauswahl(evt) {
+			var dateien = evt.target.files; // FileList object
+			// Auslesen der gespeicherten Dateien durch Schleife
+			for (var i = 0, f; f = dateien[i]; i++) {
+				// nur Bild-Dateien
+				if (!f.type.match('image.*')) {
+					continue;
+				}
+				var reader = new FileReader();
+				reader.onload = (function (theFile) {
+					return function (e) {
+						// erzeuge Thumbnails.
+						var vorschau = document.createElement('img');
+						vorschau.className = 'vorschau';
+						vorschau.src = e.target.result;
+						vorschau.title = theFile.name;
+						document.getElementById('list')
+							.insertBefore(vorschau, null);
+							document.getElementById('Picture')
+							.insertBefore(vorschau, null);
+					};
+				})(f);
+				// Bilder als Data URL auslesen.
+				reader.readAsDataURL(f);
+			}
+		}
+		// Auf neue Auswahl reagieren und gegebenenfalls Funktion dateiauswahl neu ausführen.
+	document.getElementById('files')
+		.addEventListener('change', dateiauswahl, false);
 
 addHeadMenu(document.getElementById("divHead"));;
 addButtomMenu(document.getElementById("divButtom"));;

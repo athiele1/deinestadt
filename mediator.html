@@ -137,8 +137,10 @@ button {
 <input type="text" id="Article" name="Article" required><br><br>
  <label for="Description"><b>Beschreibung:</b></label><br>
  <textarea name="Description" cols="60" rows="20" wrap="PHYSICAL" id="Description" required></textarea>
-<label for="Email"><b>Kontaktdaten</b></label><br>
+<label for="Email"><b>Kontaktdaten:</b></label><br>
 <input type="text" id="Email" name="Email" required><br><br>
+<label for="Image"><b>Foto hochladen:</b></label><br>
+<input type="file" id="Bild" accept=".jpg, .jpeg, .png" multiple > <br><br>
 <button id="confirm">Einstellen</button> <button id="close">Abbrechen</button>
 
 
@@ -151,16 +153,19 @@ button {
     <th>Artikel</th>
     <th>Beschreibung</th>
     <th>Kontaktdaten</th>
+    <th>Bild</th>
   </tr>
   <tr>
     <td>Tische & Stühle</td>
     <td> Das Mobiliar wird zum Aufbau einer Schule benötigt.</td>
     <td> Beispielorganisation Erreichbar unter beispiel@beispiel.de</td>
+    <td>   </td>
   </tr>
   <tr>
    <td> <span contentEditable="true" id="field1"> </td>
     <td> <span contentEditable="true" id="field2"> </td>
      <td> <span contentEditable="true" id="field3"> </td>
+     <td> <span contentEditable="true" id="field4"> </td>
       </tr>
   </table>
 
@@ -188,6 +193,8 @@ var clo = document.getElementById("close");
 
 var con = document.getElementById("confirm");
 
+var vorschau = document.createElement('img');
+
 
 btn.onclick = function() {
     modal.style.display = "block";
@@ -212,6 +219,7 @@ con.onclick = function() {
 	document.getElementById("field1").textContent = document.getElementById("Article").value;
 	document.getElementById("field2").textContent = document.getElementById("Description").value;
 	document.getElementById("field3").textContent = document.getElementById("Email").value;
+	document.getElementById('field4').insertBefore(document.getElementById("Email"), null);
 	}
 }
 

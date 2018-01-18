@@ -16,6 +16,7 @@
 
 <div id="divContent">
 
+<div id="map"></div>
 
 </div>
 
@@ -29,13 +30,57 @@ addHeadMenu(document.getElementById("divHead"));;
 addButtomMenu(document.getElementById("divButtom"));;
 
 
+waitForMarkers();
+
+function createList(){
+	var content = document.getElementById("divContent");
+	var map = document.getElementById("map");
+	
+	
+	
+	
+	//markerContent = [name, bGrad, lGrad, adresse, spendenAnnahmen, spendenSpecials, url];
+	
+	
+	
+	for(var i = 0; i < markerContent.length; i++){
+		var divC = document.createElement("div");
+		divC.style.height = "50px";	
+		
+		var nameNode = document.createTextNode(markerContent[i][0]);
+	
+		divC.appendChild(nameNode);
+		
+		content.appendChild(divC);
+		
+	}
+	
+	
+}
 
 
+function waitForMarkers(){
+	
+	window.setTimeout(function() {
+			if(markerContent.length == 18){
+				
+				createList()
+			}else{
+				waitForMarkers();	
+			}
+			
+	}, 300);	
+}
 
 
 
 
 
 </script>
+
+         </script>
+<script style="font-family: 'Roboto', sans-serif" async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDiCHKIxpj5H2bfsFK5VRYI5al3r9ira2E&callback=initMap&libraries=places">
+        </script>
 
 </html>

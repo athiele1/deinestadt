@@ -508,6 +508,18 @@ height: 100px;
     TO { transform: rotate(360deg);}
 }
 
+/*Die Links unten in der Leiste*/
+
+.bottomLink{
+	transition-duration:0.4s;
+}
+
+.bottomLink:hover{
+	
+	text-decoration:underline;
+}
+
+
 
 
 /* Das Kontaktformular */ 

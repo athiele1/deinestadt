@@ -244,6 +244,9 @@ function addButtomMenu(container2) {
     var contact = document.createElement("p");
     contact.innerHTML = '<a href="contact.html" title="Kontakt">Kontakt</a>';
 
+
+	impressum.className = "bottomLink";
+	contact.className = "bottomLink";
     //var contact = document.createElement("p");
     //contact.innerHTML = '<a href="contact.html" title="Kontakt">Kontakt</a>';
     
@@ -396,52 +399,49 @@ function deselectButton(spani){
 	
 	
 	//Fügt eine Einrichtungstandort hinzu
-	function addPlace3(name, bGrad, lGrad, adresse, spendenAnnahmen, spendenSpecials, url){
+	function addPlace4(nr, name, bGrad, lGrad, adresse, spendenAnnahmen, spendenSpecials, url){
 		
 		var pos = {lat: bGrad, lng: lGrad};
 	
 		var marker = new google.maps.Marker({
              map: map,
              position: pos,
-			// label: labeli + "",
+			label: nr + "",
 			 animation: google.maps.Animation.DROP
+			 
         });
 			
-		markers.push(marker);
-		
+		//markers.push(marker);
+		markers[nr] = marker;
 		//labeli++;
 		
+		//alert("NR: " + nr);
+		//alert(markerContent.length)
 		
-		markerContent.push([name, bGrad, lGrad, adresse, spendenAnnahmen, spendenSpecials, url]); 
+		markerContent[nr] = [name, bGrad, lGrad, adresse, spendenAnnahmen, spendenSpecials, url]; 
 				
 		
       	google.maps.event.addListener(marker, 'click', function() {
-			var num = 0;
 			
-			for(g in markers){
-				if(markers[g] == this){
-					num = g;
-					break;
-				}
-			}
+			try{
 		
 		
 			//markerContent[num][0] == name
-			var content = '<div><strong>' + markerContent[num][0] + '</strong><br>';
+			var content = '<div><strong>' + markerContent[nr][0] + '</strong><br>';
 			
 			//markerContent[num][4] == spendenAnnahmen
 			var ic = 0;
-			for(h in markerContent[num][4]){
+			for(h in markerContent[nr][4]){
 			
 				
 				for(var i = 0; i < katLabels.length; i++){
 										
 					
-					if(markerContent[num][4][h] === katLabels[i]){
+					if(markerContent[nr][4][h] === katLabels[i]){
 						//markerContent[num][5] == spendenSpecials
 						
 						var overString = "";
-						var specialI = markerContent[num][5][ic];
+						var specialI = markerContent[nr][5][ic];
 						
 						
 						
@@ -473,29 +473,40 @@ function deselectButton(spani){
 			
 			
 			//markerContent[num][0] == adresse, markerContent[num][6] == url
-			content += '<br>' + markerContent[num][3] + '</div><div class="zurWebsiteDiv">&#x2192<a target="_blank" href="'+ markerContent[num][6] +'">Zur Website</a></div>';
+			content += '<br>' + markerContent[nr][3] + '</div><div class="zurWebsiteDiv">&#x2192<a target="_blank" href="'+ markerContent[nr][6] +'">Zur Website</a></div>';
 			
 			
 			
-           infowindow.setContent(content);
-              infowindow.open(map, this);
+			infowindow.setContent(content);
+			infowindow.open(map, this);
+			 
+			}catch(err){
+				alert(err)	
+				
+			}
 			 
         });
+		
 	}
-	
 	var p_c = 0;
 	function addPlace(name, place_id, spendenAnnahmen,spendenSpecials, url){
 		
-		 window.setTimeout(function() {
-			
-			addPlace2(name, place_id, spendenAnnahmen,spendenSpecials, url);
-		 }, p_c*200);
-
+		addPlace2(p_c, name, place_id, spendenAnnahmen,spendenSpecials, url);
 		p_c++;
 	}
 	
+	
+	function addPlace2(nr, name, place_id, spendenAnnahmen,spendenSpecials, url){
+		
+		 window.setTimeout(function() {
+			
+			addPlace3(nr,name, place_id, spendenAnnahmen,spendenSpecials, url);
+		 }, nr*250);
+
+	}
+	
 	//Fügt eine Einrichtungstandort hinzu
-	function addPlace2(name, place_id, spendenAnnahmen,spendenSpecials, url){
+	function addPlace3(nr, name, place_id, spendenAnnahmen,spendenSpecials, url){
 			
 		service.getDetails({
           placeId: place_id
@@ -510,7 +521,7 @@ function deselectButton(spani){
 				nam = name;	
 			}
 			
-			addPlace3(nam, lat, lng,place.formatted_address.split(",")[0],spendenAnnahmen,spendenSpecials,url);
+			addPlace4(nr,nam, lat, lng,place.formatted_address.split(",")[0],spendenAnnahmen,spendenSpecials,url);
 			
 			
 			  
@@ -580,7 +591,7 @@ function deselectButton(spani){
 		for(l in canStayList){
 			
 			
-			changeMap(markers[l], canStayList[l], l*200+1)
+			changeMap(markers[l], canStayList[l], l*50+1)
 			
 		}
 		
@@ -649,12 +660,15 @@ function deselectButton(spani){
            map: map
        });*/
 	  
-addPlace('Verein für Innere Mission in Bremen','ChIJhW9rIQ0osUcRrE3kNWcxOJ0',['Kleidung'],[['Damen-und Herrenmode','Kinderbekleidung','Schuhe']],'https://www.inneremission-bremen.de/startseite/');
-addPlace('ProShop Bremen','ChIJ89bxYH4nsUcREksgXBw3boo',['Haushaltswaren','Spielzeug','Bücher','Sonstiges'],[[],[],[],['Textilien']],'http://www.projob-bremen.de/index.php?id=14');
-addPlace('ProJob Bremen','ChIJ164EEyoosUcRy6I04KPS6ho',['Möbel','Haushaltswaren'],[[],[]],'http://www.projob-bremen.de/index.php?id=18');
-addPlace('Cafe Papagei','ChIJ-3so-BEosUcRPCYq-g-sjY0',['Lebensmittel'],[['Kaffee','Tee','Kekse']],'https://www.inneremission-bremen.de/wohnungslosenhilfe/tagestreffs/cafe_papagei/');
-addPlace('frauenzimmer','ChIJa5aoEBYosUcR7-oPi5SZBVM',['Lebensmittel'],[['Kaffee','Tee','Kekse']],'https://www.inneremission-bremen.de/wohnungslosenhilfe/tagestreffs/frauenzimmer/');
-addPlace('Bahnhofsmission Bremen','ChIJPW9aWBIosUcRIWbrsm-T2Vo',['Lebensmittel'],[['Kaffee']],'http://www.bahnhofsmission-bremen.de/');
+
+     }
+	 
+	 addPlace('Verein für Innere Mission in Bremen','ChIJhW9rIQ0osUcRrE3kNWcxOJ0',['Kleidung'],[['Damen-und Herrenmode','Kinderbekleidung','Schuhe']],'https://www.inneremission-bremen.de/startseite/');
+	addPlace('ProShop Bremen','ChIJ89bxYH4nsUcREksgXBw3boo',['Haushaltswaren','Spielzeug','Bücher','Sonstiges'],[[],[],[],['Textilien']],'http://www.projob-bremen.de/index.php?id=14');
+	addPlace('ProJob Bremen','ChIJ164EEyoosUcRy6I04KPS6ho',['Möbel','Haushaltswaren'],[[],[]],'http://www.projob-bremen.de/index.php?id=18');
+	addPlace('Cafe Papagei','ChIJ-3so-BEosUcRPCYq-g-sjY0',['Lebensmittel'],[['Kaffee','Tee','Kekse']],'https://www.inneremission-bremen.de/wohnungslosenhilfe/tagestreffs/cafe_papagei/');
+	addPlace('frauenzimmer','ChIJa5aoEBYosUcR7-oPi5SZBVM',['Lebensmittel'],[['Kaffee','Tee','Kekse']],'https://www.inneremission-bremen.de/wohnungslosenhilfe/tagestreffs/frauenzimmer/');
+	addPlace('Bahnhofsmission Bremen','ChIJPW9aWBIosUcRIWbrsm-T2Vo',['Lebensmittel'],[['Kaffee']],'http://www.bahnhofsmission-bremen.de/');
 addPlace('Deutsches Rotes Kreuz Kreisverband Bremen e.V.','ChIJMzOAQ4QnsUcR1QxfNKM8QQU',['Kleidung','Bücher'],[[],[]],'http://www.drk-bremen.de/startseite.html');
 addPlace('Deutsches Rotes Kreuz Kreisverband Bremen e.V.','ChIJySe4uUnTtkcRAX3DZkNRfs8',['Kleidung'],[[]],'http://www.drk-bremen.de/startseite.html');
 addPlace('Die Bremer Suppenengel','ChIJdVHLMOPXsEcR6frrixM3ILg',['Lebensmittel','Sonstiges'],[['Nudeln','Hülsenfrüchte','Kaffee','Gewürze','Konserven'],['Schlafsäcke','Rucksäcke','Isomatten','Büromaterial','gebrauchte Smartphones','Seife','Zahnpasta','Pflaster','Binden']],'http://www.suppenengel.de/');
@@ -669,10 +683,9 @@ addPlace('Recycling-Hof Hemelingen','ChIJf7Lbr4HYsEcR2Xuf9waqeAc',['Elektronik',
 addPlace('Möbelhaus Oslebshausen','ChIJs-mssGApsUcRfqGHXBnLcGA',['Möbel','Haushaltswaren','Kleidung','Bücher','Sonstiges'],[[],[],[],[],['Wohnaccessoires']],'http://gri-bremen.de/mobelhallen/oslebshausen/');
 addPlace('Kaufhaus Hemelingen','ChIJG0WLFn4nsUcRzZnb6Pr6nO8',['Möbel','Elektronik','Kleidung','Bücher','Spielzeug','Haushaltswaren','Sonstiges'],[[],[],[],[],[],[],['Wohnaccessoires','Bilder']],'http://gri-bremen.de/mobelhallen/kaufhaus-hemelingen/');
 addPlace('Möbelhalle Kattenturm Mitte','ChIJNf_gtyTYsEcR6wO9qF5qo4I',['Möbel','Kleidung','Bücher','Spielzeug','Haushaltswaren','Sonstiges'],[[],[],[],[],['Haushaltsgeräte'],['Wohnaccessoires','Bilder']],'http://gri-bremen.de/mobelhallen/kattenturm-mitte/');
-
-
-
-		
-
-     }
+	 
+	 function getMarkers(){
+		 alert(markerContent[0][0]);
+		return markers; 
+	 }
 

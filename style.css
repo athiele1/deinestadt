@@ -8,7 +8,7 @@ hierüber kann das Design aller Seiten angepasst werden.
 
 **/
 
-/*Variablen:*/
+
 
 body, html {
     margin: 0;     
@@ -25,6 +25,7 @@ body * {
     font-family: sans-serif !important;
 }
 
+/*Variablen:*/
 :root {
     --logoGreen: #71e6ab;
     --logoBlue: #1e7ab3;

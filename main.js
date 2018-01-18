@@ -331,11 +331,9 @@ function deselectButton(spani){
 	
 	
 //Sobald über Katg-Bild im Popup Fenster eines Markers gehovert wird
-	function hoverKatSymbol(event1,img,specials){
-		
+	function hoverKatSymbol(parent, img,specials){
 		if(specials.length > 0){
 			var divi = document.createElement("div");
-			var map = document.getElementById("map");
 			
 			divi.className = "katSymbolDiv";
 			divi.id = "katSymbolDivId";
@@ -344,7 +342,7 @@ function deselectButton(spani){
 			
 			//Relative Pos. zum Parent Node: https://stackoverflow.com/questions/26423335/elements-coordinates-relative-to-its-parent
 			
-			var parentPos = map.getBoundingClientRect(),
+			var parentPos = parent.getBoundingClientRect(),
  		  	 childrenPos = img.getBoundingClientRect(),
    			 relativePos = {};
 
@@ -370,7 +368,7 @@ function deselectButton(spani){
 			
 			
 			
-			map.appendChild(divi);
+			parent.appendChild(divi);
 			
 		}
 	}
@@ -406,7 +404,7 @@ function deselectButton(spani){
 		var marker = new google.maps.Marker({
              map: map,
              position: pos,
-			label: nr + "",
+			/*label: nr + "",*/
 			 animation: google.maps.Animation.DROP
 			 
         });
@@ -427,7 +425,7 @@ function deselectButton(spani){
 		
 		
 			//markerContent[num][0] == name
-			var content = '<div><strong>' + markerContent[nr][0] + '</strong><br>';
+			var content = '<div><span style="font-weight:bold">' + markerContent[nr][0] + '</span><br>';
 			
 			//markerContent[num][4] == spendenAnnahmen
 			var ic = 0;
@@ -457,8 +455,9 @@ function deselectButton(spani){
 							
 							}
 							
+							var mapString = "'map'";
+							overString = 'onmouseout="hoverOutKatSymbol()" onmouseover="hoverKatSymbol(document.getElementById('+mapString+'),this,['+specStringI+']);"';
 							
-							overString = 'onmouseout="hoverOutKatSymbol()" onmouseover="hoverKatSymbol(event,this,['+specStringI+']);"';
 						}
 						
 						
@@ -497,6 +496,8 @@ function deselectButton(spani){
 	
 	
 	function addPlace2(nr, name, place_id, spendenAnnahmen,spendenSpecials, url){
+		// [name, bGrad, lGrad, adresse, spendenAnnahmen, spendenSpecials, url]; 
+		markerContent[nr] = [name,0,0,place_id,spendenAnnahmen,spendenSpecials,url];
 		
 		 window.setTimeout(function() {
 			

@@ -14,9 +14,13 @@
 -->
 <div id="divHead"></div>
 
+
+
+
 <div id="divContent">
 
-<div id="map"></div>
+<!-- Keine Ahnung warum, aber nur nicht ändern!!! Sonst ist die Map weg -->
+<div class="map "id="map"></div>
 
 </div>
 
@@ -30,14 +34,33 @@ addHeadMenu(document.getElementById("divHead"));;
 addButtomMenu(document.getElementById("divButtom"));;
 
 
-waitForMarkers();
+createList();
 
 function createList(){
 	var content = document.getElementById("divContent");
 	var map = document.getElementById("map");
 	
 	
+	var divL = document.createElement("div");
+	var head1 = document.createElement("span");
+	var head2 = document.createElement("span");
+	var head3 = document.createElement("span");
 	
+	head1.innerHTML = "Einrichtungen:";
+	head2.innerHTML = "Nimmt folgendes an:";
+	head3.innerHTML = "Anzeigen:"
+	
+	divL.appendChild(head1);
+	divL.appendChild(head2);
+	divL.appendChild(head3);
+	
+	head1.className = "listHeader";	
+	head2.className = "listHeader";	
+	head3.className = "listHeader";	
+	
+	head1.style.width = "42%";
+	head2.style.width = "43%";
+	head3.style.width = "15%";
 	
 	//markerContent = [name, bGrad, lGrad, adresse, spendenAnnahmen, spendenSpecials, url];
 	
@@ -45,13 +68,75 @@ function createList(){
 	
 	for(var i = 0; i < markerContent.length; i++){
 		var divC = document.createElement("div");
-		divC.style.height = "50px";	
 		
-		var nameNode = document.createTextNode(markerContent[i][0]);
+		divC.className = "divRowF"
+		
+		var leftBar = document.createElement("div");
+		
+		leftBar.className = "leftBar";
+		
+		
+		//Wenn gerades i
+		if(i % 2 == 0){
+				
+			divC.style.background = "lightgrey";	
+		}
+		
+		
+		
+		var divName = document.createElement("span");
+		divName.className = "spanRowName";
 	
-		divC.appendChild(nameNode);
+		divName.innerHTML = markerContent[i][0];
+		//divName.appendChild(nameNode);
+		divC.appendChild(leftBar);
+		divC.appendChild(divName);
 		
-		content.appendChild(divC);
+		
+		
+		//markerContent[num][4] == spendenAnnahmen
+		
+		
+		var divImg = document.createElement("span");
+		divImg.className = "spanRowKats";
+		
+		for(h in markerContent[i][4]){
+			var ic = 0;
+			for(var j = 0; j < katLabels.length; j++){
+				if(markerContent[i][4][h] === katLabels[j]){
+					
+					
+					
+					
+					var img = new Image();
+					img.src = katPaths[j];
+					img.style.width = "30px";
+					divImg.appendChild(img);
+					
+					/*var specialI = markerContent[i][5][ic];
+					if(specialI != null){
+						ic++;
+					
+						//'onmouseout="hoverOutKatSymbol()" onmouseover="hoverKatSymbol(event,document.getElementById('+mapString+'),this,['+specStringI+']);"';
+						img.addEventListener("mouseout", function(){hoverOutKatSymbol()});
+					
+						img.addEventListener("mouseover",function(){hoverKatSymbol(divC,img,specialI)});
+					}*/
+				}
+			}
+		}
+		
+		divC.appendChild(divImg);
+		
+		var spanGoto = document.createElement("span");
+		spanGoto.className = "spanRowGoto";
+		spanGoto.innerHTML = "->";
+		
+		
+		divC.appendChild(spanGoto);
+		
+		content.prepend(divC);
+		content.prepend(divL);
 		
 	}
 	
@@ -59,7 +144,7 @@ function createList(){
 }
 
 
-function waitForMarkers(){
+/*function waitForMarkers(){
 	
 	window.setTimeout(function() {
 			if(markerContent.length == 18){
@@ -70,7 +155,7 @@ function waitForMarkers(){
 			}
 			
 	}, 300);	
-}
+}*/
 
 
 

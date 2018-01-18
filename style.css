@@ -472,6 +472,61 @@ h5 {
     height: 200px;
 }
 
+
+
+/*Linker Balken in einer Reihe bei der Einrichtungsauflistung*/
+/*.leftBar{
+	width:20px;
+	height:30px;
+	background:var(--logoBlue);
+	display:inline-block;
+	
+}*/
+
+/*Div Container für eine Reihe bei der Einrichtungsauflistung*/
+.divRowF{
+	/*height:50px;	*/
+}
+
+/*Span mit Einrichtungsname in einer Reihe bei der Einrichtungsauflistung*/
+.spanRowName{
+	vertical-align: top;
+	display:inline-block;
+	margin-left: 20px;
+	font-weight:bold;
+	margin-top:15px;
+	margin-bottom:10px;
+	width: 40%;
+}
+
+/*Span mit allen Kategorien in einer Reihe bei der Einrichtungsauflistung*/
+.spanRowKats{
+	display:inline-block;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+/*Span mit dem "Geh zur Map Pfeil" in einer Reihe bei der Einrichtungsauflistung*/
+.spanRowGoto{
+	display:inline-block;
+	vertical-align: top;
+	margin-top:15px;
+	float:right;
+	width: 5%;
+}
+
+/*Für alle Kopfspalten spans der Einrichtungsauflistung*/
+.listHeader{
+	display:inline-block;
+	vertical-align: top;
+	font-size: 28px;
+    font-weight: 500;
+    line-height: 40px;
+    margin-top: 35px;
+	margin-bottom: 20px;
+}
+
+
 /*.introDivNO{
 position: absolute;
 width: calc(100% - 20px);

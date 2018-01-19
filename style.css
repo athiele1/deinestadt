@@ -510,6 +510,12 @@ h5 {
 	margin-top:15px;
 	float:right;
 	width: 5%;
+	cursor: pointer;
+	
+}
+
+.spanRowGoto:hover{
+	color: var(--logoBlue);
 }
 
 /*Für alle Kopfspalten spans der Einrichtungsauflistung*/

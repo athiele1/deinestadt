@@ -36,9 +36,19 @@ addButtomMenu(document.getElementById("divButtom"));;
 
 createList();
 
+//Damit z.B. anfangs keine Marker angezeigt werden
+function deactivateAllMarkers(){	
+	for(var m in markerActivated){
+		markerActivated[m] = false;	
+	}	
+}
+
 function createList(){
 	var content = document.getElementById("divContent");
 	var map = document.getElementById("map");
+	
+	
+	deactivateAllMarkers()
 	
 	
 	var divL = document.createElement("div");
@@ -130,7 +140,8 @@ function createList(){
 		
 		var spanGoto = document.createElement("span");
 		spanGoto.className = "spanRowGoto";
-		spanGoto.innerHTML = "->";
+		spanGoto.innerHTML = "&#8618";
+		initGoto(spanGoto, i);
 		
 		
 		divC.appendChild(spanGoto);
@@ -139,10 +150,30 @@ function createList(){
 		content.prepend(divL);
 		
 	}
-	
-	
 }
 
+function initGoto(spanGoto, nr){
+	(function(){
+		spanGoto.addEventListener("click", function (){clickGoto(nr)});	
+	}());	
+}
+
+
+function clickGoto(nr){
+		deactivateAllMarkers();
+		
+		markerActivated[nr] = true;
+		
+		updateMarkers(false);
+		
+		window.scrollTo(0,document.body.scrollHeight);
+		
+		
+		map.panTo(markers[nr].position);
+		map.setZoom(13);
+		
+
+	}
 
 /*function waitForMarkers(){
 	

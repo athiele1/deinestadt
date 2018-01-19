@@ -146,7 +146,7 @@ function addHeadMenu(container) {
         btns.push(btni);
         divHolder.appendChild(btni);
 
-        if(i < 5){
+        if(i < buttonText.length-1){
             var lineI = document.createElement("span");
             //lineI.style.width = "2px";
             //lineI.innerHTML = "&nbsp";
@@ -292,14 +292,28 @@ function deselectButton(spani){
 	//buttons2[i].innerHTML.style.color = "red";
 }
 */
-
-
+	
+	/**
+	
+	*************************************************************************
+	HIER BEGINNT DER CODE, WELCHER MIT GOOGLE MAPS / SPENDENFINDER ZU TUN HAT
+	*************************************************************************
+	
+	
+	**/
+	
+	
+	
 
 	//Die Google Map
     var infowindow,service,map;
 	
 	//Beinhaltet für jede Kategorie ein true/false, je nachdem ob es ausgewählt wurde
 	var kategorien = [];
+	
+	//Enthält für jeden Marker einen bool, über den er sich abschalten lässt
+	var markerActivated = [];
+	
 	
 	//Eine Liste aller google maps marker
 	var markers = [];
@@ -402,7 +416,7 @@ function deselectButton(spani){
 		var pos = {lat: bGrad, lng: lGrad};
 	
 		var marker = new google.maps.Marker({
-             map: map,
+             map: markerActivated[nr] ? map : null,
              position: pos,
 			/*label: nr + "",*/
 			 animation: google.maps.Animation.DROP
@@ -498,6 +512,7 @@ function deselectButton(spani){
 	function addPlace2(nr, name, place_id, spendenAnnahmen,spendenSpecials, url){
 		// [name, bGrad, lGrad, adresse, spendenAnnahmen, spendenSpecials, url]; 
 		markerContent[nr] = [name,0,0,place_id,spendenAnnahmen,spendenSpecials,url];
+		markerActivated[nr] = true;
 		
 		 window.setTimeout(function() {
 			
@@ -542,8 +557,13 @@ function deselectButton(spani){
 	
 	
 	//Updated die Marker (Falls zum Beispiel andere Kategorien ausgewählt wurden + LOS)
-	function updateMarkers(){
-		infowindow.close();
+	function updateMarkers(filterKats){
+		try{
+		
+		if(infowindow != null){
+			infowindow.close();
+		}
+		
 		
 		var choosedKatg = [];
 		
@@ -562,25 +582,29 @@ function deselectButton(spani){
 		var canStayList = [];
 		
 		
-		for(i in markers){
+		for(i in markerContent){
 			var canStay = false;
 			
-			var markerI = markers[i];
-			var markKat = markerContent[i][4];
+			//var markerI = markers[i];
 			
-			for(j in markKat){
+			
+			if(filterKats){
+				var markKat = markerContent[i][4];
+						
+				for(j in markKat){
 				
-				for(k in choosedKatg){
-					if(markKat[j] === choosedKatg[k]){
-						canStay = true;
-						break;	
-					}
-					
-				}
-								
+					for(k in choosedKatg){
+						if(markKat[j] === choosedKatg[k]){
+							canStay = true;
+							break;	
+						}
+					}		
+				}				
+			}else{
+				canStay = true;
 			}
 			
-			if(canStay){
+			if(canStay && markerActivated[i]){
 					canStayList.push(true);
 			}else{
 					canStayList.push(false);
@@ -595,7 +619,10 @@ function deselectButton(spani){
 			changeMap(markers[l], canStayList[l], l*50+1)
 			
 		}
-		
+		}catch(err){
+			
+			alert(err);
+		}
 			
 	}
 	//Fügt einen Marker getimed zur Map hinzu
@@ -684,9 +711,5 @@ addPlace('Recycling-Hof Hemelingen','ChIJf7Lbr4HYsEcR2Xuf9waqeAc',['Elektronik',
 addPlace('Möbelhaus Oslebshausen','ChIJs-mssGApsUcRfqGHXBnLcGA',['Möbel','Haushaltswaren','Kleidung','Bücher','Sonstiges'],[[],[],[],[],['Wohnaccessoires']],'http://gri-bremen.de/mobelhallen/oslebshausen/');
 addPlace('Kaufhaus Hemelingen','ChIJG0WLFn4nsUcRzZnb6Pr6nO8',['Möbel','Elektronik','Kleidung','Bücher','Spielzeug','Haushaltswaren','Sonstiges'],[[],[],[],[],[],[],['Wohnaccessoires','Bilder']],'http://gri-bremen.de/mobelhallen/kaufhaus-hemelingen/');
 addPlace('Möbelhalle Kattenturm Mitte','ChIJNf_gtyTYsEcR6wO9qF5qo4I',['Möbel','Kleidung','Bücher','Spielzeug','Haushaltswaren','Sonstiges'],[[],[],[],[],['Haushaltsgeräte'],['Wohnaccessoires','Bilder']],'http://gri-bremen.de/mobelhallen/kattenturm-mitte/');
-	 
-	 function getMarkers(){
-		 alert(markerContent[0][0]);
-		return markers; 
-	 }
+
 

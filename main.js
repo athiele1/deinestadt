@@ -115,7 +115,6 @@ function addHeadMenu(container) {
 
 		span2.id = "" + i;
 		span2.addEventListener("mouseover", function(){
-			alert("§l")
 			//this.style.borderBottom = "5px solid red";
 			selectButton(this);
 		})
@@ -133,7 +132,6 @@ function addHeadMenu(container) {
 
 
 		//bi.childNodes[0].style.color = "red";
-		//alert(bi.data);
 
 		//buttons2.push(bi);
 		//span2.appendChild(bi);
@@ -274,9 +272,8 @@ function markButton(i){
 
 /*function selectButton(spani){
 	spani.style.borderBottom = "5px solid red";
-	//alert(buttons2[i].data);
+	
 	spani.innerHTML = buttonText[spani.id].fontcolor("red");
-	//alert(spani.innerHTML);
 	//buttons2[i].innerHTML.style.color = "red";
 }
 
@@ -286,9 +283,9 @@ function deselectButton(spani){
 	}
 
 	spani.style.borderBottom = "0px";
-	//alert(buttons2[i].data);
+
 	spani.innerHTML = buttonText[spani.id].fontcolor("black");
-	//alert(spani.innerHTML);
+
 	//buttons2[i].innerHTML.style.color = "red";
 }
 */
@@ -415,10 +412,12 @@ function deselectButton(spani){
 		
 		var pos = {lat: bGrad, lng: lGrad};
 	
+		
+	
 		var marker = new google.maps.Marker({
              map: markerActivated[nr] ? map : null,
              position: pos,
-			/*label: nr + "",*/
+			label: nr + "",
 			 animation: google.maps.Animation.DROP
 			 
         });
@@ -427,11 +426,9 @@ function deselectButton(spani){
 		markers[nr] = marker;
 		//labeli++;
 		
-		//alert("NR: " + nr);
-		//alert(markerContent.length)
 		
 		markerContent[nr] = [name, bGrad, lGrad, adresse, spendenAnnahmen, spendenSpecials, url]; 
-				
+		
 		
       	google.maps.event.addListener(marker, 'click', function() {
 			
@@ -510,24 +507,29 @@ function deselectButton(spani){
 	
 	
 	function addPlace2(nr, name, place_id, spendenAnnahmen,spendenSpecials, url){
+		
 		// [name, bGrad, lGrad, adresse, spendenAnnahmen, spendenSpecials, url]; 
 		markerContent[nr] = [name,0,0,place_id,spendenAnnahmen,spendenSpecials,url];
 		markerActivated[nr] = true;
 		
+		
 		 window.setTimeout(function() {
 			
 			addPlace3(nr,name, place_id, spendenAnnahmen,spendenSpecials, url);
-		 }, nr*250);
+		 }, nr*250+250);
 
 	}
 	
 	//Fügt eine Einrichtungstandort hinzu
 	function addPlace3(nr, name, place_id, spendenAnnahmen,spendenSpecials, url){
-			
+		
+		
 		service.getDetails({
           placeId: place_id
         }, function(place, status) {
+			
           //if (status === google.maps.places.PlacesServiceStatus.OK) {
+			
 			
 			var lng = place.geometry.location.lng();
 			var lat = place.geometry.location.lat();
@@ -536,6 +538,7 @@ function deselectButton(spani){
 			if(name != null){
 				nam = name;	
 			}
+			
 			
 			addPlace4(nr,nam, lat, lng,place.formatted_address.split(",")[0],spendenAnnahmen,spendenSpecials,url);
 			
@@ -567,17 +570,18 @@ function deselectButton(spani){
 		
 		var choosedKatg = [];
 		
-		for(h in katLabels){
-			if(kategorien[h]){
-				choosedKatg.push(katLabels[h]);
+		if(filterKats){
+			for(h in katLabels){
+				if(kategorien[h]){
+					choosedKatg.push(katLabels[h]);
+				}
+			}
+		
+			
+			if(choosedKatg.length == 0){
+				choosedKatg = katLabels;
 			}
 		}
-		
-		
-		if(choosedKatg.length == 0){
-			choosedKatg = katLabels;
-		}
-		
 		
 		var canStayList = [];
 		
@@ -603,6 +607,10 @@ function deselectButton(spani){
 			}else{
 				canStay = true;
 			}
+			
+			
+			
+			
 			
 			if(canStay && markerActivated[i]){
 					canStayList.push(true);

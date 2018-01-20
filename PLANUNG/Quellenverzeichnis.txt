@@ -7,3 +7,4 @@ Spielzeug: https://pixabay.com/de/teddyb%C3%A4r-teddy-b%C3%A4r-kindheit-303594/
 Möbel: https://pixabay.com/de/stuhl-sofa-m%C3%B6bel-heimtextilien-1297039/
 lebensmittel: https://pixabay.com/de/piktogramm-gem%C3%BCse-tomaten-obst-2494130/
 Ball: https://pixabay.com/de/american-football-fu%C3%9Fball-ei-kugel-312194/
+Ladesymbol: https://loading.io/spinner/dual-ring/-dual-ring-loader

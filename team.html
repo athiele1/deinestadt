@@ -17,7 +17,25 @@
 
 <div id="divContent">
 
-<h1> Coming Soon </h1>
+<h1> Unser Team: </h1>
+
+<div teamDiv id="teamDiv" class="teamDiv"><img id="teamImg" src="pics/das team.jpg" usemap="#Mapi"></div>
+
+
+<h3>Für mehr Information einfach über die Gesichter scrollen.</h3>
+
+<map  id="Mapi">
+    <area alt="0" title="" href="#" shape="rect" coords="189,112,252,201" />
+    <area alt="1" title="" href="#" shape="rect" coords="357,130,414,216" />
+    <area alt="2" title="" href="#" shape="rect" coords="481,144,546,229" />
+    <area alt="3" title="" href="#" shape="rect" coords="624,139,687,225" />
+    <area alt="4" title="" href="#" shape="rect" coords="354,341,422,426" />
+    <area alt="5" title="" href="#" shape="rect" coords="475,352,536,429" />
+    <area alt="6" title="" href="#" shape="rect" coords="593,335,667,433" />
+</map>
+
+
+
 
 </div>
 
@@ -32,6 +50,93 @@
 addHeadMenu(document.getElementById("divHead"));;
 addButtomMenu(document.getElementById("divButtom"));;
 markButton(4);
+
+var names = ["Oliver Oertel","Janis Joker","Alexander Thiele","Paul Panther","Roxi Rübe","Karima Knigge","Tamara Tarantel"]
+var tasks = ["Website","Cross-Over","Website","Cross-Over","Marketing","Marketing","Marketing"]
+
+
+window.addEventListener ('load', function () {
+var map = document.querySelectorAll('#Mapi area');
+for (var i=0; i<map.length; i++) {
+   if (map[i].addEventListener) {
+	   
+   map[i].addEventListener('touchstart', function(){swap(this)});
+   map[i].addEventListener('mouseover', function(){swap(this)});
+   map[i].addEventListener('mouseout', function(){swapout(this)});
+   }
+}
+
+function swapout(area){
+	var teamDiv = document.getElementById("teamDiv");
+	var infowindows = document.getElementsByClassName("katSymbolDiv");
+	
+	for(i in infowindows){
+		teamDiv.removeChild(infowindows[i]);
+		
+	}
+	
+	
+	
+}
+
+function swap(area) {
+	var coords = area.coords.split(',');
+	
+
+   var id = area.getAttribute('alt');
+  	var teamDiv = document.getElementById("teamDiv");
+	
+	var infowindow = document.createElement("div");
+	
+	infowindow.className = "katSymbolDiv";
+	
+	
+	/*var liste = document.createElement("ul");
+	
+
+	var name = document.createElement("li");
+	name.innerHTML = names[id];
+	
+	var task = document.createElement("li");
+	task.innerHTML  = tasks[id];
+	
+	liste.appendChild(name);
+	liste.appendChild(task);
+	infowindow.appendChild(liste);*/
+	
+	infowindow.innerHTML = "<strong>" + names[id] + "</strong><br>" + tasks[id];
+	infowindow.style.padding = "10px";		
+
+	var parentPos = teamDiv.getBoundingClientRect();
+	/*var parentPos = teamDiv.getBoundingClientRect(),
+   	relativePos = {};
+	
+	
+	
+	relativePos.top = coords[1] - parentPos.top,
+	relativePos.left = coords[0] - parentPos.left;
+			
+	divi.style.top = relativePos.top;
+	divi.style.left = relativePos.left + 35 + "px";
+	
+	
+	alert(divi.style.top);*/
+	
+	
+	infowindow.style.top = Number.parseFloat(coords[1]) + Number.parseFloat(parentPos.top)-70;
+	infowindow.style.left = Number.parseFloat(coords[0])+ Number.parseFloat(parentPos.left)-30;
+	
+	
+	teamDiv.appendChild(infowindow);
+	
+  // document.getElementById('deutschland').setAttribute('src','bilder/' + lan);
+
+}
+});
+
+
+
+
 
 </script>
 

@@ -516,7 +516,7 @@ function deselectButton(spani){
 		 window.setTimeout(function() {
 			
 			addPlace3(nr,name, place_id, spendenAnnahmen,spendenSpecials, url);
-		 }, nr*250+250);
+		 }, nr*100+250);
 
 	}
 	

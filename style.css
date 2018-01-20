@@ -493,7 +493,7 @@ h5 {
 	font-weight:bold;
 	margin-top:15px;
 	margin-bottom:10px;
-	width: 40%;
+	width: 50%;
 }
 
 /*Span mit allen Kategorien in einer Reihe bei der Einrichtungsauflistung*/
@@ -501,6 +501,14 @@ h5 {
 	display:inline-block;
 	margin-top:10px;
 	margin-bottom:10px;
+}
+
+/*Lade Kreis in einer Reihe bei der Einrichtungsauflistung*/
+.spanRowLoading{
+	display:inline-block;
+	float:right;
+	margin-top:15px;
+	width: 5%;	
 }
 
 /*Span mit dem "Geh zur Map Pfeil" in einer Reihe bei der Einrichtungsauflistung*/
@@ -653,4 +661,14 @@ textarea:focus {
 }
 
 
+/************************************************************************/
 
+/* ABER HIER FOLGEN STYLE SHEETS FÜR DIE TEAM SEITE*/
+
+/***********************************************************************/
+
+.teamDiv{
+	width:	960px;
+	margin: 0 auto;
+	
+}

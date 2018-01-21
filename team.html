@@ -13,16 +13,20 @@
 <!--
 <div class="introDivNO"><div class="introDivImageNO"><img src="pics/logo_200.png" width="100px" height="100px"></div></div>
 -->
-<div id="divHead"></div>
+<div id="divHead">
+<div id="SocialLinks">
+                <p>  <a  href="https://www.facebook.com/bremenspendet/" target="_blank"><img src="pics/facebook.svg" width="40" height="40"></a>
+                    <a href="https://www.instagram.com/bremenspendet/" target="_blank"><img src="pics/instagram.svg" width="40" height="40"></a></p> 
+            </div></div>
 
 <div id="divContent">
 
 <h1> Unser Team: </h1>
 
-<div teamDiv id="teamDiv" class="teamDiv"><img id="teamImg" src="pics/das team.jpg" usemap="#Mapi"></div>
+<div teamDiv id="teamDiv" class="teamDiv"><img id="teamImg" src="pics/das Team.jpg"  usemap="#Mapi"></div>
 
 
-<h3>Für mehr Information einfach über die Gesichter scrollen.</h3>
+<h3>Wollt Ihr mehr Informationen über uns erfahren? Dann scrollt doch einfach mal über unsere Gesichter!</h3>
 
 <map  id="Mapi">
     <area alt="0" title="" href="#" shape="rect" coords="189,112,252,201" />
@@ -51,8 +55,9 @@ addHeadMenu(document.getElementById("divHead"));;
 addButtomMenu(document.getElementById("divButtom"));;
 markButton(4);
 
-var names = ["Oliver Oertel","Janis Joker","Alexander Thiele","Paul Panther","Roxi Rübe","Karima Knigge","Tamara Tarantel"]
-var tasks = ["Website","Cross-Over","Website","Cross-Over","Marketing","Marketing","Marketing"]
+var names = ["Oliver Oertel","Janis Weingärtner","Alexander Thiele","Paul Runte","Roxana Mohammadi","Karima Knigge","Tamara Vopel"]
+var tasks = ["Abteilung:Website","Abteilung:Cross-Over","Abteilung:Website","Abteilung:Cross-Over","Abteilung:Marketing","Abteilung:Marketing","Abteilung:Marketing"]
+var course =["Studiengang:Wirtschaftsinformatik","Studiengang:Wirtschaftsinformatik","Studiengang:Wirtschaftsinformatik","Studiengang:Wirtschaftsingenieurwesen","Studiengang:BWL","Studiengang:BWL","Studiengang:BWL"]
 
 
 window.addEventListener ('load', function () {
@@ -104,7 +109,7 @@ function swap(area) {
 	liste.appendChild(task);
 	infowindow.appendChild(liste);*/
 	
-	infowindow.innerHTML = "<strong>" + names[id] + "</strong><br>" + tasks[id];
+	infowindow.innerHTML = "<strong>" + names[id] + "</strong><br>" + tasks[id] + "</strong><br>" + course[id];
 	infowindow.style.padding = "10px";		
 
 	var parentPos = teamDiv.getBoundingClientRect();

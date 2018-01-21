@@ -18,7 +18,7 @@ var b3 = document.createElement("input");*/
 //Die obenren Menübezeichnungen
 var buttonText = ["INITIATIVE","SPENDEN-FINDER","SPENDEN-SUCHE","PARTNER","TEAM","DATENSAMMLUNG"];
 //Die Links der Buttons
-var buttonLink = ["initiative.html","finder.html","mediator.html","Partner.html","team.html","library.html"];
+var buttonLink = ["initiative.html","finder.html","mediator.html","partner.html","team.html","library.html"];
 
 //Die obenren Menübuttons
 var btns = [];
@@ -778,7 +778,7 @@ function deselectButton(spani){
 	 
 	 function addPlaces(){
 		 
-		 addPlace('Verein für Innere Mission in Bremen','ChIJhW9rIQ0osUcRrE3kNWcxOJ0',['Kleidung'],[['Damen-und Herrenmode','Kinderbekleidung','Schuhe']],'https://www.inneremission-bremen.de/startseite/');
+		 addPlace('Verein für Innere Mission in Bremen','CFhIJhW9rIQ0osUcRrE3kNWcxOJ0',['Kleidung'],[['Damen-und Herrenmode','Kinderbekleidung','Schuhe']],'https://www.inneremission-bremen.de/startseite/');
 	addPlace('ProShop Bremen','ChIJ89bxYH4nsUcREksgXBw3boo',['Haushaltswaren','Spielzeug','Bücher','Sonstiges'],[[],[],[],['Textilien']],'http://www.projob-bremen.de/index.php?id=14');
 	addPlace('ProJob Bremen','ChIJ164EEyoosUcRy6I04KPS6ho',['Möbel','Haushaltswaren'],[[],[]],'http://www.projob-bremen.de/index.php?id=18');
 	addPlace('Cafe Papagei','ChIJ-3so-BEosUcRPCYq-g-sjY0',['Lebensmittel'],[['Kaffee','Tee','Kekse']],'https://www.inneremission-bremen.de/wohnungslosenhilfe/tagestreffs/cafe_papagei/');

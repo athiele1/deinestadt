@@ -556,6 +556,8 @@ function deselectButton(spani){
 	var p_c = 0;
 	function addPlace(name, place_id, spendenAnnahmen,spendenSpecials, url){
 		
+		
+		
 		addPlace2(p_c, name, place_id, spendenAnnahmen,spendenSpecials, url);
 		p_c++;
 	}
@@ -774,7 +776,9 @@ function deselectButton(spani){
 
      }
 	 
-	addPlace('Verein für Innere Mission in Bremen','ChIJhW9rIQ0osUcRrE3kNWcxOJ0',['Kleidung'],[['Damen-und Herrenmode','Kinderbekleidung','Schuhe']],'https://www.inneremission-bremen.de/startseite/');
+	 function addPlaces(){
+		 
+		 addPlace('Verein für Innere Mission in Bremen','ChIJhW9rIQ0osUcRrE3kNWcxOJ0',['Kleidung'],[['Damen-und Herrenmode','Kinderbekleidung','Schuhe']],'https://www.inneremission-bremen.de/startseite/');
 	addPlace('ProShop Bremen','ChIJ89bxYH4nsUcREksgXBw3boo',['Haushaltswaren','Spielzeug','Bücher','Sonstiges'],[[],[],[],['Textilien']],'http://www.projob-bremen.de/index.php?id=14');
 	addPlace('ProJob Bremen','ChIJ164EEyoosUcRy6I04KPS6ho',['Möbel','Haushaltswaren'],[[],[]],'http://www.projob-bremen.de/index.php?id=18');
 	addPlace('Cafe Papagei','ChIJ-3so-BEosUcRPCYq-g-sjY0',['Lebensmittel'],[['Kaffee','Tee','Kekse']],'https://www.inneremission-bremen.de/wohnungslosenhilfe/tagestreffs/cafe_papagei/');
@@ -795,4 +799,6 @@ addPlace('Gröpelinger Recycling Initiative - Möbelhaus Oslebshausen','ChIJs-ms
 addPlace('Gröpelinger Recycling Initiative - Kaufhaus Hemelingen','ChIJG0WLFn4nsUcRzZnb6Pr6nO8',['Möbel','Elektronik','Kleidung','Bücher','Spielzeug','Haushaltswaren','Sonstiges'],[[],[],[],[],[],[],['Wohnaccessoires','Bilder']],'http://gri-bremen.de/mobelhallen/kaufhaus-hemelingen/');
 addPlace('Gröpelinger Recycling Initiative - Möbelhalle Kattenturm Mitte','ChIJNf_gtyTYsEcR6wO9qF5qo4I',['Möbel','Kleidung','Bücher','Spielzeug','Haushaltswaren','Sonstiges'],[[],[],[],[],['Haushaltsgeräte'],['Wohnaccessoires','Bilder']],'http://gri-bremen.de/mobelhallen/kattenturm-mitte/');
 
+	 }
+	
 

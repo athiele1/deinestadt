@@ -13,17 +13,13 @@
 <!--
 <div class="introDivNO"><div class="introDivImageNO"><img src="pics/logo_200.png" width="100px" height="100px"></div></div>
 -->
-<div id="divHead">
-<div id="SocialLinks">
-                <p>  <a  href="https://www.facebook.com/bremenspendet/" target="_blank"><img src="pics/facebook.svg" width="40" height="40"></a>
-                    <a href="https://www.instagram.com/bremenspendet/" target="_blank"><img src="pics/instagram.svg" width="40" height="40"></a></p> 
-            </div></div>
+<div id="divHead"></div>
 
 <div id="divContent">
 
 <h1> Unser Team: </h1>
 
-<div teamDiv id="teamDiv" class="teamDiv"><img id="teamImg" src="pics/das Team.jpg"  usemap="#Mapi"></div>
+<div teamDiv id="teamDiv" class="teamDiv"><img id="teamImg" src="pics/team/das Team.jpg"  usemap="#Mapi"></div>
 
 
 <h3>Wollt Ihr mehr Informationen über uns erfahren? Dann scrollt doch einfach mal über unsere Gesichter!</h3>
@@ -72,6 +68,9 @@ for (var i=0; i<map.length; i++) {
 }
 
 function swapout(area){
+	var teamImg = document.getElementById("teamImg");
+	teamImg.className = "teamImgFadeIn";
+	
 	var teamDiv = document.getElementById("teamDiv");
 	var infowindows = document.getElementsByClassName("katSymbolDiv");
 	
@@ -90,6 +89,14 @@ function swap(area) {
 
    var id = area.getAttribute('alt');
   	var teamDiv = document.getElementById("teamDiv");
+	var teamImg = document.getElementById("teamImg");
+	teamImg.className = "teamImgFadeOut";
+	
+	
+	teamDiv.style.backgroundImage = "url('pics/team/team"+id+".jpg')";
+	
+	
+	
 	
 	var infowindow = document.createElement("div");
 	

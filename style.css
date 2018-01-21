@@ -32,9 +32,12 @@ body * {
 }
 
 
+
+
 /* Das Div der Kopfzeile*/
 #divHead {
     position: fixed;
+	z-index:10;
     width: 100%;
     margin: 0 auto;
 }
@@ -62,10 +65,17 @@ a{
     text-decoration: none;
 }
 
+#divButtom{
+	margin-bottom:0px;	
+}
+
 #divButtom p {
     display: inline-block;
     margin-left: 5px;
     margin-right: 5px;
+}
+#divButtom a {
+    color: white;
 }
 
 /* Das Div des Inhalts Bereichs*/
@@ -209,7 +219,7 @@ h5 {
     width: 100px;
     height: 50px;
     color: white;
-    background-color: #207db3;
+    background-color: var(--logoBlue);
     font-size: 18px;
     font-weight: 700;
     transition-duration: 0.4s;
@@ -218,7 +228,7 @@ h5 {
 }
 
 .losbutton1:hover{
-    background-color: #19648f;
+    filter:brightness(0.8);
 }
 
 
@@ -266,6 +276,7 @@ h5 {
 /* Die Kategorien Bilder im Spendenfinder*/
 .katImg{
     transition-duration: 0.4s;	
+	/*filter: grayscale(50%);*/
 
 }
 
@@ -332,13 +343,36 @@ h5 {
     margin-top:-20px;
 }
 
-#SocialLinks {
-    float:right;
+
+.socialDiv{
+	float:right;
 	margin-top:-10px;
 }
 
+.socialLinks {
+	transform:scale(0.6);	
+	filter:opacity(0.7);
+	transition-duration:0.4;
+}
+
+.socialLinks:hover {
+	filter:opacity(1);
+}
 
 /* Partnerseite fängt hier an */
+
+
+.details{
+	margin-left:10px;
+	padding-bottom: 10px;
+}
+
+details summary{
+	color: #333;	
+	
+}
+
+
 #Logo {
     height: 150px;
     width: 30%;
@@ -555,6 +589,23 @@ height: 100px;
 }*/
 
 
+/*Der "Los Spenden!" Button*/
+.btn{
+  background: var(--logoGreen);
+  color: white;
+  font-size:1.2rem;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  border-radius: 10px;
+  filter: brightness(0.8);
+}
+
+.btn:hover {
+  cursor: pointer;
+  filter: brightness(0.7);
+}
+
+
 /* Bild Bremen Spendet Logo Intro (nur der Kreis)*/
 .logoCircle{
     position: absolute;
@@ -590,12 +641,24 @@ height: 100px;
 
 
 /* Das Kontaktformular */ 
-form {
+.contactForm {
     background-color: #eee;
     width: 370px; /* Breite des Formulars */
     padding: 20px;
     border: 1px solid #8c8c8c;
 }
+
+#sendButton{
+    height: 50px;
+    color: white;
+    background-color: var(--logoBlue);
+    font-size: 18px;
+    font-weight: 700;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+
 label { /* Beschriftung auf eigener Zeile */
     display: block;
     cursor: pointer; /* Mauszeiger wird zur Hand */
@@ -614,9 +677,7 @@ textarea:focus {
     background-color: #d9d9d9;
 }
 
-#divButtom a {
-    color: white;
-}
+
 
 
 
@@ -671,5 +732,27 @@ textarea:focus {
 .teamDiv{
 	width:	960px;
 	margin: 0 auto;
-	
+	/*background-image:url("pics/team/team0.jpg");*/
 }
+
+
+.teamImgFadeOut{
+	filter:opacity(1);
+	animation: fadeout1 0.5s forwards;
+}
+
+.teamImgFadeIn{
+	filter:opacity(0);
+	animation: fadein1 1s forwards;
+}
+
+@keyframes fadeout1 {
+    FROM { filter:opacity(1);}
+    TO { filter: opacity(0);}
+}
+
+@keyframes fadein1 {
+    FROM { filter:opacity(0);}
+    TO { filter: opacity(1);}
+}
+

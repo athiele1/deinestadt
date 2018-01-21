@@ -77,7 +77,7 @@ function createList(){
 	var map = document.getElementById("map");
 	
 	
-	deactivateAllMarkers()
+	//deactivateAllMarkers()
 	
 	
 	var divHead = document.createElement("div");
@@ -138,9 +138,9 @@ function createList(){
 		
 		var divImg = document.createElement("span");
 		divImg.className = "spanRowKats";
-		
+		var ic = 0;
 		for(h in markerContent[i][4]){
-			var ic = 0;
+			
 			for(var j = 0; j < katLabels.length; j++){
 				if(markerContent[i][4][h] === katLabels[j]){
 					
@@ -152,15 +152,20 @@ function createList(){
 					img.style.width = "30px";
 					divImg.appendChild(img);
 					
-					/*var specialI = markerContent[i][5][ic];
+				
+					
+					var specialI = markerContent[i][5][ic];
+					
+					
 					if(specialI != null){
+						
 						ic++;
 					
 						//'onmouseout="hoverOutKatSymbol()" onmouseover="hoverKatSymbol(event,document.getElementById('+mapString+'),this,['+specStringI+']);"';
 						img.addEventListener("mouseout", function(){hoverOutKatSymbol()});
-					
-						img.addEventListener("mouseover",function(){hoverKatSymbol(divC,img,specialI)});
-					}*/
+						
+						addMouseOverInfo(img,specialI);
+					}
 				}
 			}
 		}
@@ -187,6 +192,10 @@ function createList(){
 	}
 	content.prepend(divList);
 	content.prepend(divHead);
+}
+
+function addMouseOverInfo(img,specials){
+	img.addEventListener("mouseover",function(){hoverKatSymbol(null,img,specials)});	
 }
 
 function initGoto(spanGoto, nr){

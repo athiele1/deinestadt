@@ -26,7 +26,45 @@ var btns = [];
 
 //Füllt den oberen Kopfbereich
 function addHeadMenu(container) {
-
+		/*<div id="SocialLinks">
+                <p>  <a  href="https://www.facebook.com/bremenspendet/" target="_blank"><img src="pics/facebook.svg" width="40" height="40"></a>
+                    <a href="https://www.instagram.com/bremenspendet/" target="_blank"><img src="pics/instagram.svg" width="40" height="40"></a></p> 
+            </div></div>*/
+			
+	
+			
+	var divSoc = document.createElement("div");
+	divSoc.className = "socialDiv";
+	
+	var p = document.createElement("p");
+	var faceb = document.createElement("a");
+	var insta = document.createElement("a");
+	
+	faceb.href = "https://www.facebook.com/bremenspendet/";
+	insta.href = "https://www.instagram.com/bremenspendet/";
+	
+	faceb.target="_blank";
+	insta.target="_blank";
+	
+	var pic1 = new Image();
+	var pic2 = new Image();
+	
+	pic1.className = "socialLinks";
+	pic2.className = "socialLinks";
+	
+	pic1.src= "pics/facebook.svg";
+	pic2.src="pics/instagram.svg";
+	
+	pic1.width = "40";
+	pic2.width = "40";
+	
+	faceb.appendChild(pic1);
+	insta.appendChild(pic2);
+	
+	p.appendChild(faceb);
+	p.appendChild(insta);
+	divSoc.appendChild(p);
+	container.appendChild(divSoc);
 
     /*var header = new Image();
 	header.src = "pics/logo_200.png";*/
@@ -225,6 +263,11 @@ function addHeadMenu(container) {
 	container.appendChild(spacer.cloneNode(true));
 	*/
     //document.body.appendChild(container);	
+	
+
+	
+	
+	
 }
 
 //Füllt den unteren (Impressum etc) Bereich
@@ -300,7 +343,8 @@ function deselectButton(spani){
 	**/
 	
 	
-	
+	//Ob die Marker direkt auf der Karte angezeigt werden sollen
+	var showDirect = true;
 
 	//Die Google Map
     var infowindow,service,map;
@@ -343,6 +387,7 @@ function deselectButton(spani){
 	
 //Sobald über Katg-Bild im Popup Fenster eines Markers gehovert wird
 	function hoverKatSymbol(parent, img,specials){
+		
 		if(specials.length > 0){
 			var divi = document.createElement("div");
 			
@@ -352,17 +397,22 @@ function deselectButton(spani){
 			
 			
 			//Relative Pos. zum Parent Node: https://stackoverflow.com/questions/26423335/elements-coordinates-relative-to-its-parent
+			var childrenPos = img.getBoundingClientRect(), relativePos = {};
 			
-			var parentPos = parent.getBoundingClientRect(),
- 		  	 childrenPos = img.getBoundingClientRect(),
-   			 relativePos = {};
-
-			relativePos.top = childrenPos.top - parentPos.top,
-			relativePos.left = childrenPos.left - parentPos.left;
+			if(parent != null){
+				var parentPos = parent.getBoundingClientRect();
+				relativePos.top = childrenPos.top - parentPos.top,
+				relativePos.left = childrenPos.left - parentPos.left;
+			}else{
+				relativePos.left = childrenPos.left;
+				
+				relativePos.top = childrenPos.top + window.scrollY;
+			}
+			
 			
 			divi.style.top = relativePos.top;
 			divi.style.left = relativePos.left + 35 + "px";
-			
+		
 			
 			var liste = document.createElement("ul");
 			
@@ -377,9 +427,11 @@ function deselectButton(spani){
 			divi.appendChild(liste);
 			
 			
-			
-			
-			parent.appendChild(divi);
+			if(parent != null){
+				parent.appendChild(divi);
+			}else{
+				document.body.appendChild(divi);
+			}
 			
 		}
 	}
@@ -389,9 +441,12 @@ function deselectButton(spani){
 		var divi = document.getElementById("katSymbolDivId");
 		var map = document.getElementById("map");
 		
-		if(divi != null){
-			map.removeChild(divi);
-		}
+		try{
+			document.body.removeChild(divi);
+			
+		}catch(err){map.removeChild(divi);};
+			
+		
 		
 		
 	}
@@ -417,7 +472,7 @@ function deselectButton(spani){
 		var marker = new google.maps.Marker({
              map: markerActivated[nr] ? map : null,
              position: pos,
-			label: nr + "",
+			//label: nr + "",
 			 animation: google.maps.Animation.DROP
 			 
         });
@@ -510,21 +565,44 @@ function deselectButton(spani){
 		
 		// [name, bGrad, lGrad, adresse, spendenAnnahmen, spendenSpecials, url]; 
 		markerContent[nr] = [name,0,0,place_id,spendenAnnahmen,spendenSpecials,url];
-		markerActivated[nr] = true;
+		markerActivated[nr] = showDirect;
 		
 		
 		 window.setTimeout(function() {
 			
 			addPlace3(nr,name, place_id, spendenAnnahmen,spendenSpecials, url);
-		 }, nr*100+250);
+		 }, nr*100+200);
+		 
 
 	}
 	
 	//Fügt eine Einrichtungstandort hinzu
 	function addPlace3(nr, name, place_id, spendenAnnahmen,spendenSpecials, url){
 		
+		var request = {
+ 			 placeId: place_id
+		};
+
+		service = new google.maps.places.PlacesService(map);
+		service.getDetails(request, callback);
+
+		function callback(place, status) {
+ 		 	if (status == google.maps.places.PlacesServiceStatus.OK) {
+				
+				var lng = place.geometry.location.lng();
+				var lat = place.geometry.location.lat();
+			
+				addPlace4(nr,name, lat, lng,place.formatted_address.split(",")[0],spendenAnnahmen,spendenSpecials,url);
+				
+ 			}else{
+				//RETRY
+				addPlace2(nr, name, place_id, spendenAnnahmen,spendenSpecials, url)	
+			}
+		}
 		
-		service.getDetails({
+		
+		
+		/*service.getDetails({
           placeId: place_id
         }, function(place, status) {
 			
@@ -544,11 +622,8 @@ function deselectButton(spani){
 			
 			
 			  
-		  /*}else{
-			alert("Place " + name + " konnte nicht hinzugefügt werden, überprüfe die Place ID! " + place_id)
-		  }*/
-		});	  
-		
+		  
+		});	  */
 	}
 	
 	
@@ -699,7 +774,7 @@ function deselectButton(spani){
 
      }
 	 
-	 addPlace('Verein für Innere Mission in Bremen','ChIJhW9rIQ0osUcRrE3kNWcxOJ0',['Kleidung'],[['Damen-und Herrenmode','Kinderbekleidung','Schuhe']],'https://www.inneremission-bremen.de/startseite/');
+	addPlace('Verein für Innere Mission in Bremen','ChIJhW9rIQ0osUcRrE3kNWcxOJ0',['Kleidung'],[['Damen-und Herrenmode','Kinderbekleidung','Schuhe']],'https://www.inneremission-bremen.de/startseite/');
 	addPlace('ProShop Bremen','ChIJ89bxYH4nsUcREksgXBw3boo',['Haushaltswaren','Spielzeug','Bücher','Sonstiges'],[[],[],[],['Textilien']],'http://www.projob-bremen.de/index.php?id=14');
 	addPlace('ProJob Bremen','ChIJ164EEyoosUcRy6I04KPS6ho',['Möbel','Haushaltswaren'],[[],[]],'http://www.projob-bremen.de/index.php?id=18');
 	addPlace('Cafe Papagei','ChIJ-3so-BEosUcRPCYq-g-sjY0',['Lebensmittel'],[['Kaffee','Tee','Kekse']],'https://www.inneremission-bremen.de/wohnungslosenhilfe/tagestreffs/cafe_papagei/');
@@ -709,8 +784,8 @@ addPlace('Deutsches Rotes Kreuz Kreisverband Bremen e.V.','ChIJMzOAQ4QnsUcR1QxfN
 addPlace('Deutsches Rotes Kreuz Kreisverband Bremen e.V.','ChIJySe4uUnTtkcRAX3DZkNRfs8',['Kleidung'],[[]],'http://www.drk-bremen.de/startseite.html');
 addPlace('Die Bremer Suppenengel','ChIJdVHLMOPXsEcR6frrixM3ILg',['Lebensmittel','Sonstiges'],[['Nudeln','Hülsenfrüchte','Kaffee','Gewürze','Konserven'],['Schlafsäcke','Rucksäcke','Isomatten','Büromaterial','gebrauchte Smartphones','Seife','Zahnpasta','Pflaster','Binden']],'http://www.suppenengel.de/');
 addPlace('SOS Kinderdorf','ChIJ1e0jeh8osUcRYXT6fGKqtlM',['Bücher','Spielzeug','Kleidung'],[['Kinderbücher'],['Kinderspielzeug'],['Kinderkleidung']],'http://www.sos-kinderdorf.de/kinderdorf-bremen');
-addPlace('SOS Kinderdorf','ChIJIT1y7-bXsEcRlL2yIBkmK6c',['Bücher','Spielzeug','Kleidung'],[['Kinderbücher'],['Kinderspielzeug'],['Kinderkleidung']],'http://www.sos-kinderdorf.de/kinderdorf-bremen');
-addPlace('SOS Kinderdorf','ChIJC2LtuasssUcRfK7QtJZ95i8',['Bücher','Spielzeug','Kleidung'],[['Kinderbücher'],['Kinderspielzeug'],['Kinderkleidung']],'http://www.sos-kinderdorf.de/kinderdorf-bremen');
+/*addPlace('SOS Kinderdorf','ChIJIT1y7-bXsEcRlL2yIBkmK6c',['Bücher','Spielzeug','Kleidung'],[['Kinderbücher'],['Kinderspielzeug'],['Kinderkleidung']],'http://www.sos-kinderdorf.de/kinderdorf-bremen');
+addPlace('SOS Kinderdorf','ChIJC2LtuasssUcRfK7QtJZ95i8',['Bücher','Spielzeug','Kleidung'],[['Kinderbücher'],['Kinderspielzeug'],['Kinderkleidung']],'http://www.sos-kinderdorf.de/kinderdorf-bremen');*/
 addPlace('MöbellagerNord','ChIJFR1C4a4ssUcRA4l8ZIS8PZg',['Möbel','Haushaltswaren','Elektronik'],[[],['Geschirr','Gläser','Küchenartikel','Lampen','Textilien'],['Kleingeräte']],'https://www.moebellagernord.de/');
 
 addPlace('Gröpelinger Recycling Initiative - Recycling-Hof Huchting','ChIJ2fvAOyTWsEcRVzU5p3SESac',['Elektronik','Sonstiges'],[['Computer','Stereoanlagen','Büromachinen','Radio','Heizung','Lüftung'],['Bauelemente','Bauteile','Sanitärartikel','Metalle']],'http://gri-bremen.de/recycling-hoefe/huchting/');

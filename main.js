@@ -562,8 +562,10 @@ function deselectButton(spani){
 		p_c++;
 	}
 	
-	
+	var p_c2 = 0;
 	function addPlace2(nr, name, place_id, spendenAnnahmen,spendenSpecials, url){
+		
+		
 		
 		// [name, bGrad, lGrad, adresse, spendenAnnahmen, spendenSpecials, url]; 
 		markerContent[nr] = [name,0,0,place_id,spendenAnnahmen,spendenSpecials,url];
@@ -573,9 +575,9 @@ function deselectButton(spani){
 		 window.setTimeout(function() {
 			
 			addPlace3(nr,name, place_id, spendenAnnahmen,spendenSpecials, url);
-		 }, nr*100+200);
+		 }, p_c2*200+500);
 		 
-
+		p_c2++;
 	}
 	
 	//Fügt eine Einrichtungstandort hinzu
@@ -597,6 +599,7 @@ function deselectButton(spani){
 				addPlace4(nr,name, lat, lng,place.formatted_address.split(",")[0],spendenAnnahmen,spendenSpecials,url);
 				
  			}else{
+				
 				//RETRY
 				addPlace2(nr, name, place_id, spendenAnnahmen,spendenSpecials, url)	
 			}
@@ -778,7 +781,7 @@ function deselectButton(spani){
 	 
 	 function addPlaces(){
 		 
-		 addPlace('Verein für Innere Mission in Bremen','CFhIJhW9rIQ0osUcRrE3kNWcxOJ0',['Kleidung'],[['Damen-und Herrenmode','Kinderbekleidung','Schuhe']],'https://www.inneremission-bremen.de/startseite/');
+		 addPlace('Verein für Innere Mission in Bremen','ChIJhW9rIQ0osUcRrE3kNWcxOJ0',['Kleidung'],[['Damen-und Herrenmode','Kinderbekleidung','Schuhe']],'https://www.inneremission-bremen.de/startseite/');
 	addPlace('ProShop Bremen','ChIJ89bxYH4nsUcREksgXBw3boo',['Haushaltswaren','Spielzeug','Bücher','Sonstiges'],[[],[],[],['Textilien']],'http://www.projob-bremen.de/index.php?id=14');
 	addPlace('ProJob Bremen','ChIJ164EEyoosUcRy6I04KPS6ho',['Möbel','Haushaltswaren'],[[],[]],'http://www.projob-bremen.de/index.php?id=18');
 	addPlace('Cafe Papagei','ChIJ-3so-BEosUcRPCYq-g-sjY0',['Lebensmittel'],[['Kaffee','Tee','Kekse']],'https://www.inneremission-bremen.de/wohnungslosenhilfe/tagestreffs/cafe_papagei/');

@@ -6,6 +6,9 @@ style.css
 Eine externe und zentrale CSS Datei,
 hierüber kann das Design aller Seiten angepasst werden.
 
+Kompatiblitäts Converter: https://autoprefixer.github.io/
+(Fügt alles mit webkit- hinzu)
+
 **/
 
 
@@ -49,8 +52,8 @@ body * {
 
 /* Das Div des untersten Bereich (Impressum, Kontakt etc.)*/
 #bottom-footer {
-    position: fixed;
-    bottom: 0;
+	position:absolute;
+    bottom: -75;
     left: 0;
     width: 100%;
     height: 50px;
@@ -59,15 +62,13 @@ body * {
     background-color: #207db3;
     border-top: 3px solid #72e6ab;
     margin-top: 20px;
+	border-bottom:10px solid #207db3;
 }
 
 a{
     text-decoration: none;
 }
 
-#divButtom{
-	margin-bottom:0px;	
-}
 
 #divButtom p {
     display: inline-block;
@@ -94,7 +95,8 @@ hr{
     border: 0px;
     background-color: lightgrey;
     /*https://www.cssmatic.com/box-shadow*/
-    box-shadow: px 18px 64px 0px rgba(156,156,156,1);
+    -webkit-box-shadow: px 18px 64px 0px rgba(156,156,156,1);
+            box-shadow: px 18px 64px 0px rgba(156,156,156,1);
 }
 
 /*Youtube-Videos*/
@@ -155,7 +157,7 @@ h1 {
     font-style: normal;
     font-variant: normal;
     font-weight: 500;
-    line-height: 26.4px;
+    line-height: 36px;
     margin-top: 50px;
 }
 
@@ -205,7 +207,9 @@ h5 {
     display: inline-block;
     font-size: 16px;
     cursor: pointer;
-    transition-duration: 0.4s;
+    -webkit-transition-duration: 0.4s;
+         -o-transition-duration: 0.4s;
+            transition-duration: 0.4s;
 
 }
 
@@ -222,13 +226,16 @@ h5 {
     background-color: var(--logoBlue);
     font-size: 18px;
     font-weight: 700;
-    transition-duration: 0.4s;
+    -webkit-transition-duration: 0.4s;
+         -o-transition-duration: 0.4s;
+            transition-duration: 0.4s;
     cursor: pointer;
 
 }
 
 .losbutton1:hover{
-    filter:brightness(0.8);
+    -webkit-filter:brightness(0.8);
+            filter:brightness(0.8);
 }
 
 
@@ -245,6 +252,8 @@ h5 {
     color: var(--logoBlue);
 }
 
+
+
 /* Keine Umrandungen wenn man was "hovert"*/
 .noFocus !important{
     outline: 0;
@@ -253,7 +262,7 @@ h5 {
 
 .noFocus:focus  !important{
     outline: 0;
-    border 0;
+    border: 0;
 }
 
 
@@ -264,8 +273,7 @@ h5 {
 .noselect {
     /*source: https://stackoverflow.com/questions/826782/how-to-disable-text-selection-highlighting-using-css*/
     -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
+    -webkit-user-select: none; /* Safari */ /* Konqueror HTML */
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none; /* Non-prefixed version, currently
@@ -275,20 +283,23 @@ h5 {
 
 /* Die Kategorien Bilder im Spendenfinder*/
 .katImg{
-    transition-duration: 0.4s;	
+    -webkit-transition-duration: 0.4s;
+         -o-transition-duration: 0.4s;
+            transition-duration: 0.4s;	
 	/*filter: grayscale(50%);*/
 
 }
 
 
 .katImg:hover {
-    filter: brightness(1.3);
+    -webkit-filter: brightness(1.3);
+            filter: brightness(1.3);
 }
 
 /* Div umfässt Die Kategorien Bilder im Spendenfinder*/
 .katDiv{
 
-    width: 100px;
+    width: 110px;
     height: 75px;
     margin: 5px;
     margin-bottom: 50px;
@@ -307,6 +318,8 @@ h5 {
     position:absolute;	
     font-weight: 550;
     font-size: 13px;
+    -webkit-transition: 0.4s;
+    -o-transition: 0.4s;
     transition: 0.4s;
 
 }
@@ -319,13 +332,19 @@ h5 {
 }
 
 .socialLinks {
-	transform:scale(0.6);	
-	filter:opacity(0.7);
-	transition-duration:0.4;
+	-webkit-transform:scale(0.6);
+	    -ms-transform:scale(0.6);
+	        transform:scale(0.6);	
+	-webkit-filter:opacity(0.7);	
+	        filter:opacity(0.7);
+	-webkit-transition-duration:0.4;
+	     -o-transition-duration:0.4;
+	        transition-duration:0.4;
 }
 
 .socialLinks:hover {
-	filter:opacity(1);
+	-webkit-filter:opacity(1);
+	        filter:opacity(1);
 }
 
 /* Partnerseite fängt hier an */
@@ -466,6 +485,8 @@ details summary{
 
 /* Das Div des Bildes des Bremen Spendet Intros*/
 .introDivImage{
+	background: -webkit-radial-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+	background: -o-radial-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
 	background: radial-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
     display: block;
     margin: 0 auto;
@@ -566,12 +587,14 @@ height: 100px;
   padding: 1rem 2rem;
   text-decoration: none;
   border-radius: 10px;
-  filter: brightness(0.8);
+  -webkit-filter: brightness(0.8);
+          filter: brightness(0.8);
 }
 
 .btn:hover {
   cursor: pointer;
-  filter: brightness(0.7);
+  -webkit-filter: brightness(0.7);
+          filter: brightness(0.7);
 }
 
 
@@ -582,7 +605,8 @@ height: 100px;
 
 .logoCircleSpin{
 	position: absolute;
-    animation: spin 0.7s infinite linear;
+    -webkit-animation: spin 0.7s infinite linear;
+            animation: spin 0.7s infinite linear;
 }
 
 /* Bild Bremen Spendet Logo Intro (nur der Text)*/
@@ -590,15 +614,22 @@ height: 100px;
 	position:absolute;
 }
 
+@-webkit-keyframes spin {
+    FROM { -webkit-transform: rotate(0deg); transform: rotate(0deg);}
+    TO { -webkit-transform: rotate(360deg); transform: rotate(360deg);}
+}
+
 @keyframes spin {
-    FROM { transform: rotate(0deg);}
-    TO { transform: rotate(360deg);}
+    FROM { -webkit-transform: rotate(0deg); transform: rotate(0deg);}
+    TO { -webkit-transform: rotate(360deg); transform: rotate(360deg);}
 }
 
 /*Die Links unten in der Leiste*/
 
 .bottomLink{
-	transition-duration:0.4s;
+	-webkit-transition-duration:0.4s;
+	     -o-transition-duration:0.4s;
+	        transition-duration:0.4s;
 }
 
 .bottomLink:hover{
@@ -623,7 +654,9 @@ height: 100px;
     background-color: var(--logoBlue);
     font-size: 18px;
     font-weight: 700;
-    transition-duration: 0.4s;
+    -webkit-transition-duration: 0.4s;
+         -o-transition-duration: 0.4s;
+            transition-duration: 0.4s;
     cursor: pointer;
 }
 
@@ -663,7 +696,8 @@ textarea:focus {
     color: white;
     padding: 15px 32px;
     text-align: center;
-    text-decoration-style: none;
+    -webkit-text-decoration-style: none;
+            text-decoration-style: none;
     display: inline-block;
     font-size: 16px;
 }
@@ -704,20 +738,23 @@ textarea:focus {
 margin-top:10px;
     margin-right:50px;
     float:right;
-	filter:grayscale(0.3);
+	-webkit-filter:grayscale(0.3);
+	        filter:grayscale(0.3);
 }
 
 #stepsCategory {
     margin-right:90px;
     float:right;
     margin-top:20px;
-	filter:grayscale(0.3);
+	-webkit-filter:grayscale(0.3);
+	        filter:grayscale(0.3);
 }
 #stepsCategory2 {
     margin-right:50px;
     float:right;
     margin-top:10px;
-	filter:grayscale(0.3);
+	-webkit-filter:grayscale(0.3);
+	        filter:grayscale(0.3);
 }
 
 
@@ -745,29 +782,48 @@ margin-top:10px;
 /***********************************************************************/
 
 .teamDiv{
-	width:	960px;
-	margin: 0 auto;
+	 width:750;
+	 height:576;
 	/*background-image:url("pics/team/team0.jpg");*/
+}
+
+.teamDiv img{
+	width:750;
+	 height:576;
 }
 
 
 .teamImgFadeOut{
-	filter:opacity(1);
-	animation: fadeout1 0.5s forwards;
+	-webkit-filter:opacity(1);
+	        filter:opacity(1);
+	-webkit-animation: fadeout1 0.5s forwards;
+	        animation: fadeout1 0.5s forwards;
 }
 
 .teamImgFadeIn{
-	filter:opacity(0);
-	animation: fadein1 1s forwards;
+	-webkit-filter:opacity(0);
+	        filter:opacity(0);
+	-webkit-animation: fadein1 1s forwards;
+	        animation: fadein1 1s forwards;
+}
+
+@-webkit-keyframes fadeout1 {
+    FROM { -webkit-filter:opacity(1); filter:opacity(1);}
+    TO { -webkit-filter: opacity(0); filter: opacity(0);}
 }
 
 @keyframes fadeout1 {
-    FROM { filter:opacity(1);}
-    TO { filter: opacity(0);}
+    FROM { -webkit-filter:opacity(1); filter:opacity(1);}
+    TO { -webkit-filter: opacity(0); filter: opacity(0);}
+}
+
+@-webkit-keyframes fadein1 {
+    FROM { -webkit-filter:opacity(0); filter:opacity(0);}
+    TO { -webkit-filter: opacity(1); filter: opacity(1);}
 }
 
 @keyframes fadein1 {
-    FROM { filter:opacity(0);}
-    TO { filter: opacity(1);}
+    FROM { -webkit-filter:opacity(0); filter:opacity(0);}
+    TO { -webkit-filter: opacity(1); filter: opacity(1);}
 }
 

@@ -19,23 +19,30 @@
 
 <h1> Unser Team: </h1>
 
-<div teamDiv id="teamDiv" class="teamDiv"><img id="teamImg" src="pics/team/dasteam.jpg"  usemap="#Mapi"></div>
+<div teamDiv id="teamDiv" class="teamDiv">
+  <p><img src="pics/team/dasteam.jpg"  usemap="#Mapi" id="teamImg"></p>
+</div>
+
+<br>
+Willst du mehr über uns erfahren? Dann scroll mal einfach über die Gesichter!
 
 
-<h3>Willst du mehr Informationen über uns erfahren? Dann scroll doch einfach mal über unsere Gesichter!</h3>
+
+
 
 <map  id="Mapi">
-    <area alt="0" title="" href="#" shape="rect" coords="189,112,252,201" />
-    <area alt="1" title="" href="#" shape="rect" coords="357,130,414,216" />
-    <area alt="2" title="" href="#" shape="rect" coords="481,144,546,229" />
-    <area alt="3" title="" href="#" shape="rect" coords="624,139,687,225" />
-    <area alt="4" title="" href="#" shape="rect" coords="354,341,422,426" />
-    <area alt="5" title="" href="#" shape="rect" coords="475,352,536,429" />
-    <area alt="6" title="" href="#" shape="rect" coords="593,335,667,433" />
+    <area alt="6" title="" href="#" shape="rect" coords="463,268,521,346" />
+    <area alt="5" title="" href="#" shape="rect" coords="371,281,418,343" />
+    <area alt="4" title="" href="#" shape="rect" coords="276,272,329,340" />
+    <area alt="3" title="" href="#" shape="rect" coords="487,111,536,180" />
+    <area alt="2" title="" href="#" shape="rect" coords="375,115,426,183" />
+    <area alt="1" title="" href="#" shape="rect" coords="278,104,323,172" />
+    <area alt="0" title="" href="#" shape="rect" coords="147,89,196,160" />
 </map>
 
 
 
+<br><br><br><br>
 
 </div>
 
@@ -52,7 +59,7 @@ addButtomMenu(document.getElementById("divButtom"));;
 markButton(4);
 
 var names = ["Oliver Oertel","Janis Weingärtner","Alexander Thiele","Paul Runte","Roxana Mohammadi","Karima Knigge","Tamara Vopel"]
-var tasks = ["Abteilung:Website","Abteilung:Cross-Over","Abteilung:Website","Abteilung:Cross-Over","Abteilung:Marketing","Abteilung:Marketing","Abteilung:Marketing"]
+var tasks = ["Abteilung: Website","Abteilung: Rechtliches","Abteilung: Website","Abteilung: Methodik","Abteilung: Marketing","Abteilung: Marketing","Abteilung: Marketing"]
 var course =["Studiengang:Wirtschaftsinformatik","Studiengang:Wirtschaftsinformatik","Studiengang:Wirtschaftsinformatik","Studiengang:Wirtschaftsingenieurwesen","Studiengang:BWL","Studiengang:BWL","Studiengang:BWL"]
 
 
@@ -94,6 +101,7 @@ function swap(area) {
 	
 	
 	teamDiv.style.backgroundImage = "url('pics/team/team"+id+".jpg')";
+	teamDiv.style.backgroundSize =  "750px 576px";
 	
 	
 	

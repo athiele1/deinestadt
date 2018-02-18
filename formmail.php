@@ -8,7 +8,7 @@
 <body>
 
  <?php
- $recipient = "oertel@uni-bremen.de";
+ $recipient = "info@bremenspendet.de";
  $fmtResponse= implode("", file("response.htt"));
  $fmtMail= implode("", file("mail.htt"));
  foreach($_POST as $key=> $val) {
